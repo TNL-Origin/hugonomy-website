@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Joseph D. Tingling MD/PhD">
+  <meta name="theme-color" content="#050816">
+  <title>Vision — Hugonomy Systems</title>
+  <meta name="description" content="Hugonomy's vision: human-centered tools that help people stay aware, intentional, and in control while using AI.">
+  <meta property="og:title" content="Vision — Hugonomy Systems">
+  <meta property="og:description" content="Human-centered tools that help people stay aware, intentional, and in control while using AI.">
+  <meta property="og:image" content="https://hugonomy.com/assets/images/hero-lifestyle-hud.jpg">
+  <meta property="og:url" content="https://hugonomy.com/vision.html">
+  <meta property="og:site_name" content="Hugonomy Systems">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vision - Hugonomy Systems">
+  <meta name="twitter:description" content="Human-centered tools that help people stay aware, intentional, and in control while using AI.">
+  <meta name="twitter:image" content="https://hugonomy.com/assets/images/hero-lifestyle-hud.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="assets/icons/icon128.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .vision-hero { padding: 140px 24px 80px; text-align: center; position: relative; overflow: hidden; }
+    .vision-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(142,68,173,0.15) 0%, transparent 70%);
+      pointer-events: none; z-index: 1;
+    }
+    .vision-orb-video {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.18; z-index: 0;
+      pointer-events: none;
+    }
+    .vision-hero .container { position: relative; z-index: 2; }
+    .stack-card--logo-right { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 24px; }
+    .stack-product-logo-right {
+      height: auto; border-radius: 14px;
+      flex-shrink: 0; align-self: center; justify-self: end;
+    }
+    .stack-product-logo-right--lens { width: 175px; }
+    .stack-product-logo-right--council { width: 155px; }
+    .stack-card--logo-right .stack-badge { margin-bottom: 10px; }
+    .vision-hero blockquote {
+      font-size: clamp(1.5rem, 4vw, 2.4rem); font-weight: 800;
+      line-height: 1.2; letter-spacing: -0.02em;
+      margin: 32px auto; max-width: 700px;
+      border: none; padding: 0;
+    }
+    .vision-hero blockquote em { font-style: normal; }
+    .vision-hero-sub { font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+    .stack-section { padding: 80px 0; }
+    .stack-intro { max-width: 640px; margin: 0 auto 56px; text-align: center; }
+    .stack-grid { display: grid; gap: 24px; }
+    .stack-card {
+      background: var(--brand-card); border: 1px solid var(--brand-border);
+      border-radius: 20px; padding: 36px;
+      display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: start;
+    }
+    .stack-card > div { min-width: 0; }
+    .stack-card--live { border-color: rgba(79,172,254,0.35); }
+    .stack-card--next { border-color: rgba(142,68,173,0.3); }
+    .stack-badge {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 5px 12px; border-radius: 20px;
+      white-space: nowrap; align-self: start;
+    }
+    .stack-badge--live { background: rgba(79,172,254,0.12); color: var(--brand-blue); border: 1px solid rgba(79,172,254,0.3); }
+    .stack-badge--next { background: rgba(142,68,173,0.12); color: #c77dff; border: 1px solid rgba(142,68,173,0.3); }
+    .stack-badge--horizon { background: rgba(255,255,255,0.05); color: var(--text-muted); border: 1px solid rgba(255,255,255,0.1); }
+    .stack-card h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 10px; }
+    .stack-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; }
+    .stack-card .stack-sub { font-size: 0.82rem; color: var(--text-muted); margin-top: 12px; }
+    @media (max-width: 780px) {
+      .stack-card,
+      .stack-card--logo-right {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 28px 24px;
+      }
+      .stack-card > .stack-badge {
+        order: -1;
+        justify-self: start;
+      }
+      .stack-product-logo-right {
+        justify-self: center;
+        margin-top: 2px;
+      }
+      .stack-product-logo-right--lens { width: min(175px, 48vw); }
+      .stack-product-logo-right--council { width: min(155px, 42vw); }
+      .research-visual--stack { margin-top: 18px; }
+    }
+    .doctrine-section { background: var(--brand-mid); padding: 80px 0; }
+    .doctrine-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 48px; }
+    .doctrine-card {
+      background: var(--brand-card); border: 1px solid var(--brand-border);
+      border-radius: 16px; padding: 28px;
+    }
+    .doctrine-card .layer-num {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--brand-blue); margin-bottom: 10px;
+    }
+    .doctrine-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .doctrine-card p { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; }
+    .principle-section { padding: 80px 0; text-align: center; }
+    .principle-section .section-sub { margin: 0 auto 48px; }
+    .principle-list { list-style: none; max-width: 640px; margin: 0 auto; display: grid; gap: 16px; }
+    .principle-list li {
+      background: var(--brand-card); border: 1px solid var(--brand-border);
+      border-radius: 12px; padding: 20px 24px;
+      font-size: 0.95rem; color: var(--text-secondary);
+      text-align: left; display: flex; gap: 14px; align-items: flex-start;
+    }
+    .principle-list li .p-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+    .roadmap-section { background: var(--brand-mid); padding: 80px 0; }
+    .roadmap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 48px; }
+    .roadmap-card {
+      background: var(--brand-card); border: 1px solid var(--brand-border);
+      border-radius: 14px; padding: 24px; position: relative;
+    }
+    .roadmap-card .range-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px;
+    }
+    .roadmap-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .roadmap-card p { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5; }
+    .roadmap-card--active { border-color: rgba(79,172,254,0.35); }
+    .roadmap-card--active .range-label { color: var(--brand-blue); }
+  </style>
+  <link rel="canonical" href="https://hugonomy.com/vision.html">
+</head>
+<body>
+
+<nav aria-label="Site navigation">
+  <div class="nav-inner">
+    <a class='nav-logo' href='/'>
+      <img src="assets/icons/icon128.png" alt="VibeAI FoldSpace icon">
+      <span class="nav-logo-text">Hugonomy Systems</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href='/'>Home</a>
+      <a class='nav-active' href='/vision'>Vision</a>
+      <a href='/about'>About</a>
+      <a href='/news'>News &amp; Media</a>
+      <a href='/privacy'>Privacy</a>
+      <a class='btn-nav' href='/#install-actions'>Install Free</a>
+    </div>
+    <button type="button" class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<header class="vision-hero">
+  <video class="vision-orb-video" autoplay muted loop playsinline aria-hidden="true">
+    <source src="assets/video/hugonomy-orb.mp4" type="video/mp4">
+  </video>
+  <div class="container">
+    <div class="page-brand-strip">
+      <img src="assets/images/logo-vibeai-foldspace.png" alt="VibeAI FoldSpace by Hugonomy Systems" class="page-brand-logo">
+    </div>
+    <p class="section-label">The vision</p>
+    <blockquote>
+      <span class="gradient-text">Your train of thought<br>should stay yours.</span>
+    </blockquote>
+    <p class="vision-hero-sub">
+      AI is becoming a place where people think, write, decide, and draft.
+      Hugonomy builds tools that help people stay aware while using it —
+      and we want to prove that this kind of feedback actually changes behavior.
+      Scroll to see the question we are trying to test.
+    </p>
+  </div>
+</header>
+
+<!-- ── The Open Question ─────────────────────────────────────────────── -->
+<section class="study-section" id="study">
+  <div class="container">
+    <p class="section-label">The open question</p>
+    <h2 class="section-title">We built the tool.<br>Now we want to test it.</h2>
+    <p class="section-sub">
+      Early research shows a consistent signal: passive AI use correlates with cognitive decline.
+      But all of that research measures outcomes <em>after</em> the fact — surveys, post-hoc scores, theoretical models.
+      Nobody has tested whether real-time awareness feedback actually changes how people engage with AI
+      <em>while it's happening</em>. We want to be the ones who find out — honestly, rigorously, in public.
+      And if the answer is no, the world deserves to know that too.
+    </p>
+
+    <div class="study-gap">
+      <p class="study-gap-label">The gap in the current science</p>
+      <p>"What's missing is a tool that observes how people actually engage with AI while the conversation is happening. Today there is no real-time feedback about how someone is interacting with AI." — Hugonomy advisor pitch, UIUC EIR, March 2026</p>
+    </div>
+
+    <div class="study-hypothesis">
+      <p class="study-hypothesis-label">The hypothesis</p>
+      <h3>If you can see your own thinking engagement in real time — does it change how you think?</h3>
+      <p>We believe the answer is yes. Real-time awareness of passive acceptance should interrupt the drift before it becomes a habit. But belief isn't science. We want to measure it.</p>
+    </div>
+
+    <a href="https://youtu.be/uxwuIazVryw?si=ux_K1OH48KqRxkx3"
+       target="_blank" rel="noopener noreferrer"
+       class="video-image-link video-image-link--study"
+       aria-label="Watch the research wedge explainer on YouTube">
+      <img src="assets/images/research-wedge-study.jpg"
+           alt="Study design: 2-week randomized pilot testing whether real-time cognitive awareness changes AI engagement behavior"
+           class="study-visual">
+    </a>
+    <p class="video-link-note">
+      <a href="https://youtu.be/uxwuIazVryw?si=ux_K1OH48KqRxkx3" target="_blank" rel="noopener noreferrer">Watch the explainer on YouTube &#x2197;</a>
+    </p>
+
+    <div class="study-design-grid">
+      <div class="study-design-card">
+        <h4>Study Design</h4>
+        <p><strong>2-week randomized pilot.</strong> Treatment group sees live Vibe<span class="vibe-ai">AI</span> FoldSpace cognitive feedback during AI conversations. Control group uses the same AI tools with no engagement feedback shown. Pre/post behavioral mapping.</p>
+      </div>
+      <div class="study-design-card">
+        <h4>Participants</h4>
+        <p><strong>n ≈ 50 students.</strong> Target: university cohort using AI tools for coursework. Mixed AI usage frequency. Diverse academic backgrounds. Minimal risk — all data stays on device, local-first architecture.</p>
+      </div>
+      <div class="study-design-card">
+        <h4>What We Measure</h4>
+        <p><strong>Behavioral:</strong> active vs. passive engagement ratio, session persistence, message depth, reflection frequency.<br><br><strong>Self-reported:</strong> pre/post survey on AI overreliance, mindfulness, and <a class='glossary-inline' href='/about#metacognition'>metacognition</a> — your awareness of your own thinking as it happens.</p>
+      </div>
+      <div class="study-design-card">
+        <h4>The Grounded Hypothesis</h4>
+        <p>Users who see a real-time <strong>"Thinking Engagement"</strong> signal will display meaningfully different interaction patterns compared to users without feedback — moving from passive acceptance toward active inquiry.</p>
+      </div>
+    </div>
+
+    <div class="study-honest-note">
+      <p>
+        <strong>We are not claiming this works.</strong> <strong><em>We are claiming it's worth testing</em></strong> — with enough scientific rigor that the result, positive or negative, adds something real to the field.
+        If real-time cognitive awareness doesn't change behavior, that finding matters just as much.
+        The AI era needs honest instruments, not just optimistic ones.
+      </p>
+    </div>
+
+    <div class="study-cta">
+      <h3>If this question matters to you — we want to hear from you.</h3>
+      <p>We're looking for academic partners, researchers, and institutions willing to help design and run a rigorous pilot. IRB-ready. Local-first architecture. Consent-gated from day one.</p>
+      <div class="study-cta-roles">
+        <span class="study-cta-role">University researchers</span>
+        <span class="study-cta-role">Cognitive scientists</span>
+        <span class="study-cta-role">Education technologists</span>
+        <span class="study-cta-role">IRB coordinators</span>
+        <span class="study-cta-role">Curious institutions</span>
+      </div>
+      <a href="https://discord.com/channels/1488246113491222720/1488251543403757689" target="_blank" rel="noopener noreferrer" class="btn-primary">Start the conversation on Discord &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── The Product Stack ─────────────────────────────────────────────── -->
+<section class="stack-section">
+  <div class="container">
+    <p class="section-label">The stack</p>
+    <div class="stack-intro">
+      <h2 class="section-title">Three products. Three horizons.</h2>
+      <p class="section-sub">
+        What exists now, what comes next, and what stays longer-term —
+        all built around the same rule: notice first, understand second, automate last.
+      </p>
+    </div>
+    <div class="stack-grid">
+
+      <div class="stack-card stack-card--live">
+        <div>
+          <h3>Vibe<span class="vibe-ai">AI</span> FoldSpace&#x2122;</h3>
+          <p>
+            A real-time awareness HUD for AI conversations. Runs entirely in your browser —
+            no cloud, no accounts, no profiling. Shows your thinking stage (Exploring, Evaluating,
+            Refining, Passive Mode) as it shifts. Activates the Thinking Mirror when you accept
+            an AI response too quickly.
+          </p>
+          <p class="stack-sub">Chrome &amp; Edge · Local-only · Consent-gated</p>
+          <img src="assets/images/research-awareness-layer.jpg"
+               alt="Visual showing FoldSpace helping a person notice AI drift and stay engaged in the conversation"
+               class="research-visual research-visual--stack">
+        </div>
+        <span class="stack-badge stack-badge--live">Live now</span>
+      </div>
+
+      <div class="stack-card stack-card--next stack-card--logo-right">
+        <div>
+          <span class="stack-badge stack-badge--next">Next</span>
+          <h3>AllMinds Lens&#x2122;</h3>
+          <p>
+            Built for cross-session work. Where FoldSpace helps inside one conversation,
+            Lens is meant to reconnect your thinking across many sessions — with your consent
+            and under your control.
+          </p>
+          <p class="stack-sub">Next active build · Separate codebase from FoldSpace · Different trust model</p>
+        </div>
+        <img src="assets/images/logo-allminds-lens.png" alt="AllMinds Lens" class="stack-product-logo-right stack-product-logo-right--lens">
+      </div>
+
+      <div class="stack-card stack-card--logo-right">
+        <div>
+          <span class="stack-badge stack-badge--horizon">Horizon</span>
+          <h3>AllMinds Council&#x2122;</h3>
+          <p>
+            A longer-term concept for coordinated multi-agent work with explicit rules,
+            human review, and human sign-off before action. Directional, not a shipping product.
+          </p>
+          <p class="stack-sub">Long-term · Multi-agent work · Explicit rules · Human sign-off</p>
+        </div>
+        <img src="assets/images/logo-allminds-council.jpg" alt="AllMinds Council" class="stack-product-logo-right stack-product-logo-right--council">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── The Doctrine ──────────────────────────────────────────────────── -->
+<section class="doctrine-section">
+  <div class="container">
+    <p class="section-label">Architecture</p>
+    <h2 class="section-title">Three problems. Three responses.</h2>
+    <p class="section-sub">
+      As AI use expands, we see three human problems that need different kinds of tools.
+      The Hugonomy roadmap is our attempt to respond to them step by step.
+    </p>
+    <div class="doctrine-grid">
+      <div class="doctrine-card">
+        <p class="layer-num">&#x1F9E0; Layer 1 — Cognitive Erosion</p>
+        <h4>AI performs the reasoning. Humans stop practicing it.</h4>
+        <p>
+          The pain in one line: your thinking has no mirror. Vibe<span class="vibe-ai">AI</span> FoldSpace is the answer —
+          a real-time signal that shows whether you're engaging or accepting.
+        </p>
+      </div>
+      <div class="doctrine-card">
+        <p class="layer-num">&#x1F517; Layer 2 — Cognitive Fragmentation</p>
+        <h4>No continuity across sessions. Your thinking resets every time.</h4>
+        <p>
+          Every AI conversation starts cold. AllMinds Lens is meant to reconnect your work
+          across sessions — with your consent and under your control.
+        </p>
+      </div>
+      <div class="doctrine-card">
+        <p class="layer-num">&#x1F3DB; Layer 3 — Governance Vacuum</p>
+        <h4>No structure for AI-assisted decisions. No accountability.</h4>
+        <p>
+          Teams are starting to let agents act before they have clear oversight.
+          AllMinds Council is the long-term answer — review before execution, human sign-off before action.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Why This Matters Now ───────────────────────────────────────────── -->
+<section class="why-matters-section">
+  <div class="container">
+    <p class="section-label">Why now</p>
+    <h2 class="section-title">The window is narrow.</h2>
+    <p class="section-sub">
+      The habits people build around AI now will shape how they think with it later.
+      We want better defaults before passive use becomes normal.
+    </p>
+    <div class="why-matters-grid">
+      <div class="why-matters-card">
+        <span class="why-matters-stat">666</span>
+        <p>Participants in Gerlich (2025), which found a 75% correlation between cognitive offloading and lower critical-thinking scores</p>
+      </div>
+      <div class="why-matters-card">
+        <span class="why-matters-stat">2025</span>
+        <p>By 2025, empirical work, theory papers, and mainstream academic commentary were all pointing in the same direction: passive AI use can carry a cognitive cost</p>
+      </div>
+      <div class="why-matters-card">
+        <span class="why-matters-stat">$68B</span>
+        <p>Projected enterprise AI governance market by 2035 — a sign that oversight is becoming a real business problem, not a niche concern</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Design Principles ─────────────────────────────────────────────── -->
+<section class="principle-section">
+  <div class="container">
+    <p class="section-label">Design principles</p>
+    <h2 class="section-title">What we will never build.</h2>
+    <p class="section-sub">
+      Constraints are a form of architecture. These are ours.
+    </p>
+    <ul class="principle-list">
+      <li><span class="p-icon">&#x1F6AB;</span> No execution without deliberation. Agents wait until governance clears and a human ratifies.</li>
+      <li><span class="p-icon">&#x1F6AB;</span> No profiling without consent. Every data surface is opt-in, user-owned, user-deletable.</li>
+      <li><span class="p-icon">&#x1F6AB;</span> No cloud processing in FoldSpace. Local-only is a hard constraint, not a feature.</li>
+      <li><span class="p-icon">&#x1F6AB;</span> No autonomous action in the Council layer. The human is always the final authority.</li>
+      <li><span class="p-icon">&#x2705;</span> Observe → Understand → Govern → Execute. Always in that order.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── Strategic Roadmap ─────────────────────────────────────────────── -->
+<section class="roadmap-section">
+  <div class="container">
+    <p class="section-label">Roadmap</p>
+    <h2 class="section-title">Now, next, and long-term.</h2>
+    <p class="section-sub">
+      What exists today, what comes next, and what stays directional for now.
+    </p>
+    <div class="roadmap-grid">
+      <div class="roadmap-card roadmap-card--active">
+        <p class="range-label">Range 1 — Now</p>
+        <h4>Sentinel</h4>
+        <p>Individual awareness tool. Prove that real-time feedback helps people use AI more intentionally. Vibe<span class="vibe-ai">AI</span> FoldSpace is the proof point.</p>
+      </div>
+      <div class="roadmap-card">
+        <p class="range-label">Range 2 — Next</p>
+        <h4>Legislator</h4>
+        <p>Rules and review for human-AI work. Define what agents may do, what needs approval, and what always stays human.</p>
+      </div>
+      <div class="roadmap-card">
+        <p class="range-label">Range 3 — Endgame</p>
+        <h4>Sovereign Mind</h4>
+        <p>Long-term idea: carry your context and decision history across tools without handing control of your thinking over to the tools themselves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer CTA ────────────────────────────────────────────────────── -->
+<section class="footer-cta">
+  <div class="container">
+    <img src="assets/images/logo-vibeai-foldspace.png" alt="VibeAI FoldSpace by Hugonomy Systems" class="footer-cta-logo">
+    <h2>Start with FoldSpace.</h2>
+    <p>Vibe<span class="vibe-ai">AI</span> FoldSpace is live. Free. No account. Start building awareness today.</p>
+    <div class="cta-group">
+      <a href="https://chromewebstore.google.com/detail/lkmfjgaahnmlncgaeocfgiohjiodiohi"
+         target="_blank" rel="noopener noreferrer" class="btn-primary">Add to Chrome</a>
+      <a href="https://microsoftedge.microsoft.com/addons/detail/kbdhbghaidmildhhbodkppnnhklmddfh"
+         target="_blank" rel="noopener noreferrer" class="btn-secondary">Add to Edge</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class='nav-logo footer-logo' href='/'>
+        <img src="assets/icons/icon128.png" alt="Hugonomy Systems" class="footer-logo-img">
+        <span class="footer-logo-text">Hugonomy Systems&#x2122;</span>
+      </a>
+      <p class="footer-brand-desc">
+        Joseph D. Tingling MD/PhD &mdash; Founder<br>
+        Champaign-Urbana, Illinois, USA<br>
+        USPTO provisional filed: No. 63/856,714
+      </p>
+    </div>
+    <nav aria-label="Footer navigation">
+      <div class="footer-links">
+        <a href='/'>Home</a>
+        <a href='/vision'>Vision</a>
+        <a href='/about'>About</a>
+        <a href='/news'>News &amp; Media</a>
+        <a href='/privacy'>Privacy</a>
+        <a href="mailto:joseph@hugonomy.com">Contact</a>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Hugonomy Systems&#x2122;. All rights reserved.</p>
+    <p>
+      <a href="https://discord.gg/Q98n4CJRV" target="_blank" rel="noopener noreferrer" class="footer-social-link">Discord</a>
+      <a href="https://glyphweaveralpha.substack.com/" target="_blank" rel="noopener noreferrer" class="footer-social-link">Substack</a>
+      <a href="https://www.youtube.com/@HugonomySystems" target="_blank" rel="noopener noreferrer" class="footer-social-link">YouTube</a>
+      <a href="https://www.linkedin.com/company/hugonomy-systems/" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-link--last">LinkedIn</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+// Respect OS "reduce motion" preference — pause hero orb video
+(function () {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var v = document.querySelector('.vision-orb-video');
+    if (v) { try { v.pause(); v.removeAttribute('autoplay'); } catch (e) {} }
+  }
+})();
+function toggleNav() {
+  var links = document.getElementById('navLinks');
+  var btn = document.getElementById('navHamburger');
+  var open = links.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', open);
+}
+document.addEventListener('click', function(e) {
+  var nav = document.querySelector('nav');
+  if (!nav.contains(e.target)) {
+    document.getElementById('navLinks').classList.remove('open');
+    var btn = document.getElementById('navHamburger');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
+</body>
+</html>

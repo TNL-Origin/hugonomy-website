@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Joseph D. Tingling MD/PhD">
+  <meta name="theme-color" content="#050816">
+  <title>About — Hugonomy Systems</title>
+  <meta name="description" content="Joseph D. Tingling MD/PhD — physician-scientist and founder of Hugonomy Systems, building tools that help people stay aware while using AI.">
+  <meta property="og:title" content="About — Hugonomy Systems">
+  <meta property="og:description" content="Joseph D. Tingling MD/PhD — physician-scientist and founder building tools that help people stay aware while using AI.">
+  <meta property="og:image" content="https://hugonomy.com/assets/images/hero-lifestyle-hud.jpg">
+  <meta property="og:url" content="https://hugonomy.com/about.html">
+  <meta property="og:site_name" content="Hugonomy Systems">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About - Hugonomy Systems">
+  <meta name="twitter:description" content="Joseph D. Tingling MD/PhD - physician-scientist and founder building tools that help people stay aware while using AI.">
+  <meta name="twitter:image" content="https://hugonomy.com/assets/images/hero-lifestyle-hud.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="assets/icons/icon128.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .about-hero { padding: 140px 24px 80px; text-align: center; position: relative; overflow: hidden; }
+    .about-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(79,172,254,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .founder-section { padding: 80px 0; }
+    .founder-portrait-block { display: grid; grid-template-columns: auto auto 1fr; align-items: start; gap: 32px; margin-bottom: 56px; }
+    .founder-portrait-col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .founder-portrait-caption { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--brand-blue); text-align: center; }
+    .founder-portrait-img { width: 190px; min-width: 190px; height: 220px; object-fit: cover; border-radius: 20px; border: 1px solid var(--brand-border); box-shadow: 0 0 40px rgba(108,166,255,0.15); }
+    .founder-portrait-img--grad { border-color: rgba(34,197,94,0.35); box-shadow: 0 0 40px rgba(34,197,94,0.15); object-position: top; }
+    .founder-portrait-img--glyph { border-color: rgba(142,68,173,0.35); box-shadow: 0 0 40px rgba(142,68,173,0.2); }
+    .founder-portrait-meta { display: flex; flex-direction: column; justify-content: center; padding-top: 8px; }
+    .founder-portrait-name { font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 10px; }
+    .founder-portrait-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+    .founder-badge { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; }
+    .founder-badge--ceo { background: rgba(108,166,255,0.12); color: var(--brand-blue); border: 1px solid rgba(108,166,255,0.25); }
+    .founder-badge--vibe { background: rgba(142,68,173,0.12); color: #c77dff; border: 1px solid rgba(142,68,173,0.25); }
+    .founder-portrait-tagline { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+    .founder-glyph-desc { color: var(--text-muted); font-size: 0.85rem; }
+    @media (max-width: 860px) {
+      .founder-portrait-block { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+      .founder-portrait-meta { grid-column: 1 / -1; text-align: center; }
+      .founder-portrait-badges { justify-content: center; }
+    }
+    @media (max-width: 480px) {
+      .founder-portrait-block { grid-template-columns: 1fr; }
+      .founder-portrait-img { width: 100%; min-width: unset; height: 220px; }
+    }
+    .founder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-top: 48px; }
+    @media (max-width: 700px) { .founder-grid { grid-template-columns: 1fr; } }
+    .founder-bio p { color: var(--text-secondary); font-size: 0.97rem; line-height: 1.75; margin-bottom: 18px; }
+    .founder-bio p:last-child { margin-bottom: 0; }
+    .founder-aside { display: flex; flex-direction: column; gap: 16px; }
+    .founder-aside-card {
+      background: var(--brand-card); border: 1px solid var(--brand-border);
+      border-radius: 14px; padding: 22px 24px;
+    }
+    .founder-aside-card h4 { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-blue); margin-bottom: 8px; }
+    .founder-aside-card p { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.55; }
+    .mission-section { background: var(--brand-mid); padding: 80px 0; }
+    .mission-quote {
+      max-width: 760px; margin: 48px auto 0;
+      background: var(--brand-card); border: 1px solid var(--brand-border);
+      border-left: 4px solid var(--brand-blue);
+      border-radius: 0 16px 16px 0; padding: 36px 40px;
+    }
+    .mission-quote p { font-size: 1.05rem; line-height: 1.75; color: var(--text-primary); margin-bottom: 16px; }
+    .mission-quote p:last-of-type { margin-bottom: 0; }
+    .mission-quote cite { display: block; margin-top: 20px; font-size: 0.85rem; color: var(--text-muted); font-style: normal; }
+    .approach-section { padding: 80px 0; }
+    .approach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 48px; }
+    .approach-card {
+      background: var(--brand-card); border: 1px solid var(--brand-border);
+      border-radius: 14px; padding: 24px;
+    }
+    .approach-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+    .approach-card p { color: var(--text-secondary); font-size: 0.87rem; line-height: 1.6; }
+    .collab-section { background: var(--brand-mid); padding: 80px 0; }
+    .collab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 48px; }
+    .collab-card {
+      background: var(--brand-card); border: 1px solid var(--brand-border);
+      border-radius: 14px; padding: 28px; text-align: center;
+    }
+    .collab-card .icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .collab-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+    .collab-card p { color: var(--text-secondary); font-size: 0.87rem; line-height: 1.5; margin-bottom: 16px; }
+    .collab-card a {
+      display: inline-block; font-size: 0.82rem; color: var(--brand-blue);
+      text-decoration: none; border: 1px solid rgba(79,172,254,0.3);
+      padding: 6px 14px; border-radius: 20px; transition: background 0.2s;
+    }
+    .collab-card a:hover { background: rgba(79,172,254,0.08); }
+    .about-awareness-section { background: var(--brand-mid); padding: 0 0 88px; }
+    .about-awareness-card {
+      max-width: 980px; margin: 0 auto;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 28px 72px rgba(0,0,0,0.34);
+    }
+    .about-awareness-image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .about-awareness-caption {
+      padding: 18px 24px 22px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.65;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(5,8,22,0.18) 100%);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .about-awareness-caption strong {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+    @media (max-width: 640px) {
+      .about-awareness-section { padding: 0 0 72px; }
+      .about-awareness-card { border-radius: 20px; }
+      .about-awareness-caption {
+        padding: 16px 18px 18px;
+        font-size: 0.88rem;
+        line-height: 1.6;
+      }
+    }
+  </style>
+  <link rel="canonical" href="https://hugonomy.com/about.html">
+</head>
+<body>
+
+<nav aria-label="Site navigation">
+  <div class="nav-inner">
+    <a class='nav-logo' href='/'>
+      <img src="assets/icons/icon128.png" alt="VibeAI FoldSpace icon">
+      <span class="nav-logo-text">Hugonomy Systems</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href='/'>Home</a>
+      <a href='/vision'>Vision</a>
+      <a class='nav-active' href='/about'>About</a>
+      <a href='/news'>News &amp; Media</a>
+      <a href='/privacy'>Privacy</a>
+      <a class='btn-nav' href='/#install-actions'>Install Free</a>
+    </div>
+    <button type="button" class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<header class="about-hero">
+  <div class="container">
+    <div class="page-brand-strip">
+      <img src="assets/images/logo-vibeai-foldspace.png" alt="VibeAI FoldSpace by Hugonomy Systems" class="page-brand-logo">
+    </div>
+    <p class="section-label">About</p>
+    <h1 class="section-title page-hero-title">
+      Built by a physician-scientist.<br>
+      <span class="gradient-text">For people who still want to think.</span>
+    </h1>
+    <p class="page-hero-sub">
+      Hugonomy Systems is a bootstrapped company building tools that help people
+      stay aware while using AI. Founded in Urbana, Illinois.
+      <br><a href="#glossary" class="glossary-inline glossary-hero-link">↓ New to the terminology? See our plain-English glossary</a>
+    </p>
+  </div>
+</header>
+
+<!-- ── Founder ───────────────────────────────────────────────────────── -->
+<section class="founder-section">
+  <div class="container">
+    <p class="section-label">The founder</p>
+    <h2 class="section-title">Joseph D. Tingling, MD/PhD</h2>
+
+    <div class="founder-portrait-block">
+      <div class="founder-portrait-col">
+        <img src="assets/images/jo-graduation.jpg" alt="Joseph D. Tingling in MD/PhD regalia — Texas A&M University" class="founder-portrait-img founder-portrait-img--grad">
+        <p class="founder-portrait-caption">MD/PhD · Texas A&amp;M University</p>
+      </div>
+      <img src="assets/images/jo-ceo-portrait.jpg" alt="Joseph D. Tingling — Founder & CEO, Hugonomy Systems" class="founder-portrait-img">
+      <div class="founder-portrait-meta">
+        <p class="founder-portrait-name">Joseph D. Tingling, MD/PhD</p>
+        <div class="founder-portrait-badges">
+          <span class="founder-badge founder-badge--ceo">Founder &amp; CEO — Hugonomy Systems</span>
+          <span class="founder-badge founder-badge--vibe">Vibecoding Glyphweaver</span>
+        </div>
+        <p class="founder-portrait-tagline">
+          Physician-scientist. Systems thinker. Building tools that help people stay
+          clear and intentional while using AI — one careful line of code at a time.<br><br>
+          <em class="founder-glyph-desc">The Glyphweaver codes through symbol, pattern, and coherence — weaving language, logic, and meaning into systems that think alongside humans.</em>
+        </p>
+      </div>
+    </div>
+
+    <div class="founder-grid">
+      <div class="founder-bio">
+        <p>
+          Joseph Tingling is a physician-scientist, systems thinker, and the founder of Hugonomy Systems.
+          He completed his MD/PhD at Texas A&amp;M University, then returned to his home country of Jamaica
+          during the COVID-19 pandemic to serve at Sav-La-Mar Public General Hospital — providing critical
+          care and research support during a period of global uncertainty.
+        </p>
+        <p>
+          After that work, he joined the University of Illinois Urbana-Champaign (UIUC) to conduct
+          advanced research in virology and neuroinflammation. His publication in
+          <em>Brain, Behavior, and Immunity</em> (2023) reflects his commitment to rigorous, translational
+          science and the study of human resilience under stress.
+        </p>
+        <p>
+          Today, Joseph is applying his scientific training to a new problem: helping people stay aware,
+          intentional, and grounded while using AI. Hugonomy Systems is his response —
+          a bootstrapped effort to build practical tools for that job.
+        </p>
+        <p>
+          Working from a studio in Urbana, Illinois, he designs, codes, and iterates on Hugonomy's
+          technology with a focus on real-world impact, ethical design, and human-centered communication.
+        </p>
+      </div>
+      <div class="founder-aside">
+        <div class="founder-aside-card">
+          <h4>Education</h4>
+          <p>MD/PhD — Texas A&amp;M University<br>Research: Virology &amp; Neuroinflammation, UIUC</p>
+        </div>
+        <div class="founder-aside-card">
+          <h4>Clinical</h4>
+          <p>Critical care physician, Sav-La-Mar Public General Hospital, Jamaica (COVID-19 response)</p>
+        </div>
+        <div class="founder-aside-card">
+          <h4>Publication</h4>
+          <p><em>Brain, Behavior, and Immunity</em>, 2023 — human resilience under neuroinflammatory stress</p>
+        </div>
+        <div class="founder-aside-card">
+          <h4>IP</h4>
+          <p>USPTO provisional filed — No. 63/856,714<br>Core engagement architecture</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Founder Timeline ──────────────────────────────────────────────── -->
+<section class="founder-timeline-section">
+  <div class="container">
+    <p class="section-label">The journey</p>
+    <h2 class="section-title">From Jamaica to UIUC to Hugonomy.</h2>
+    <div class="founder-timeline">
+
+      <div class="founder-timeline-node">
+        <div class="founder-timeline-dot">&#x1F1EF;&#x1F1F2;</div>
+        <div class="founder-timeline-body">
+          <p class="founder-timeline-year">2020 – 2021</p>
+          <h4>Jamaica — COVID-19 Response</h4>
+          <p>Critical care physician at Sav-La-Mar Public General Hospital during the pandemic. Frontline medicine under global uncertainty.</p>
+        </div>
+      </div>
+
+      <div class="founder-timeline-node">
+        <div class="founder-timeline-dot">&#x1F52C;</div>
+        <div class="founder-timeline-body">
+          <p class="founder-timeline-year">Urbana, Illinois</p>
+          <h4>UIUC — Neuroinflammation Research</h4>
+          <p>Advanced research in virology and neuroinflammation at the University of Illinois Urbana-Champaign. Published in <em>Brain, Behavior, and Immunity</em> (2023).</p>
+        </div>
+      </div>
+
+      <div class="founder-timeline-node">
+        <div class="founder-timeline-dot">&#x1F680;</div>
+        <div class="founder-timeline-body">
+          <p class="founder-timeline-year">2025 – Present</p>
+          <h4>Hugonomy Systems — Urbana, IL</h4>
+          <p>Bootstrapped. Building tools that help people stay aware while using AI. Vibe<span class="vibe-ai">AI</span> FoldSpace live on Chrome &amp; Edge.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Mission ───────────────────────────────────────────────────────── -->
+<section class="mission-section">
+  <div class="container">
+    <p class="section-label">Mission</p>
+    <h2 class="section-title">Emotional coherence for AI-human communication.</h2>
+    <div class="mission-quote">
+      <p>
+        Our mission is to restore clarity and trust to digital communication by addressing the massive
+        cost of cognitive misalignment in the modern economy.
+      </p>
+      <p>
+        Through human-centered AI systems and interfaces, we're building tools that help
+        professionals across medicine, law, science, engineering, and enterprise stay aware,
+        intentional, and in control while using AI.
+      </p>
+      <p>
+        We build within Google's Chrome ecosystem and Microsoft's Edge platform — not to replace their
+        tools, but to complement them with the reflection and oversight tools needed for high-stakes,
+        human-centered work.
+      </p>
+      <p>
+        The goal is simple: enhance clarity, agency, and intentional thinking across the AI tools
+        people already rely on.
+      </p>
+      <cite>— J. D. Tingling, MD/PhD · Founder &amp; CEO, Hugonomy Systems · Urbana, Illinois, 2026</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ── Approach ───────────────────────────────────────────────────────── -->
+<section class="approach-section">
+  <div class="container">
+    <p class="section-label">How we build</p>
+    <h2 class="section-title">Lean. Rigorous. Human-centered.</h2>
+    <p class="section-sub">
+      Hugonomy is built through a disciplined, research-grounded development process.
+    </p>
+    <div class="approach-grid">
+      <div class="approach-card">
+        <h4>Founder-led research &amp; design</h4>
+        <p>Product decisions are grounded in neuroscience, cognitive science, and real clinical observation — not market trends.</p>
+      </div>
+      <div class="approach-card">
+        <h4>Multi-AI cross-validation</h4>
+        <p>An internal AI Council cross-validates every major decision — architecture, policy, privacy, and store submission — before shipping.</p>
+      </div>
+      <div class="approach-card">
+        <h4>Capital-efficient iteration</h4>
+        <p>Lean and bootstrapped. Rapid iteration on real-world user feedback. No bloat, no feature theater.</p>
+      </div>
+      <div class="approach-card">
+        <h4>Human-centered governance</h4>
+        <p>Emotional safety and user consent are architectural constraints, not afterthoughts. The governance model is built before the product, not after.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Glossary ───────────────────────────────────────────────────────── -->
+<section class="glossary-section" id="glossary">
+  <div class="container">
+    <p class="section-label">Key concepts</p>
+    <h2 class="section-title">Words we use. What they mean.</h2>
+    <p class="section-sub glossary-sub">Plain English — no PhD required. Click any term to expand.</p>
+    <div class="glossary-list">
+
+      <div class="glossary-item" id="metacognition">
+        <button type="button" class="glossary-row" onclick="toggleGlossary(this)" aria-expanded="false">
+          <span class="glossary-term">Metacognition <span class="glossary-pronounce">meta-cog-NI-shun</span></span>
+          <span class="glossary-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="glossary-body">
+          <p>Thinking about your own thinking. The part of your brain that steps back and asks: "Wait — am I actually understanding this, or just processing it?" It's the first thing to go when you're on autopilot. VibeAI FoldSpace is designed to trigger it.</p>
+          <p class="glossary-used"><span class="glossary-used-label">Used in:</span> <a href='/vision#study'>Vision — The Open Question</a></p>
+        </div>
+      </div>
+
+      <div class="glossary-item" id="cognitive-offloading">
+        <button type="button" class="glossary-row" onclick="toggleGlossary(this)" aria-expanded="false">
+          <span class="glossary-term">Cognitive Offloading</span>
+          <span class="glossary-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="glossary-body">
+          <p>Handing a mental task to something outside your brain — a calculator, a notepad, or an AI. Not inherently bad. The problem is when you start offloading <em>understanding itself</em>, not just memory. That's when it starts to cost you.</p>
+          <p class="glossary-used"><span class="glossary-used-label">Used in:</span> <a href='/#research'>Home — The Science</a> · <a href='/vision'>Vision</a></p>
+        </div>
+      </div>
+
+      <div class="glossary-item" id="cognitive-atrophy">
+        <button type="button" class="glossary-row" onclick="toggleGlossary(this)" aria-expanded="false">
+          <span class="glossary-term">Cognitive Atrophy</span>
+          <span class="glossary-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="glossary-body">
+          <p>The gradual weakening of a mental skill from not using it — like a muscle you stop exercising. The slow drift from "I can figure this out" to "I'll just ask the AI." Gerlich (2025) found measurable evidence of this across 666 participants.</p>
+          <p class="glossary-used"><span class="glossary-used-label">Used in:</span> <a href='/#research'>Home — The Science</a> · <a href='/vision'>Vision — Layer 1</a></p>
+        </div>
+      </div>
+
+      <div class="glossary-item" id="automation-bias">
+        <button type="button" class="glossary-row" onclick="toggleGlossary(this)" aria-expanded="false">
+          <span class="glossary-term">Automation Bias</span>
+          <span class="glossary-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="glossary-body">
+          <p>The tendency to trust what an automated system says — even when your own instinct says something different. Not a personal failing — a documented psychological pattern. Clinicians show it with diagnostic AI. You might show it with ChatGPT right now.</p>
+          <p class="glossary-used"><span class="glossary-used-label">Used in:</span> <a href='/#research'>Home — Fluency Trap diagram</a></p>
+        </div>
+      </div>
+
+      <div class="glossary-item" id="fluency-trap">
+        <button type="button" class="glossary-row" onclick="toggleGlossary(this)" aria-expanded="false">
+          <span class="glossary-term">The Fluency Trap</span>
+          <span class="glossary-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="glossary-body">
+          <p>AI responses are grammatically perfect and smooth. The brain registers that fluency as comprehension — so you feel like you understood it, even if you didn't really engage. The displacement is invisible from the inside.</p>
+          <p class="glossary-used"><span class="glossary-used-label">Used in:</span> <a href='/#research'>Home — The Science</a></p>
+        </div>
+      </div>
+
+      <div class="glossary-item" id="passive-mode">
+        <button type="button" class="glossary-row" onclick="toggleGlossary(this)" aria-expanded="false">
+          <span class="glossary-term">Passive Mode</span>
+          <span class="glossary-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="glossary-body">
+          <p>What VibeAI FoldSpace calls the moment you accept an AI response without really engaging — a quick "ok thanks" or "got it." The extension detects this and activates the Thinking Mirror. Not a judgment. A mirror.</p>
+          <p class="glossary-used"><span class="glossary-used-label">Used in:</span> <a href='/'>Home — The Moment</a> · <a href='/vision'>Vision</a></p>
+        </div>
+      </div>
+
+      <div class="glossary-item" id="thinking-mirror">
+        <button type="button" class="glossary-row" onclick="toggleGlossary(this)" aria-expanded="false">
+          <span class="glossary-term">Thinking Mirror</span>
+          <span class="glossary-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="glossary-body">
+          <p>The FoldSpace feature that activates on Passive Mode. Offers reflection prompts: "Challenge this answer," "Ask for evidence," "Add my own thinking." Not telling you what to think. Reminding you that you can.</p>
+          <p class="glossary-used"><span class="glossary-used-label">Used in:</span> <a href='/'>Home — The Moment</a></p>
+        </div>
+      </div>
+
+      <div class="glossary-item" id="cognitive-sovereignty">
+        <button type="button" class="glossary-row" onclick="toggleGlossary(this)" aria-expanded="false">
+          <span class="glossary-term">Cognitive Sovereignty</span>
+          <span class="glossary-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="glossary-body">
+          <p>Your right and ability to direct your own thinking — without it being replaced or eroded by an algorithm. The idea behind everything Hugonomy builds. AI can help you think. But the thinking has to stay yours.</p>
+          <p class="glossary-used"><span class="glossary-used-label">Used in:</span> <a href='/vision'>Vision</a> · <a href='/privacy'>Privacy Policy</a></p>
+        </div>
+      </div>
+
+      <div class="glossary-item" id="awareness-layer">
+        <button type="button" class="glossary-row" onclick="toggleGlossary(this)" aria-expanded="false">
+          <span class="glossary-term">Awareness Layer</span>
+          <span class="glossary-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="glossary-body">
+          <p>A layer that sits alongside your AI work and helps you notice drift, overload, passive acceptance, or loss of focus while it is happening. On the public site, we usually explain this more simply as "tools that help you stay aware while using AI."</p>
+          <p class="glossary-used"><span class="glossary-used-label">Used in:</span> older site language, product strategy, and vision framing</p>
+        </div>
+      </div>
+
+      <div class="glossary-item" id="cognitive-awareness-infrastructure">
+        <button type="button" class="glossary-row" onclick="toggleGlossary(this)" aria-expanded="false">
+          <span class="glossary-term">Cognitive Awareness Infrastructure</span>
+          <span class="glossary-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="glossary-body">
+          <p>An internal Hugonomy phrase for products designed to help people stay clear, intentional, and in control while using AI. Useful internally, but too abstract for most first-time visitors — which is why the public site now uses plainer wording.</p>
+          <p class="glossary-used"><span class="glossary-used-label">Used in:</span> older site language and internal planning</p>
+        </div>
+      </div>
+
+      <div class="glossary-item" id="cognitive-engagement-architecture">
+        <button type="button" class="glossary-row" onclick="toggleGlossary(this)" aria-expanded="false">
+          <span class="glossary-term">Cognitive Engagement Architecture</span>
+          <span class="glossary-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="glossary-body">
+          <p>The design idea behind FoldSpace: detect how engaged the user is, surface feedback in real time, and prompt reflection before passive acceptance becomes a habit. This is the core approach covered by Hugonomy's USPTO provisional filing.</p>
+          <p class="glossary-used"><span class="glossary-used-label">Used in:</span> trust, IP, and internal product language</p>
+        </div>
+      </div>
+
+      <div class="glossary-item" id="cognitive-governance">
+        <button type="button" class="glossary-row" onclick="toggleGlossary(this)" aria-expanded="false">
+          <span class="glossary-term">Cognitive Governance</span>
+          <span class="glossary-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="glossary-body">
+          <p>The rules, permissions, review steps, and human sign-off that decide what an AI system may do, what requires oversight, and what should never be automated. In plain English: who gets to act, under what limits, and with whose approval.</p>
+          <p class="glossary-used"><span class="glossary-used-label">Used in:</span> Vision, governance planning, and future-product framing</p>
+        </div>
+      </div>
+
+      <div class="glossary-item" id="governance-codex">
+        <button type="button" class="glossary-row" onclick="toggleGlossary(this)" aria-expanded="false">
+          <span class="glossary-term">Governance Codex</span>
+          <span class="glossary-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="glossary-body">
+          <p>An internal shorthand for a rules system that defines what AI agents are allowed to do, what must be reviewed, and what always stays human. In plainer language: policy, guardrails, and approval logic for AI-assisted work.</p>
+          <p class="glossary-used"><span class="glossary-used-label">Used in:</span> older roadmap language and governance planning</p>
+        </div>
+      </div>
+
+      <div class="glossary-item" id="mental-thread">
+        <button type="button" class="glossary-row" onclick="toggleGlossary(this)" aria-expanded="false">
+          <span class="glossary-term">Mental Thread</span>
+          <span class="glossary-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="glossary-body">
+          <p>Your train of thought as it unfolds through a question, decision, or problem. It is the line of reasoning you are trying to hold onto before distraction, overload, or a polished AI answer pulls you away from it.</p>
+          <p class="glossary-used"><span class="glossary-used-label">Used in:</span> older site language and vision framing</p>
+        </div>
+      </div>
+
+      <div class="glossary-item" id="reasoning-arc">
+        <button type="button" class="glossary-row" onclick="toggleGlossary(this)" aria-expanded="false">
+          <span class="glossary-term">Reasoning Arc</span>
+          <span class="glossary-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="glossary-body">
+          <p>The path your thinking takes over time as you move from question to evidence to decision. Useful as an internal phrase, but on the public site we usually explain it more simply as keeping continuity across sessions or staying connected to your own train of thought.</p>
+          <p class="glossary-used"><span class="glossary-used-label">Used in:</span> older product and roadmap language</p>
+        </div>
+      </div>
+
+      <div class="glossary-item" id="zpd">
+        <button type="button" class="glossary-row" onclick="toggleGlossary(this)" aria-expanded="false">
+          <span class="glossary-term">Zone of Proximal Development <span class="glossary-pronounce">ZPD</span></span>
+          <span class="glossary-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="glossary-body">
+          <p>Vygotsky's concept: the sweet spot where you grow — tasks just beyond what you can do alone, but reachable with support. A good teacher holds you there. AI used passively skips it entirely, giving you the answer before the struggle that builds understanding.</p>
+          <p class="glossary-used"><span class="glossary-used-label">Used in:</span> <a href='/vision#study'>Vision — The Open Question</a></p>
+        </div>
+      </div>
+
+      <div class="glossary-item" id="cognitive-co-evolution">
+        <button type="button" class="glossary-row" onclick="toggleGlossary(this)" aria-expanded="false">
+          <span class="glossary-term">Cognitive Co-evolution</span>
+          <span class="glossary-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="glossary-body">
+          <p>Human and AI thinking evolve together over time — but not always in the same direction. Reflective use can make you sharper. Passive use can make you weaker. Which way you drift depends on how you engage.</p>
+          <p class="glossary-used"><span class="glossary-used-label">Used in:</span> <a href='/#research'>Home — The Science</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Collaborate ───────────────────────────────────────────────────── -->
+<section class="collab-section">
+  <div class="container">
+    <p class="section-label">Get involved</p>
+    <h2 class="section-title">We're building in public.</h2>
+    <p class="section-sub">
+      Hugonomy is actively looking for collaborators, advisors, and investors who believe
+      people need better ways to stay in control of their thinking while using AI.
+    </p>
+    <div class="collab-grid">
+      <div class="collab-card">
+        <div class="icon">&#x1F4C8;</div>
+        <h4>Strategic investors</h4>
+        <p>Seeking seed-stage investors for 2026–2027. Enterprise AI governance is a $68B market by 2035.</p>
+        <a href="mailto:joseph@hugonomy.com">Reach out</a>
+      </div>
+      <div class="collab-card">
+        <div class="icon">&#x1F9EA;</div>
+        <h4>Co-creators &amp; collaborators</h4>
+        <p>Actively looking for technical specialists in cognitive science, ML, and browser extension development.</p>
+        <a href="mailto:joseph@hugonomy.com">Reach out</a>
+      </div>
+      <div class="collab-card">
+        <div class="icon">&#x1F52C;</div>
+        <h4>Advisors &amp; peer reviewers</h4>
+        <p>Exploring peer review collaborations and academic partnerships on cognitive engagement research.</p>
+        <a href="mailto:joseph@hugonomy.com">Reach out</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-awareness-section" aria-label="AI awareness stack visual">
+  <div class="container">
+    <figure class="about-awareness-card">
+      <img
+        src="assets/images/news-awareness-stack-bg.jpg"
+        alt="AI awareness stack visual showing Hugonomy between human thinking and AI tools."
+        class="about-awareness-image"
+      >
+      <figcaption class="about-awareness-caption">
+        <strong>The tool category we're aiming for:</strong> Hugonomy sits alongside AI work to help preserve clarity, consent, focus, and control.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="footer-cta">
+  <div class="container">
+    <img src="assets/images/logo-vibeai-foldspace.png" alt="VibeAI FoldSpace by Hugonomy Systems" class="footer-cta-logo">
+    <h2>Begin with FoldSpace.</h2>
+    <p>Local-first. Privacy-first. Your thinking stays yours.</p>
+    <div class="cta-group">
+      <a href="https://chromewebstore.google.com/detail/lkmfjgaahnmlncgaeocfgiohjiodiohi"
+         target="_blank" rel="noopener noreferrer" class="btn-primary">Add to Chrome</a>
+      <a href="https://microsoftedge.microsoft.com/addons/detail/kbdhbghaidmildhhbodkppnnhklmddfh"
+         target="_blank" rel="noopener noreferrer" class="btn-secondary">Add to Edge</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class='nav-logo footer-logo' href='/'>
+        <img src="assets/icons/icon128.png" alt="Hugonomy Systems" class="footer-logo-img">
+        <span class="footer-logo-text">Hugonomy Systems&#x2122;</span>
+      </a>
+      <p class="footer-brand-desc">
+        Joseph D. Tingling MD/PhD &mdash; Founder<br>
+        Champaign-Urbana, Illinois, USA<br>
+        USPTO provisional filed: No. 63/856,714
+      </p>
+    </div>
+    <nav aria-label="Footer navigation">
+      <div class="footer-links">
+        <a href='/'>Home</a>
+        <a href='/vision'>Vision</a>
+        <a href='/about'>About</a>
+        <a href='/news'>News &amp; Media</a>
+        <a href='/privacy'>Privacy</a>
+        <a href="mailto:joseph@hugonomy.com">Contact</a>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Hugonomy Systems&#x2122;. All rights reserved.</p>
+    <p>
+      <a href="https://discord.gg/Q98n4CJRV" target="_blank" rel="noopener noreferrer" class="footer-social-link">Discord</a>
+      <a href="https://glyphweaveralpha.substack.com/" target="_blank" rel="noopener noreferrer" class="footer-social-link">Substack</a>
+      <a href="https://www.youtube.com/@HugonomySystems" target="_blank" rel="noopener noreferrer" class="footer-social-link">YouTube</a>
+      <a href="https://www.linkedin.com/company/hugonomy-systems/" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-link--last">LinkedIn</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+function toggleGlossary(btn) {
+  var body = btn.nextElementSibling;
+  var open = body.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+}
+(function() {
+  var hash = window.location.hash.slice(1);
+  if (hash) {
+    var item = document.getElementById(hash);
+    if (item) {
+      var btn = item.querySelector('.glossary-row');
+      if (btn) { btn.click(); setTimeout(function(){ item.scrollIntoView({behavior:'smooth',block:'center'}); }, 50); }
+    }
+  }
+})();
+function toggleNav() {
+  var links = document.getElementById('navLinks');
+  var btn = document.getElementById('navHamburger');
+  var open = links.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', open);
+}
+document.addEventListener('click', function(e) {
+  var nav = document.querySelector('nav');
+  if (!nav.contains(e.target)) {
+    document.getElementById('navLinks').classList.remove('open');
+    var btn = document.getElementById('navHamburger');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
+</body>
+</html>

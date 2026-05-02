@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hugonomy Systems | VibeAI FoldSpace - Don't Outsource Your Mind</title>
+  <meta name="description" content="Hugonomy Systems builds local-first tools that help people stay aware while using AI. VibeAI FoldSpace is live on Chrome and Edge with no cloud processing or profiling.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Joseph D. Tingling MD/PhD">
+  <meta name="theme-color" content="#050816">
+  <meta property="og:title" content="Hugonomy Systems | VibeAI FoldSpace">
+  <meta property="og:description" content="Hugonomy Systems builds local-first tools that help people stay aware while using AI. Stay curious. Keep thinking.">
+  <meta property="og:image" content="https://hugonomy.com/assets/images/hero-lifestyle-hud.jpg">
+  <meta property="og:url" content="https://hugonomy.com/">
+  <meta property="og:site_name" content="Hugonomy Systems">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hugonomy Systems | VibeAI FoldSpace">
+  <meta name="twitter:description" content="Hugonomy Systems builds local-first tools that help people stay aware while using AI. Stay curious. Keep thinking.">
+  <meta name="twitter:image" content="https://hugonomy.com/assets/images/hero-lifestyle-hud.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="assets/icons/icon128.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="canonical" href="https://hugonomy.com/">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://hugonomy.com/#organization",
+          "name": "Hugonomy Systems",
+          "alternateName": "Hugonomy",
+          "url": "https://hugonomy.com/",
+          "logo": "https://hugonomy.com/assets/icons/icon512.png",
+          "description": "Hugonomy Systems builds local-first tools that help people stay aware while using AI.",
+          "founder": {
+            "@type": "Person",
+            "name": "Joseph D. Tingling MD/PhD"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/hugonomy-systems/",
+            "https://www.youtube.com/@HugonomySystems",
+            "https://glyphweaveralpha.substack.com/"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://hugonomy.com/#website",
+          "url": "https://hugonomy.com/",
+          "name": "Hugonomy Systems",
+          "publisher": {
+            "@id": "https://hugonomy.com/#organization"
+          }
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+
+<!-- ── Nav ─────────────────────────────────────────────────────────── -->
+<nav aria-label="Site navigation">
+  <div class="nav-inner">
+    <a class='nav-logo' href='/'>
+      <img src="assets/icons/icon128.png" alt="VibeAI FoldSpace icon">
+      <span class="nav-logo-text">Hugonomy Systems</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a class='nav-active' href='/'>Home</a>
+      <a href='/vision'>Vision</a>
+      <a href='/about'>About</a>
+      <a href='/news'>News &amp; Media</a>
+      <a href='/privacy'>Privacy</a>
+      <a href="#install-actions" class="btn-nav">Install Free</a>
+    </div>
+    <button type="button" class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── Hero ────────────────────────────────────────────────────────── -->
+<header class="hero">
+  <div class="container">
+
+    <!-- Top: product identity + badge + headline -->
+    <div class="hero-badge">
+      <span>&#x2713;</span> Now live on Chrome &amp; Edge
+    </div>
+    <h1 class="hero-title">
+      Don't Outsource <span class="gradient-text">Your Mind.</span>
+    </h1>
+
+    <!-- Middle: full-width visuals -->
+    <div class="hero-visual">
+      <div class="hero-glow-1" aria-hidden="true"></div>
+      <div class="hero-glow-2" aria-hidden="true"></div>
+      <div class="hero-scene">
+        <div class="hero-video-card">
+          <a href="https://youtu.be/lTZf7Xp70UM?si=eLbJdeS6WSBD8awP" target="_blank" rel="noopener noreferrer" class="hero-img-frame hero-img-link" aria-label="Watch the VibeAI FoldSpace demo on YouTube">
+            <img src="assets/images/hero-lifestyle-hud.jpg"
+                 alt="VibeAI FoldSpace running in a browser during an AI conversation"
+                 loading="eager">
+          </a>
+          <p class="video-link-note video-link-note--hero">
+            <a href="https://youtu.be/lTZf7Xp70UM?si=eLbJdeS6WSBD8awP" target="_blank" rel="noopener noreferrer">Watch the 90-second demo on YouTube &#x2197;</a>
+          </p>
+        </div>
+        <div class="hud-mockup" aria-label="Live VibeAI FoldSpace HUD preview" role="img">
+          <div class="hud-header">
+            <span class="hud-brand">Vibe<span class="vibe-ai">AI</span> FoldSpace™</span>
+            <div class="hud-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+          </div>
+          <div class="hud-orb-wrap">
+            <div class="hud-orb" id="hudOrb" aria-hidden="true">
+              <div class="hud-orb-inner"></div>
+              <div class="hud-orb-ring"></div>
+            </div>
+          </div>
+          <div class="hud-state-block">
+            <div class="hud-label">THINKING STATE</div>
+            <div class="hud-stage" id="hudStage">Exploring</div>
+          </div>
+          <div class="hud-row">
+            <div class="hud-col">
+              <div class="hud-label">COGNITIVE STATE</div>
+              <div class="hud-value" id="hudCog">Deep Focus (88%)</div>
+            </div>
+            <div class="hud-col">
+              <div class="hud-label">EMOTIONAL</div>
+              <div class="hud-badge" id="hudEmo">&#128994; Calm</div>
+            </div>
+          </div>
+          <div class="hud-mirror" id="hudMirror" aria-hidden="true">
+            <div class="hud-mirror-label">&#x1F9E0; THINKING MIRROR</div>
+            <div class="hud-mirror-prompt">Quick accept — add your own thinking?</div>
+            <div class="hud-mirror-options">
+              <span>Reflect on this idea</span>
+              <span>Compare approaches</span>
+              <span>Explore alternatives</span>
+            </div>
+          </div>
+          <div class="hud-tabs" aria-hidden="true">
+            <span class="hud-tab hud-tab--active">Thinking Mirror</span>
+            <span class="hud-tab">Bookmark</span>
+            <span class="hud-tab">Coach</span>
+          </div>
+        </div>
+        <div class="hud-moment-label" id="hudMomentLabel" aria-live="polite">&#x26A1; Passive Mode — Thinking Mirror activating</div>
+      </div><!-- /hero-scene -->
+    </div><!-- /hero-visual -->
+
+    <!-- Bottom: centered copy + CTAs -->
+    <div class="hero-bottom">
+      <p class="hero-sub hero-sub--lead">
+        Most people don't realize they stop thinking when using powerful AI tools.
+        Vibe<span class="vibe-ai">AI</span> FoldSpace shows you the moment it happens.
+      </p>
+      <p class="hero-vibe-tagline">
+        Don't Outsource Your Mind. Stay curious. Keep thinking.
+      </p>
+      <p class="hero-tagline">Use Vibe<span class="vibe-ai">AI</span> FoldSpace, and vibe, with your AI.</p>
+      <div class="hero-product-id">
+        <img src="assets/images/logo-vibeai-foldspace.png" alt="VibeAI FoldSpace by Hugonomy Systems" class="hero-product-logo">
+      </div>
+      <div class="cta-group">
+        <a href="https://chromewebstore.google.com/detail/lkmfjgaahnmlncgaeocfgiohjiodiohi"
+           target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+          Add to Chrome — Free
+        </a>
+        <a href="https://microsoftedge.microsoft.com/addons/detail/kbdhbghaidmildhhbodkppnnhklmddfh"
+           target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          Add to Edge — Free
+        </a>
+      </div>
+      <p class="cta-note hero-cta-note">Choose Chrome or Edge. Free install, no sign-up, and it usually takes about a minute.</p>
+      <div class="pillars">
+        <span>Local-first</span>
+        <span>No cloud processing</span>
+        <span>No profiling</span>
+        <span>No account required</span>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- ── The Moment (promoted to position 2 — the emotional hook) ──────── -->
+<section class="passive-moment-section" id="the-moment">
+  <div class="container">
+    <p class="section-label">The key moment</p>
+    <h2 class="section-title">The moment it happens.</h2>
+    <p class="section-sub">
+      Most AI tools don't tell you when you stop thinking.<br>
+      Vibe<span class="vibe-ai">AI</span> FoldSpace does — automatically, in real time, every time.
+    </p>
+
+    <div class="moment-steps moment-steps--four">
+
+      <div class="moment-step">
+        <div class="moment-step-num">1</div>
+        <span class="moment-step-tag">You ask</span>
+        <div class="moment-chat-bubble moment-chat-bubble--user">&ldquo;Summarize the U.S. Civil War in two pages.&rdquo;</div>
+        <p class="moment-step-desc">A real question. You want a real answer.</p>
+      </div>
+
+      <div class="moment-connector" aria-hidden="true">&#x2192;</div>
+
+      <div class="moment-step">
+        <div class="moment-step-num">2</div>
+        <span class="moment-step-tag">AI delivers</span>
+        <div class="moment-ai-response">
+          <div class="moment-ai-check">&#x2713;</div>
+          <div class="moment-ai-lines">
+            <span></span><span></span><span></span><span class="short"></span>
+          </div>
+          <div class="moment-ai-label">Polished 2-page summary</div>
+        </div>
+        <p class="moment-step-desc">Thorough. Confident. Complete.</p>
+      </div>
+
+      <div class="moment-connector" aria-hidden="true">&#x2192;</div>
+
+      <div class="moment-step">
+        <div class="moment-step-num">3</div>
+        <span class="moment-step-tag">You reply</span>
+        <div class="moment-chat-bubble moment-chat-bubble--user">&ldquo;ok thanks&rdquo;</div>
+        <p class="moment-step-desc">You skim the first paragraph. You move on.</p>
+      </div>
+
+      <div class="moment-connector" aria-hidden="true">&#x2192;</div>
+
+      <div class="moment-step moment-step--passive moment-step--catch">
+        <div class="moment-step-num">4</div>
+        <span class="moment-step-tag">FoldSpace catches it</span>
+        <div class="moment-passive-pill">Passive Mode</div>
+        <div class="moment-mirror-card">
+          <div class="moment-mirror-prompts">
+            <span>Challenge this answer</span>
+            <span>Add your own thinking</span>
+          </div>
+        </div>
+        <p class="moment-step-desc">Before you move on — did you actually think about it&hellip; or just accept it?</p>
+      </div>
+
+    </div>
+
+    <p class="moment-footnote">
+      Wait &mdash; you do this too, don't you? Everyone does. That's the whole point.
+    </p>
+    <p class="moment-manifesto">
+      We want humans to think again.<br>
+      Don't outsource your mind.<br>
+      <strong>Use Vibe<span class="vibe-ai">AI</span> FoldSpace &mdash; and vibe with your AI.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- ── What's New ────────────────────────────────────────────────────── -->
+<section class="whats-new-section">
+  <div class="container">
+    <div class="whats-new-card">
+      <div class="whats-new-badge">v2.20.1 · April 2026</div>
+      <ul class="whats-new-list">
+        <li>Fixed Thinking Mirror auto-open — now reliably activates on extension reload</li>
+        <li>Fixed onboarding nudge cooldown — passive detection works correctly on fresh installs</li>
+        <li>Session Load Arc improvements and Bookmark Panel stability hardening</li>
+        <li>Approved on both Chrome &amp; Edge stores — v2.20.1 now live</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- User review -->
+<section class="review-section" id="reviews">
+  <div class="container">
+    <p class="section-label">What users say</p>
+    <h2 class="section-title">Our first reviewer shaped v2.20.1.</h2>
+    <p class="section-sub">
+      Real feedback from the Chrome Web Store. The gap they identified shipped in the next release.
+    </p>
+    <div class="review-card">
+      <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">
+        "I can definitely see this extension being useful when using AI agents for qualititative tasks
+        like conversation or understanding the broad details of a research paper. I appreciate how it
+        asks me to reflect on my experience in this context. However for long coding or technical
+        projects in which I am mostly debugging errors, the prompts were less useful and occasionally
+        distracting. It would be cool if the Vibe<span class="vibe-ai">AI</span> Coach could detect the difference in use."
+      </p>
+      <p class="review-meta">
+        <strong>Ender Wiggins</strong> &mdash; Chrome Web Store, March 2026
+        <span class="review-badge">2/2 found this helpful</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Pain and stakes -->
+<section id="why" class="why-section">
+  <div class="container">
+    <p class="section-label">Why it matters</p>
+    <h2 class="section-title">AI is powerful. Passive use is the risk.</h2>
+    <p class="section-sub">
+      The problem isn't AI. It's how we use it. Passive acceptance quietly erodes
+      critical thinking — and most people don't notice until it's gone.
+    </p>
+    <div class="why-grid">
+      <div class="why-block">
+        <p class="why-stat">100%</p>
+        <p class="why-label">Local — nothing leaves your browser</p>
+      </div>
+      <div class="why-block">
+        <p class="why-stat">3</p>
+        <p class="why-label">AI platforms supported: ChatGPT, Claude, Gemini</p>
+      </div>
+      <div class="why-block">
+        <p class="why-stat">0</p>
+        <p class="why-label">Accounts, servers, or cloud processing required</p>
+      </div>
+      <div class="why-block">
+        <p class="why-stat">4</p>
+        <p class="why-label">Independent studies confirm reflective AI use builds cognition</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Problem framing -->
+<section class="goldfish-section">
+  <div class="container">
+    <p class="section-label">The problem has a name</p>
+    <h2 class="section-title">The Goldfish Effect.</h2>
+    <p class="section-sub">
+      Passively offloading your thinking to AI doesn't just save effort —
+      it quietly degrades the cognitive muscle you stop using.
+      Gerlich (2025) and Kabashkin (2025) documented it independently.
+      Hugonomy named it.
+    </p>
+
+    <div class="goldfish-grid">
+      <div class="goldfish-card goldfish-card--problem">
+        <div class="goldfish-label goldfish-label--problem">Without Vibe<span class="vibe-ai vibe-ai--invert">AI</span> FoldSpace</div>
+        <a href="https://youtu.be/uxwuIazVryw?si=ux_K1OH48KqRxkx3"
+           target="_blank" rel="noopener noreferrer"
+           class="video-image-link video-image-link--goldfish"
+           aria-label="Watch the Goldfish Effect explainer on YouTube">
+          <img src="assets/images/goldfish-effect-problem.png"
+               alt="The Goldfish Effect: Passively offloading thinking to AI leads to cognitive atrophy"
+               class="goldfish-img">
+        </a>
+        <p class="video-link-note video-link-note--card">
+          <a href="https://youtu.be/uxwuIazVryw?si=ux_K1OH48KqRxkx3" target="_blank" rel="noopener noreferrer">Watch explainer on YouTube &#x2197;</a>
+        </p>
+        <p class="goldfish-caption">
+          Regular AI users score significantly lower on critical reasoning tests.
+          The more you delegate, the less you practice — and the mind forgets how
+          to regenerate analytical processes without external support.
+        </p>
+        <p class="goldfish-cite">Gerlich, 2025 &mdash; <em>Societies</em> (MDPI) &middot; Kabashkin, 2025 &mdash; <em>Information</em> (MDPI)</p>
+      </div>
+
+      <div class="goldfish-card goldfish-card--solution">
+        <div class="goldfish-label goldfish-label--solution">With Vibe<span class="vibe-ai">AI</span> FoldSpace</div>
+        <a href="https://youtu.be/uxwuIazVryw?si=ux_K1OH48KqRxkx3"
+           target="_blank" rel="noopener noreferrer"
+           class="video-image-link video-image-link--goldfish"
+           aria-label="Watch the Goldfish Effect explainer on YouTube">
+          <img src="assets/images/goldfish-effect-solution.png"
+               alt="VibeAI FoldSpace neutralizes the Goldfish Effect - Cognitive Flow Stabilized"
+               class="goldfish-img">
+        </a>
+        <p class="video-link-note video-link-note--card">
+          <a href="https://youtu.be/uxwuIazVryw?si=ux_K1OH48KqRxkx3" target="_blank" rel="noopener noreferrer">Watch explainer on YouTube &#x2197;</a>
+        </p>
+        <p class="goldfish-caption">
+          Vibe<span class="vibe-ai">AI</span> FoldSpace detects the moment passive acceptance begins and activates
+          the Thinking Mirror — turning a potential cognitive surrender into a
+          reflective engagement. Goldfish Effect neutralized.
+        </p>
+        <p class="goldfish-cite">Kabashkin, 2025: &ldquo;Reflective engagement enhances metacognitive skills.&rdquo;</p>
+      </div>
+    </div>
+
+    <p class="goldfish-footnote">
+      &ldquo;The Goldfish Effect&rdquo; is Hugonomy's term for the cognitive atrophy pattern documented by
+      <a href="https://www.mdpi.com/2075-4698/15/1/6" target="_blank" rel="noopener noreferrer">Gerlich (2025)</a> and
+      <a href="https://www.mdpi.com/2078-2489/16/11/1009" target="_blank" rel="noopener noreferrer">Kabashkin (2025)</a>.
+      Both studies were independently published in peer-reviewed MDPI journals.
+    </p>
+
+    <a href="https://glyphweaveralpha.substack.com/p/the-thinking-mirror" target="_blank" rel="noopener noreferrer" class="goldfish-read-more">
+      <img src="assets/images/composed-goldfish.jpeg" alt="You Didn't Get Worse at Thinking" class="goldfish-read-more-img">
+      <div class="goldfish-read-more-body">
+        <span class="goldfish-read-more-label">From the Thinking Mirror &rarr; Substack</span>
+        <p class="goldfish-read-more-title">You Didn't Get Worse at Thinking. Something Else Happened.</p>
+        <span class="goldfish-read-more-cta">Read the full breakdown &rarr;</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Research -->
+<section id="research">
+  <div class="container">
+    <p class="section-label">The science</p>
+    <h2 class="section-title">The research signal is consistent.</h2>
+    <p class="section-sub">
+      Empirical studies, theoretical frameworks, and mainstream academic voices — all pointing the same direction. The real-time test hasn't been done yet. We want to run it.
+    </p>
+
+    <p class="research-hook">
+      <span>That feeling you had about AI use?</span><br>
+      The research validates it.
+    </p>
+
+    <!-- Fluency Trap visual -->
+    <a href="https://youtu.be/xxzEOlY-aiI?si=quPj-7NdSryZgxDx"
+       target="_blank" rel="noopener noreferrer"
+       class="video-image-link video-image-link--research"
+       aria-label="Watch the Fluency Trap explainer on YouTube">
+      <img src="assets/images/research-fluency-trap.jpg"
+           alt="The Fluency Trap: how cognitive fluency and automation bias cause people to bypass critical evaluation of AI responses"
+           class="research-visual">
+    </a>
+    <p class="video-link-note">
+      <a href="https://youtu.be/xxzEOlY-aiI?si=quPj-7NdSryZgxDx" target="_blank" rel="noopener noreferrer">Watch the science clip on YouTube &#x2197;</a>
+    </p>
+    <p class="research-visual-caption">The <a class='glossary-inline' href='/about#fluency-trap'>Fluency Trap</a> — why passive acceptance happens. <a class='glossary-inline' href='/about#automation-bias'>Automation bias</a> gradually extinguishes monitoring behavior as AI outputs become more fluent.</p>
+
+    <!-- Flagship study — always visible -->
+    <div class="research-flagship">
+      <div class="research-flagship-stat">75%</div>
+      <h4>Passive AI use showed a 75% correlation with decline in critical thinking</h4>
+      <p>A peer-reviewed study of 666 participants found that the more people offloaded thinking to AI, the measurably worse their independent critical thinking became.</p>
+      <div class="research-flagship-footer">
+        <span class="research-year research-year--inline">Gerlich, 2025 — Societies (MDPI)</span>
+        <a href="https://www.mdpi.com/2075-4698/15/1/6?ref=blog.continue.dev"
+           target="_blank" rel="noopener noreferrer" class="research-link">Read the paper &#x2197;</a>
+      </div>
+    </div>
+
+    <!-- Bridge — always visible, outside expandable -->
+    <div class="research-bridge research-bridge--standalone">
+      <p class="research-bridge-lead">All of this research is correlational — measured after the fact.</p>
+      <p class="research-bridge-body">No one has tested whether real-time cognitive awareness feedback changes how people engage with AI <strong>while it's happening.</strong></p>
+      <a class='research-bridge-cta' href='/vision#study'>We want to run that study. Here's the design &rarr;</a>
+    </div>
+
+    <button type="button" class="research-expand-btn" onclick="toggleResearch(this)" aria-expanded="false">
+      See more studies &#x25BE;
+    </button>
+
+    <div class="research-grid" id="research-grid" role="region" aria-label="Research studies">
+      <div class="research-card">
+        <h4>666 people. The data is unambiguous.</h4>
+        <p>AI tool use correlated −0.68 with critical thinking scores. Cognitive offloading correlated −0.75. Two independent measures, one conclusion: the more you delegate to AI, the harder independent reasoning becomes. Significant at p &lt; 0.001.</p>
+        <span class="research-year">Gerlich, 2025 — Societies (MDPI)</span>
+        <a href="https://www.mdpi.com/2075-4698/15/1/6?ref=blog.continue.dev"
+           target="_blank" rel="noopener noreferrer" class="research-link">Read the paper &#x2197;</a>
+      </div>
+      <div class="research-card">
+        <h4>It starts as convenience. It ends as dependency.</h4>
+        <p>Kabashkin maps AI reliance as a 4-stage progression: tool → shortcut → bypass → full cognitive externalization. The risk isn't sudden — it's a slow drift "from comprehension to prompting, from synthesis to verification, from problem-solving to consumption." Reflective use reverses it. Passive use accelerates it.</p>
+        <span class="research-year">Kabashkin, 2025 — Information (MDPI)</span>
+        <a href="https://www.mdpi.com/2078-2489/16/11/1009"
+           target="_blank" rel="noopener noreferrer" class="research-link">Read the paper &#x2197;</a>
+      </div>
+      <div class="research-card">
+        <h4>Your mindset shapes how AI shapes you</h4>
+        <p>A 200-student SEM study found that critical thinking and attitude toward AI determine whether students engage reflectively or passively — and that passive adoption patterns are linked to cognitive offloading risk. The tool is neutral. The posture isn't.</p>
+        <span class="research-year">Ninghardjanti et al., 2025 — Frontiers in Education</span>
+        <a href="https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2025.1719625/full"
+           target="_blank" rel="noopener noreferrer" class="research-link">Read the paper &#x2197;</a>
+      </div>
+      <div class="research-card">
+        <h4>Harvard faculty are asking the question out loud</h4>
+        <p>"No learning occurs unless the brain is actively engaged in making meaning." Harvard researchers and faculty are raising the alarm: passive AI use may be producing cognitive atrophy. Not a fringe concern — mainstream academic conversation, November 2025.</p>
+        <span class="research-year">Harvard Gazette, Nov 2025 — expert commentary</span>
+        <a href="https://news.harvard.edu/gazette/story/2025/11/is-ai-dulling-our-minds/"
+           target="_blank" rel="noopener noreferrer" class="research-link">Read the article &#x2197;</a>
+      </div>
+
+      <!-- Journal strip -->
+      <div class="research-journals">
+        <p class="research-journals-label">Ongoing research in this field</p>
+        <div class="research-journal-list">
+          <a href="https://www.sciencedirect.com/journal/computers-in-human-behavior" target="_blank" rel="noopener noreferrer" class="research-journal-card">
+            <span class="research-journal-name">Computers in Human Behavior</span>
+            <span class="research-journal-pub">Elsevier</span>
+            <span class="research-journal-desc">The leading peer-reviewed journal tracking how technology shapes human cognition. Regularly publishes on AI reliance, cognitive offloading, automation bias, and attention drift.</span>
+            <span class="research-journal-link">sciencedirect.com/journal/computers-in-human-behavior &#x2197;</span>
+          </a>
+          <a href="https://link.springer.com/journal/146" target="_blank" rel="noopener noreferrer" class="research-journal-card">
+            <span class="research-journal-name">AI &amp; Society</span>
+            <span class="research-journal-pub">Springer</span>
+            <span class="research-journal-desc">Covers the societal impact of AI on human cognition, agency, and decision-making. Philosophical but peer-reviewed — the ethics and human cost of AI dependency.</span>
+            <span class="research-journal-link">link.springer.com/journal/146 &#x2197;</span>
+          </a>
+          <a href="https://www.sciencedirect.com/journal/computers-and-education" target="_blank" rel="noopener noreferrer" class="research-journal-card">
+            <span class="research-journal-name">Computers &amp; Education</span>
+            <span class="research-journal-pub">Elsevier</span>
+            <span class="research-journal-desc">Tracks how AI tools affect student reasoning, learning outcomes, and cognitive development. The education angle on what Vibe<span class="vibe-ai">AI</span> FoldSpace exists to address.</span>
+            <span class="research-journal-link">sciencedirect.com/journal/computers-and-education &#x2197;</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="video-section" id="demo">
+  <div class="container">
+    <p class="section-label">See it in action</p>
+    <h2 class="section-title">90 seconds. That's all it takes.</h2>
+    <p class="section-sub">
+      Watch Passive Mode detect a short acknowledgment, fire the Thinking Mirror,
+      and open the reflection panel — automatically.
+    </p>
+    <a href="https://youtu.be/dm5iNIHTEfI?si=ohGo7H-h7H9rBsMn" target="_blank" rel="noopener noreferrer"
+       class="demo-poster" aria-label="Watch the VibeAI FoldSpace 90-second demo on YouTube">
+      <img src="https://img.youtube.com/vi/dm5iNIHTEfI/maxresdefault.jpg"
+           alt="VibeAI FoldSpace 90-second demo - click to watch on YouTube"
+           class="demo-poster-img"
+           onerror="this.onerror=null;this.src='https://img.youtube.com/vi/dm5iNIHTEfI/hqdefault.jpg'">
+    </a>
+    <p class="video-link-note">
+      <a href="https://youtu.be/dm5iNIHTEfI?si=ohGo7H-h7H9rBsMn" target="_blank" rel="noopener noreferrer">Watch the 90-second demo on YouTube &#x2197;</a>
+    </p>
+  </div>
+</section>
+
+<!-- ── Features ─────────────────────────────────────────────────────── -->
+<section id="features">
+  <div class="container">
+    <p class="section-label">How it works</p>
+    <h2 class="section-title">Your thinking, made visible.</h2>
+    <p class="section-sub">
+      Three systems. One goal: keep you thinking.
+    </p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">&#x1F4CA;</div>
+        <h3>Stage Detection</h3>
+        <p>
+          A live HUD shows your thinking stage — Exploring, Evaluating, Refining,
+          or Passive Mode — updated in real time as your conversation evolves.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">&#x1F9E0;</div>
+        <h3>Thinking Mirror</h3>
+        <p>
+          When you accept an AI response too quickly, the Thinking Mirror activates —
+          surfacing reflection prompts before you move on.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">&#x1F4AC;</div>
+        <h3>Vibe<span class="vibe-ai">AI</span> Coach</h3>
+        <p>
+          Context-aware prompts for every state: challenge a claim, ask for evidence,
+          explore alternatives, or add your own constraints.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Real Screenshots ──────────────────────────────────────────────── -->
+<section class="screenshots-section" id="screenshots">
+  <div class="container">
+    <p class="section-label">Live on select platforms</p>
+    <h2 class="section-title">Works where you think.</h2>
+    <p class="section-sub">Real screenshots from ChatGPT, Claude.ai, and Gemini. Same HUD, same insight, every supported platform.</p>
+
+    <div class="screenshots-content-grid">
+
+      <!-- Left: platform screenshot groups -->
+      <div class="screenshots-left">
+
+        <div class="screenshots-platform-group">
+          <div class="screenshots-platform-label">ChatGPT</div>
+          <div class="screenshots-platform-strip">
+            <div class="screenshot-card">
+              <div class="screenshot-state">Thinking Mirror — Passive Mode detected</div>
+              <img src="assets/images/screenshot-thinking-mirror.png"
+                   alt="VibeAI FoldSpace Thinking Mirror active on ChatGPT showing Passive Mode detected"
+                   loading="lazy">
+            </div>
+            <div class="screenshot-card">
+              <div class="screenshot-state">Vibe<span class="vibe-ai">AI</span> Coach — Complexity Detector active</div>
+              <img src="assets/images/screenshot-coach.png"
+                   alt="VibeAI FoldSpace Coach panel active on ChatGPT with Complexity Detector feedback"
+                   loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <div class="screenshots-platform-group">
+          <div class="screenshots-platform-label">Claude.ai</div>
+          <div class="screenshots-platform-strip">
+            <div class="screenshot-card">
+              <div class="screenshot-state">Stage Detection — Active Exploring</div>
+              <img src="assets/images/screenshot-claude.png"
+                   alt="VibeAI FoldSpace HUD active on Claude.ai"
+                   loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <div class="screenshots-platform-group">
+          <div class="screenshots-platform-label">Gemini</div>
+          <div class="screenshots-platform-strip">
+            <div class="screenshot-card">
+              <div class="screenshot-state">HUD Active — Ready State</div>
+              <img src="assets/images/screenshot-gemini.png"
+                   alt="VibeAI FoldSpace HUD active on Gemini with Ready state and onboarding"
+                   loading="lazy">
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /screenshots-left -->
+
+      <!-- Right: sticky feature + persona panel -->
+      <aside class="screenshots-feature-panel">
+        <p class="sfp-hook">
+          AI conversations move fast. Most people don't notice when their thinking shifts —
+          or when the model starts <strong>steering the direction.</strong>
+        </p>
+
+        <ul class="sfp-bullets">
+          <li>See when you're slipping into passive acceptance</li>
+          <li>Notice when the model's direction changes</li>
+          <li>Stay intentional during long, complex threads</li>
+          <li>Reduce misalignment in high-stakes conversations</li>
+          <li>Build awareness without changing your workflow</li>
+        </ul>
+
+        <hr class="sfp-divider">
+        <p class="sfp-who-label">Who uses Vibe<span class="vibe-ai">AI</span> FoldSpace</p>
+
+        <div class="sfp-persona">
+          <span class="sfp-persona-icon">🧠</span>
+          <div>
+            <p class="sfp-persona-title">Prompt Engineers &amp; Thinkers</p>
+            <p class="sfp-persona-desc">Catch when you slip into autopilot mid-conversation. Stay in the driver's seat on deep, abstract prompts.</p>
+          </div>
+        </div>
+
+        <div class="sfp-persona">
+          <span class="sfp-persona-icon">🧑‍💻</span>
+          <div>
+            <p class="sfp-persona-title">Developers</p>
+            <p class="sfp-persona-desc">Keep your reasoning active during long technical threads. Know when you're exploring vs. accepting too quickly.</p>
+          </div>
+        </div>
+
+        <div class="sfp-persona">
+          <span class="sfp-persona-icon">🔬</span>
+          <div>
+            <p class="sfp-persona-title">Researchers</p>
+            <p class="sfp-persona-desc">Track how your thinking evolves across complex conversations. Avoid drifting into model-led conclusions.</p>
+          </div>
+        </div>
+
+        <div class="sfp-persona">
+          <span class="sfp-persona-icon">🚀</span>
+          <div>
+            <p class="sfp-persona-title">Power Users</p>
+            <p class="sfp-persona-desc">Spot the exact moments where thinking sharpens, stalls, or accelerates — the exchanges worth saving and building on.</p>
+          </div>
+        </div>
+
+        <p class="sfp-closing">
+          AI can help you think. It shouldn't think for you.<br>
+          Vibe<span class="vibe-ai">AI</span> FoldSpace keeps you aware of your own mind while you work.
+        </p>
+      </aside>
+
+    </div><!-- /screenshots-content-grid -->
+  </div>
+</section>
+
+<!-- Research toggle script -->
+<script>
+function syncResearchHeight() {
+  var grid = document.getElementById('research-grid');
+  if (!grid) return;
+  grid.style.maxHeight = grid.classList.contains('open') ? (grid.scrollHeight + 'px') : '0px';
+}
+
+function toggleResearch(btn) {
+  var grid = document.getElementById('research-grid');
+  var open = grid.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+  btn.textContent = open ? 'Hide the studies \u25B4' : 'Show the studies \u25BE';
+  syncResearchHeight();
+}
+
+window.addEventListener('load', syncResearchHeight);
+window.addEventListener('resize', syncResearchHeight);
+</script>
+
+<!-- ── Why Local-First ───────────────────────────────────────────────── -->
+<section class="local-first-section">
+  <div class="container">
+    <p class="section-label">Why local-first</p>
+    <h2 class="section-title">Your thinking stays yours.</h2>
+    <p class="section-sub">
+      Local-first isn't a feature we added. It's the constraint we built around.
+    </p>
+    <div class="local-first-grid">
+      <div class="local-first-card">
+        <span class="local-first-icon">&#x1F512;</span>
+        <h4>Privacy by architecture</h4>
+        <p>Every analysis runs in your browser. Nothing is transmitted to any server — not your conversation, not your stage data, not your bookmarks. Ever.</p>
+      </div>
+      <div class="local-first-card">
+        <span class="local-first-icon">&#x26A1;</span>
+        <h4>Instant and always-on</h4>
+        <p>No network round-trip. No latency. No offline failure. The HUD responds in real time because it never leaves your machine.</p>
+      </div>
+      <div class="local-first-card">
+        <span class="local-first-icon">&#x1F9F1;</span>
+        <h4>Trusted by design</h4>
+        <p>Cloud processing is architecturally impossible in Vibe<span class="vibe-ai">AI</span> FoldSpace — not just disabled. There is no infrastructure to breach, no database to leak.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Community ─────────────────────────────────────────────────────── -->
+<section class="community-section" id="community">
+  <div class="container">
+    <p class="section-label">Join the conversation</p>
+    <h2 class="section-title">Built in public. Shaped by users.</h2>
+    <p class="section-sub">
+      Follow the research, share your experience, and help shape what Vibe<span class="vibe-ai">AI</span> FoldSpace becomes next.
+    </p>
+    <div class="community-grid">
+      <a href="https://discord.gg/Q98n4CJRV" target="_blank" rel="noopener noreferrer" class="community-card">
+        <div class="icon">&#x1F4AC;</div>
+        <h4>Discord</h4>
+        <p>Join the Hugonomy community. Share sessions, report bugs, talk research.</p>
+      </a>
+      <a href="https://glyphweaveralpha.substack.com/" target="_blank" rel="noopener noreferrer" class="community-card">
+        <div class="icon">&#x1F4DD;</div>
+        <h4>Substack</h4>
+        <p>Deep-dives on cognitive engagement, AI literacy, and the Hugonomy thesis.</p>
+      </a>
+      <a href="https://www.youtube.com/@HugonomySystems" target="_blank" rel="noopener noreferrer" class="community-card">
+        <div class="icon">&#x25B6;</div>
+        <h4>YouTube</h4>
+        <p>Demos, walkthroughs, and behind-the-build videos.</p>
+      </a>
+      <a href="https://www.linkedin.com/company/hugonomy-systems/" target="_blank" rel="noopener noreferrer" class="community-card">
+        <div class="icon">&#x1F4BC;</div>
+        <h4>LinkedIn</h4>
+        <p>Product updates, research findings, and launch milestones.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Trust / Patent ─────────────────────────────────────────────────── -->
+<section class="trust-section" id="trust">
+  <div class="container">
+    <p class="section-label">Privacy &amp; IP</p>
+    <h2 class="section-title">Built on trust. Transparent by design.</h2>
+    <p class="section-sub section-sub--centered">
+      Vibe<span class="vibe-ai">AI</span> FoldSpace stores nothing on our servers. Everything stays in your browser.
+      A USPTO provisional filing covers the core engagement architecture behind FoldSpace.
+    </p>
+    <div class="trust-pills">
+      <div class="trust-pill"><span class="icon">&#x1F512;</span> All data stays on your device</div>
+      <div class="trust-pill"><span class="icon">&#x26D4;</span> No accounts required</div>
+      <div class="trust-pill"><span class="icon">&#x1F6AB;</span> No cloud processing</div>
+      <div class="trust-pill"><span class="icon">&#x1F4CB;</span> USPTO Provisional Application No. 63/856,714</div>
+      <div class="trust-pill"><span class="icon">&#x2705;</span> Chrome &amp; Edge approved</div>
+      <div class="trust-pill">
+        <span class="icon">&#x1F4C4;</span>
+        <a class='trust-pill-link' href='/privacy'>Privacy policy</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Support the project ───────────────────────────────────────────── -->
+<section class="support-section" id="support">
+  <div class="container">
+    <p class="section-label">Support the project</p>
+    <h2 class="section-title">Help fund the research.</h2>
+    <p class="section-sub">
+      Vibe<span class="vibe-ai">AI</span> FoldSpace is free and always will be. If it's been useful,
+      consider supporting continued development.
+    </p>
+    <a href="https://buy.stripe.com/9B68wP61A4v08uP3zL4AU00"
+       target="_blank" rel="noopener noreferrer" class="btn-primary btn-primary--spaced">
+      Support Hugonomy Systems
+    </a>
+  </div>
+</section>
+
+<!-- ── Product Family ────────────────────────────────────────────────── -->
+<section class="product-family-section">
+  <div class="container">
+    <p class="section-label">The Hugonomy stack</p>
+    <h2 class="section-title">Three products. Three horizons.</h2>
+    <p class="section-sub">FoldSpace exists now. Lens is next. Council is longer-term.</p>
+    <div class="product-family-grid">
+      <div class="product-family-card product-family-card--live">
+        <img src="assets/images/logo-vibeai-foldspace.png" alt="VibeAI FoldSpace" class="product-family-logo">
+        <p class="product-family-desc">Real-time cognitive HUD for AI conversations. Live now on Chrome &amp; Edge.</p>
+        <span class="stack-badge stack-badge--live">Live now</span>
+      </div>
+      <div class="product-family-card">
+        <img src="assets/images/logo-allminds-lens.png" alt="AllMinds Lens" class="product-family-logo">
+        <p class="product-family-desc">Cross-session continuity for your thinking across multiple AI sessions.</p>
+        <span class="stack-badge stack-badge--next">Next</span>
+      </div>
+      <div class="product-family-card">
+        <img src="assets/images/logo-allminds-council.jpg" alt="AllMinds Council" class="product-family-logo">
+        <p class="product-family-desc">Human-governed multi-agent work with explicit oversight.</p>
+        <span class="stack-badge stack-badge--horizon">Horizon</span>
+      </div>
+    </div>
+    <a class='btn-secondary product-family-cta' href='/vision'>See the full vision &rarr;</a>
+  </div>
+</section>
+
+<!-- ── Footer CTA ────────────────────────────────────────────────────── -->
+<section class="footer-cta" id="install">
+  <div class="container">
+    <img src="assets/images/logo-vibeai-foldspace.png" alt="VibeAI FoldSpace by Hugonomy Systems" class="footer-cta-logo">
+    <h2>Install VibeAI FoldSpace free.</h2>
+    <p>Choose Chrome or Edge below. No account required. Works on ChatGPT, Claude, and Gemini.</p>
+    <div class="cta-group" id="install-actions">
+      <a href="https://chromewebstore.google.com/detail/lkmfjgaahnmlncgaeocfgiohjiodiohi"
+         target="_blank" rel="noopener noreferrer" class="btn-primary">Add to Chrome</a>
+      <a href="https://microsoftedge.microsoft.com/addons/detail/kbdhbghaidmildhhbodkppnnhklmddfh"
+         target="_blank" rel="noopener noreferrer" class="btn-secondary">Add to Edge</a>
+    </div>
+    <p class="cta-note footer-cta-note">Pick your browser, install, and try it right away.</p>
+  </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class='nav-logo footer-logo' href='/'>
+        <img src="assets/icons/icon128.png" alt="Hugonomy Systems" class="footer-logo-img">
+        <span class="footer-logo-text">Hugonomy Systems&#x2122;</span>
+      </a>
+      <p class="footer-brand-desc">
+        Joseph D. Tingling MD/PhD &mdash; Founder<br>
+        Champaign-Urbana, Illinois, USA<br>
+        USPTO provisional filed: No. 63/856,714
+      </p>
+    </div>
+    <nav aria-label="Footer navigation">
+      <div class="footer-links">
+        <a href='/'>Home</a>
+        <a href='/vision'>Vision</a>
+        <a href='/about'>About</a>
+        <a href='/news'>News &amp; Media</a>
+        <a href='/privacy'>Privacy</a>
+        <a href="mailto:joseph@hugonomy.com">Contact</a>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Hugonomy Systems&#x2122;. All rights reserved.</p>
+    <p>
+      <a href="https://discord.gg/Q98n4CJRV" target="_blank" rel="noopener noreferrer" class="footer-social-link">Discord</a>
+      <a href="https://glyphweaveralpha.substack.com/" target="_blank" rel="noopener noreferrer" class="footer-social-link">Substack</a>
+      <a href="https://www.youtube.com/@HugonomySystems" target="_blank" rel="noopener noreferrer" class="footer-social-link">YouTube</a>
+      <a href="https://www.linkedin.com/company/hugonomy-systems/" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-link--last">LinkedIn</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ── Animated HUD mockup cycle ──────────────────────────────────────── */
+(function () {
+  var stages = [
+    { stage: 'Exploring',    cog: 'Deep Focus (88%)',    emo: '&#128994; Calm',    mirror: false, ms: 3000 },
+    { stage: 'Evaluating',   cog: 'Active Review (74%)', emo: '&#128309; Focused', mirror: false, ms: 3000 },
+    { stage: 'Refining',     cog: 'Stable Flow (81%)',   emo: '&#128994; Calm',    mirror: false, ms: 3000 },
+    { stage: 'Passive Mode', cog: 'Stable Flow (62%)',   emo: '&#128997; Reflect', mirror: true,  ms: 8000 },
+  ];
+  var idx = 0;
+  var stageEl   = document.getElementById('hudStage');
+  var cogEl     = document.getElementById('hudCog');
+  var emoEl     = document.getElementById('hudEmo');
+  var mirrorEl  = document.getElementById('hudMirror');
+  var orbEl     = document.getElementById('hudOrb');
+  var momentEl  = document.getElementById('hudMomentLabel');
+
+  if (!stageEl) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function tick() {
+    idx = (idx + 1) % stages.length;
+    var s = stages[idx];
+
+    stageEl.style.opacity = '0';
+    setTimeout(function () {
+      stageEl.textContent = s.stage;
+      stageEl.style.opacity = '1';
+      cogEl.textContent = s.cog;
+      emoEl.innerHTML = s.emo;
+
+      if (s.mirror) {
+        mirrorEl.classList.add('visible');
+        if (momentEl) momentEl.classList.add('visible');
+        orbEl.querySelector('.hud-orb-inner').style.background =
+          'radial-gradient(circle at 35% 35%, #ffe87a, #f0a500 60%, #1a0d00)';
+        stageEl.style.color = '#f0c040';
+        stageEl.style.webkitTextFillColor = '#f0c040';
+      } else {
+        mirrorEl.classList.remove('visible');
+        if (momentEl) momentEl.classList.remove('visible');
+        orbEl.querySelector('.hud-orb-inner').style.background =
+          'radial-gradient(circle at 35% 35%, #6ca6ff, #4f38c9 60%, #0d1340)';
+        stageEl.style.color = '';
+        stageEl.style.webkitTextFillColor = '';
+      }
+      scheduleNext(s.ms);
+    }, 350);
+  }
+
+  function scheduleNext(delay) {
+    setTimeout(tick, delay);
+  }
+
+  scheduleNext(stages[0].ms);
+})();
+</script>
+
+<script>
+function toggleNav() {
+  var links = document.getElementById('navLinks');
+  var btn = document.getElementById('navHamburger');
+  var open = links.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', open);
+}
+document.addEventListener('click', function(e) {
+  var nav = document.querySelector('nav');
+  if (!nav.contains(e.target)) {
+    document.getElementById('navLinks').classList.remove('open');
+    var btn = document.getElementById('navHamburger');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
+
+</body>
+</html>
+
+
+

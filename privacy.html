@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Joseph D. Tingling MD/PhD">
+  <meta name="theme-color" content="#050816">
+  <title>Privacy Policy — VibeAI FoldSpace | Hugonomy Systems</title>
+  <meta name="description" content="VibeAI FoldSpace Privacy Policy. 100% local processing. Zero data collection. No servers. No tracking.">
+  <meta property="og:title" content="Privacy Policy — VibeAI FoldSpace">
+  <meta property="og:description" content="100% local processing. Zero data collection. No servers. No tracking. Your thinking stays yours.">
+  <meta property="og:image" content="https://hugonomy.com/assets/images/hero-lifestyle-hud.jpg">
+  <meta property="og:url" content="https://hugonomy.com/privacy.html">
+  <meta property="og:site_name" content="Hugonomy Systems">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Privacy Policy - VibeAI FoldSpace">
+  <meta name="twitter:description" content="100% local processing. Zero data collection. No servers. No tracking. Your thinking stays yours.">
+  <meta name="twitter:image" content="https://hugonomy.com/assets/images/hero-lifestyle-hud.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="assets/icons/icon128.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .privacy-hero {
+      padding: 120px 24px 56px;
+      border-bottom: 1px solid var(--brand-border);
+    }
+    .privacy-hero-inner {
+      max-width: 860px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center;
+    }
+    @media (max-width: 640px) { .privacy-hero-inner { grid-template-columns: 1fr; } }
+    .privacy-hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .privacy-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+    .privacy-meta-item { font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+    .privacy-meta-item strong { color: var(--text-secondary); }
+    .privacy-badges { display: flex; flex-direction: column; gap: 10px; }
+    .privacy-badge {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 10px; padding: 10px 16px; white-space: nowrap;
+    }
+    .privacy-badge .badge-icon { font-size: 1.1rem; }
+    .privacy-badge span { font-size: 0.82rem; font-weight: 700; color: #4ade80; letter-spacing: 0.03em; }
+    .privacy-layout {
+      display: grid; grid-template-columns: 220px 1fr; gap: 48px;
+      max-width: 1060px; margin: 0 auto; padding: 56px 24px 80px;
+      align-items: start;
+    }
+    @media (max-width: 800px) { .privacy-layout { grid-template-columns: 1fr; } }
+    .privacy-toc {
+      position: sticky; top: 80px;
+      background: var(--brand-card); border: 1px solid var(--brand-border);
+      border-radius: 14px; padding: 24px;
+    }
+    .privacy-toc h3 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+    .privacy-toc ol { list-style: none; counter-reset: toc; }
+    .privacy-toc ol li { counter-increment: toc; margin-bottom: 10px; }
+    .privacy-toc ol li a {
+      color: var(--text-secondary); text-decoration: none; font-size: 0.83rem;
+      line-height: 1.4; display: flex; gap: 8px; align-items: flex-start;
+      transition: color 0.15s;
+    }
+    .privacy-toc ol li a:hover { color: var(--brand-blue); }
+    .privacy-toc ol li a::before {
+      content: counter(toc, decimal-leading-zero);
+      font-size: 0.72rem; color: var(--text-muted); font-weight: 700;
+      flex-shrink: 0; padding-top: 1px;
+    }
+    .privacy-body { min-width: 0; }
+    .privacy-section { margin-bottom: 48px; scroll-margin-top: 90px; }
+    .privacy-section-header {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+      padding-bottom: 16px; border-bottom: 1px solid var(--brand-border);
+    }
+    .section-num {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--gradient); display: flex; align-items: center;
+      justify-content: center; font-size: 0.8rem; font-weight: 800;
+      color: #fff; flex-shrink: 0;
+    }
+    .privacy-section h2 { font-size: 1.1rem; font-weight: 700; line-height: 1.3; }
+    .privacy-section p { color: var(--text-secondary); font-size: 0.93rem; line-height: 1.75; margin-bottom: 14px; }
+    .privacy-section p:last-child { margin-bottom: 0; }
+    .privacy-section ul, .privacy-section ol { padding-left: 0; list-style: none; margin-bottom: 14px; }
+    .privacy-section ul li, .privacy-section ol li {
+      color: var(--text-secondary); font-size: 0.93rem; line-height: 1.65;
+      padding: 10px 14px 10px 42px; position: relative; margin-bottom: 6px;
+      background: var(--brand-card); border: 1px solid var(--brand-border);
+      border-radius: 8px;
+    }
+    .privacy-section ul li::before {
+      content: '●'; position: absolute; left: 16px; top: 11px;
+      color: var(--brand-blue); font-size: 0.5rem;
+    }
+    .privacy-section ol { counter-reset: policy; }
+    .privacy-section ol li { counter-increment: policy; }
+    .privacy-section ol li::before {
+      content: counter(policy); position: absolute; left: 14px; top: 10px;
+      color: var(--brand-blue); font-size: 0.78rem; font-weight: 800;
+    }
+    .privacy-section ul li strong, .privacy-section ol li strong { color: var(--text-primary); }
+    .privacy-section code {
+      background: rgba(79,172,254,0.08); border: 1px solid rgba(79,172,254,0.15);
+      padding: 1px 6px; border-radius: 4px; font-size: 0.82rem; font-family: 'Consolas', monospace;
+      color: var(--brand-blue);
+    }
+    .no-list-item {
+      display: flex; gap: 12px; align-items: flex-start;
+      color: var(--text-secondary); font-size: 0.93rem; line-height: 1.65;
+      padding: 10px 14px; margin-bottom: 6px;
+      background: rgba(239,68,68,0.05); border: 1px solid rgba(239,68,68,0.15);
+      border-radius: 8px;
+    }
+    .no-list-item .no-icon { color: #f87171; flex-shrink: 0; font-size: 0.85rem; margin-top: 2px; }
+    .yes-list-item {
+      display: flex; gap: 12px; align-items: flex-start;
+      color: var(--text-secondary); font-size: 0.93rem; line-height: 1.65;
+      padding: 10px 14px; margin-bottom: 6px;
+      background: rgba(34,197,94,0.05); border: 1px solid rgba(34,197,94,0.15);
+      border-radius: 8px;
+    }
+    .yes-list-item .yes-icon { color: #4ade80; flex-shrink: 0; font-size: 0.85rem; margin-top: 2px; }
+    .data-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0;
+      font-size: 0.88rem;
+    }
+    .data-table th {
+      background: var(--brand-card); border: 1px solid var(--brand-border);
+      padding: 10px 14px; text-align: left; font-size: 0.75rem;
+      font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .data-table td {
+      border: 1px solid var(--brand-border);
+      padding: 10px 14px; color: var(--text-secondary); vertical-align: top;
+    }
+    .data-table td code { font-size: 0.78rem; }
+    .data-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .callout {
+      background: rgba(79,172,254,0.06); border: 1px solid rgba(79,172,254,0.2);
+      border-left: 4px solid var(--brand-blue); border-radius: 0 10px 10px 0;
+      padding: 16px 20px; margin: 16px 0;
+    }
+    .callout p { color: var(--text-primary); font-size: 0.93rem; margin: 0; }
+    .callout strong { color: var(--brand-blue); }
+    .contact-card {
+      background: var(--brand-card); border: 1px solid var(--brand-border);
+      border-radius: 14px; padding: 28px; margin-top: 16px;
+    }
+    .contact-card p { margin-bottom: 8px; font-size: 0.92rem; color: var(--text-secondary); }
+    .contact-card a { color: var(--brand-blue); text-decoration: none; }
+    .contact-card a:hover { text-decoration: underline; }
+    .github-source-btn {
+      display: inline-flex; align-items: center; gap: 10px; margin-top: 20px;
+      background: var(--brand-card); border: 1px solid var(--brand-border);
+      border-radius: 10px; padding: 12px 20px;
+      font-size: 0.9rem; font-weight: 600; color: var(--text-primary);
+      text-decoration: none; transition: border-color 0.2s, background 0.2s;
+    }
+    .github-source-btn:hover { border-color: rgba(79,172,254,0.4); background: rgba(79,172,254,0.05); }
+    .sovereign-status {
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+      margin-top: 14px; padding: 14px 20px;
+      background: rgba(34,197,94,0.05); border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 12px;
+    }
+    .sovereign-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #4ade80; flex-shrink: 0; position: relative;
+    }
+    .sovereign-dot::after {
+      content: ''; position: absolute; inset: 0;
+      border-radius: 50%; background: #4ade80;
+      animation: sovereignPulse 2s ease-out infinite;
+      will-change: transform, opacity;
+    }
+    @keyframes sovereignPulse {
+      0%   { transform: scale(1);   opacity: 0.7; }
+      70%  { transform: scale(2.8); opacity: 0;   }
+      100% { transform: scale(1);   opacity: 0;   }
+    }
+    .sovereign-text { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+    .sovereign-label {
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #4ade80;
+    }
+    .sovereign-sub { font-size: 0.78rem; color: var(--text-muted); }
+    .privacy-tldr-card code {
+      background: rgba(79,172,254,0.08); border: 1px solid rgba(79,172,254,0.15);
+      padding: 1px 6px; border-radius: 4px; font-size: 0.82rem;
+      font-family: 'Consolas', monospace; color: var(--brand-blue);
+    }
+    /* ── Enhanced architecture diagram ── */
+    .local-arch-diagram--v2 {
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 0; align-items: center; padding: 28px 20px;
+    }
+    .la-icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .la-icon--muted { filter: grayscale(1); opacity: 0.35; }
+    .local-arch-node--browser {
+      border-color: rgba(79,172,254,0.25);
+    }
+    .local-arch-node--foldspace {
+      background: rgba(79,172,254,0.1);
+      border-color: rgba(79,172,254,0.4);
+      box-shadow: 0 0 28px rgba(79,172,254,0.12);
+    }
+    .local-arch-node--cloud {
+      position: relative;
+      background: rgba(239,68,68,0.04);
+      border-color: rgba(239,68,68,0.15);
+      opacity: 0.65;
+    }
+    .local-arch-blocked-x {
+      position: absolute; top: 8px; right: 10px;
+      font-size: 1rem; font-weight: 900; color: #f87171;
+    }
+    .local-arch-shield {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 6px; padding: 0 12px;
+    }
+    .local-arch-shield-bar {
+      width: 2px; height: 28px;
+      background: repeating-linear-gradient(
+        to bottom,
+        #4ade80 0px, #4ade80 5px,
+        transparent 5px, transparent 10px
+      );
+      opacity: 0.5;
+    }
+    .local-arch-shield-body {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .local-arch-shield-icon { font-size: 1.6rem; }
+    .local-arch-shield-text {
+      font-size: 0.58rem; font-weight: 800; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #4ade80;
+    }
+    @media (max-width: 640px) {
+      .local-arch-diagram--v2 { grid-template-columns: 1fr; }
+      .local-arch-shield { flex-direction: row; padding: 8px 0; }
+      .local-arch-shield-bar { width: 24px; height: 2px;
+        background: repeating-linear-gradient(to right, #4ade80 0px, #4ade80 5px, transparent 5px, transparent 10px);
+      }
+      .local-arch-node--cloud { opacity: 0.65; }
+    }
+  </style>
+  <link rel="canonical" href="https://hugonomy.com/privacy.html">
+</head>
+<body>
+
+<nav aria-label="Site navigation">
+  <div class="nav-inner">
+    <a class='nav-logo' href='/'>
+      <img src="assets/icons/icon128.png" alt="VibeAI FoldSpace icon">
+      <span class="nav-logo-text">Hugonomy Systems</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href='/'>Home</a>
+      <a href='/vision'>Vision</a>
+      <a href='/about'>About</a>
+      <a href='/news'>News &amp; Media</a>
+      <a class='nav-active' href='/privacy'>Privacy</a>
+      <a class='btn-nav' href='/#install-actions'>Install Free</a>
+    </div>
+    <button type="button" class="nav-hamburger" id="navHamburger" aria-label="Open navigation" aria-expanded="false" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<header class="privacy-hero">
+  <div class="page-brand-strip">
+    <img src="assets/images/vibeai-icon-logo.png" alt="VibeAI FoldSpace icon" class="page-brand-icon">
+    <img src="assets/images/logo-vibeai-foldspace.png" alt="VibeAI FoldSpace by Hugonomy Systems" class="page-brand-logo">
+  </div>
+  <div class="privacy-hero-inner">
+    <div>
+      <p class="section-label">Legal</p>
+      <h1>Privacy Policy<br><span class="gradient-text">Vibe<span class="vibe-ai">AI</span> FoldSpace</span></h1>
+      <p class="privacy-hero-desc">
+        This policy covers data handling for the Vibe<span class="vibe-ai">AI</span> FoldSpace browser extension,
+        published by Hugonomy Systems on the Chrome Web Store and Microsoft Edge Add-ons Store.
+      </p>
+      <div class="privacy-meta">
+        <span class="privacy-meta-item"><strong>Effective:</strong> March 2026</span>
+        <span class="privacy-meta-item"><strong>Last Updated:</strong> April 2026</span>
+        <span class="privacy-meta-item"><strong>Version:</strong> 2.20.x</span>
+        <span class="privacy-meta-item"><strong>Applies to:</strong> Chrome &amp; Edge extension</span>
+        <span class="privacy-meta-item"><strong>Publisher:</strong> Hugonomy Systems&#x2122;</span>
+      </div>
+    </div>
+    <div class="privacy-badges">
+      <div class="privacy-badge">
+        <span class="badge-icon">&#x1F512;</span>
+        <span>100% Local Processing</span>
+      </div>
+      <div class="privacy-badge">
+        <span class="badge-icon">&#x26D4;</span>
+        <span>Zero Data Collection</span>
+      </div>
+      <div class="privacy-badge">
+        <span class="badge-icon">&#x1F6AB;</span>
+        <span>No Servers. No Tracking.</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── TL;DR ─────────────────────────────────────────────────────────── -->
+<div class="privacy-tldr">
+  <div class="privacy-tldr-card">
+    <h3>&#x26A1; TL;DR — Privacy in 30 seconds</h3>
+    <ul class="privacy-tldr-list">
+      <li><span>&#x2705;</span> <span>Everything Vibe<span class="vibe-ai">AI</span> FoldSpace analyzes runs inside your browser — nothing is ever sent to any server.</span></li>
+      <li><span>&#x2705;</span> <span>We collect no personal data, no conversation content, no behavioral profile. Zero.</span></li>
+      <li><span>&#x2705;</span> <span>The only storage used is Chrome's local <code>chrome.storage.local</code> — it stays on your device and you can clear it anytime.</span></li>
+      <li><span>&#x2705;</span> <span>No accounts required. No login. No email. Nothing that identifies you.</span></li>
+      <li><span>&#x2705;</span> <span>Local-only is an <strong>architectural constraint</strong> — cloud processing is impossible by design, not just disabled by policy.</span></li>
+    </ul>
+  </div>
+
+  <!-- Sovereign Mode status card -->
+  <div class="sovereign-status">
+    <div class="sovereign-dot" aria-hidden="true"></div>
+    <div class="sovereign-text">
+      <span class="sovereign-label">DATA LINK: OFFLINE</span>
+      <span class="sovereign-sub">Sovereign Mode Active — all processing local</span>
+    </div>
+  </div>
+
+  <!-- Local-only architecture diagram -->
+  <div class="local-arch">
+    <div class="local-arch-diagram local-arch-diagram--v2">
+
+      <div class="local-arch-node local-arch-node--browser">
+        <div class="la-icon">&#x1F4AC;</div>
+        <h5>Your AI Conversation</h5>
+        <p>ChatGPT · Claude.ai · Gemini</p>
+      </div>
+
+      <div class="local-arch-arrow">&#x2192;</div>
+
+      <div class="local-arch-node local-arch-node--foldspace">
+        <div class="la-icon">&#x1F9E0;</div>
+        <h5>Vibe<span class="vibe-ai">AI</span> FoldSpace</h5>
+        <p>All analysis runs here — inside your browser</p>
+      </div>
+
+      <div class="local-arch-shield">
+        <div class="local-arch-shield-bar"></div>
+        <div class="local-arch-shield-body">
+          <span class="local-arch-shield-icon">&#x1F6E1;&#xFE0F;</span>
+          <span class="local-arch-shield-text">PROTECTED</span>
+        </div>
+        <div class="local-arch-shield-bar"></div>
+      </div>
+
+      <div class="local-arch-node local-arch-node--cloud">
+        <div class="local-arch-blocked-x">&#x2715;</div>
+        <div class="la-icon la-icon--muted">&#x2601;&#xFE0F;</div>
+        <h5>Cloud &amp; Servers</h5>
+        <p>No access. No data. Ever.</p>
+      </div>
+
+    </div>
+    <p class="local-arch-label">&#x1F6AB; No data exits your browser &mdash; local-only by architecture, not just policy</p>
+  </div>
+</div>
+
+<div class="privacy-layout">
+
+  <aside class="privacy-toc" aria-label="Table of contents">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#core">Core Principle</a></li>
+      <li><a href="#what-it-does">What Vibe<span class="vibe-ai">AI</span> Does</a></li>
+      <li><a href="#data-accessed">Data Accessed</a></li>
+      <li><a href="#what-we-dont">What We Do NOT Do</a></li>
+      <li><a href="#your-controls">Your Privacy Controls</a></li>
+      <li><a href="#policy-statements">Policy Statements</a></li>
+      <li><a href="#ip">Open Source &amp; IP</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </aside>
+
+  <main class="privacy-body">
+
+    <section class="privacy-section" id="core">
+      <div class="privacy-section-header">
+        <div class="section-num">1</div>
+        <h2>Core Principle</h2>
+      </div>
+      <div class="callout">
+        <p><strong>Your conversations stay private.</strong> Vibe<span class="vibe-ai">AI</span> FoldSpace processes everything locally on your device. We never send, store, or access your data on any server — because we don't operate any servers that receive user data.</p>
+      </div>
+      <p>
+        This is not a legal caveat or a future commitment. It is the architectural foundation of the
+        product. The extension has no backend. No API calls carrying user content. No telemetry
+        pipeline. Every analysis that Vibe<span class="vibe-ai">AI</span> FoldSpace performs happens inside your browser,
+        on your machine, under your control.
+      </p>
+    </section>
+
+    <section class="privacy-section" id="what-it-does">
+      <div class="privacy-section-header">
+        <div class="section-num">2</div>
+        <h2>What Vibe<span class="vibe-ai">AI</span> FoldSpace Does</h2>
+      </div>
+      <p>
+        Vibe<span class="vibe-ai">AI</span> FoldSpace helps you stay mentally engaged while using AI — it detects thinking
+        patterns in real time (active, passive, or exploratory) and offers optional coaching nudges,
+        focus controls, and reflection prompts. All analysis happens locally in your browser.
+      </p>
+      <p>
+        The extension observes conversation structure on supported AI chat platforms (ChatGPT,
+        Claude.ai, and Gemini) to determine your current engagement stage. It never reads,
+        stores, or transmits the actual content of your conversations.
+      </p>
+    </section>
+
+    <section class="privacy-section" id="data-accessed">
+      <div class="privacy-section-header">
+        <div class="section-num">3</div>
+        <h2>Data Accessed</h2>
+      </div>
+      <p>All data listed below remains on your device only and is never transmitted externally.</p>
+
+      <p class="data-section-label">AI Chat Text — read-only, never transmitted</p>
+      <div class="yes-list-item"><span class="yes-icon">&#x1F4AC;</span> Read-only access to conversations on ChatGPT, Claude.ai, and Gemini (current page only). Used to compute engagement stage locally. Never stored, transmitted, or shared.</div>
+
+      <p class="data-section-label data-section-label--spaced">chrome.storage.local — on your device only</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>Key</th><th>What it stores</th><th>User-deletable?</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>consentGiven</code></td><td>Boolean — whether you have granted consent to activate the extension</td><td>Yes — uninstall or reset</td></tr>
+          <tr><td><code>vibeai_bookmarks</code></td><td>Up to 100 user-created bookmarks of conversation moments</td><td>Yes — via extension settings</td></tr>
+          <tr><td><code>vibeai_session_log</code></td><td>Up to 50 session reflections, 2,000 character cap per entry</td><td>Yes — via extension settings</td></tr>
+          <tr><td><code>vibeai_intro_version</code></td><td>Walkthrough version key — tracks which onboarding version you saw</td><td>Yes — clears on uninstall</td></tr>
+          <tr><td><code>vibeai_onboarded</code></td><td>Boolean — whether onboarding nudge has been shown</td><td>Yes — clears on uninstall</td></tr>
+          <tr><td>HUD position</td><td>Saved panel position preference</td><td>Yes — resets on uninstall</td></tr>
+        </tbody>
+      </table>
+
+      <p class="data-section-label data-section-label--spaced">localStorage — session preferences, on your device only</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>Key</th><th>What it stores</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>vibeai_snooze_until</code></td><td>Focus Mode snooze timer — auto-expires, never transmitted</td></tr>
+          <tr><td><code>vibeai_hasSeenIntro</code></td><td>Whether walkthrough has been completed this session</td></tr>
+          <tr><td><code>vibeai-hud-width</code></td><td>HUD panel width preference</td></tr>
+          <tr><td><code>vibeai_trend_v1</code></td><td>Coach trend data — used locally for context-aware coaching</td></tr>
+          <tr><td><code>vibeai_coach_level</code></td><td>Your selected coaching intensity (Off / Minimal / Standard / Active)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="privacy-section" id="what-we-dont">
+      <div class="privacy-section-header">
+        <div class="section-num">4</div>
+        <h2>What We Do NOT Do</h2>
+      </div>
+      <div class="no-list-item"><span class="no-icon">&#x2715;</span><span><strong>No servers</strong> — we don't operate any backend infrastructure that receives user data</span></div>
+      <div class="no-list-item"><span class="no-icon">&#x2715;</span><span><strong>No data collection</strong> — we don't log, store, or transmit your conversations</span></div>
+      <div class="no-list-item"><span class="no-icon">&#x2715;</span><span><strong>No tracking</strong> — no analytics, telemetry, or usage monitoring of any kind</span></div>
+      <div class="no-list-item"><span class="no-icon">&#x2715;</span><span><strong>No third parties</strong> — we don't share data with anyone, because we have no user data to share</span></div>
+      <div class="no-list-item"><span class="no-icon">&#x2715;</span><span><strong>No content rewriting</strong> — Vibe<span class="vibe-ai">AI</span> FoldSpace only observes, never modifies your chat input or AI responses</span></div>
+      <div class="no-list-item"><span class="no-icon">&#x2715;</span><span><strong>No profiling</strong> — we do not build user profiles, behavioral models, or identity graphs</span></div>
+      <div class="no-list-item"><span class="no-icon">&#x2715;</span><span><strong>No data selling</strong> — we do not sell, rent, or share data with third parties</span></div>
+    </section>
+
+    <section class="privacy-section" id="your-controls">
+      <div class="privacy-section-header">
+        <div class="section-num">5</div>
+        <h2>Your Privacy Controls</h2>
+      </div>
+      <ul>
+        <li><strong>Consent required.</strong> Vibe<span class="vibe-ai">AI</span> FoldSpace only activates after you explicitly grant permission. You may revoke consent at any time via the extension settings.</li>
+        <li><strong>Focus Mode.</strong> Use the &#x22EF; menu to temporarily pause all nudges for 2 or 12 hours. Stored locally as a timer. Expires automatically.</li>
+        <li><strong>Coach Intensity.</strong> Choose Off, Minimal, Standard, or Active from the &#x22EF; menu. Saved locally and applied immediately.</li>
+        <li><strong>To disable.</strong> Remove the extension from Chrome or Edge, or use the &#x22EF; menu to turn off coaching entirely without uninstalling.</li>
+        <li><strong>To delete all data.</strong> All data is local — uninstalling removes everything. You may also clear <code>chrome.storage.local</code> and <code>localStorage</code> manually via browser DevTools (Application tab).</li>
+      </ul>
+    </section>
+
+    <section class="privacy-section" id="policy-statements">
+      <div class="privacy-section-header">
+        <div class="section-num">6</div>
+        <h2>Policy Statements</h2>
+      </div>
+      <p>The following statements reflect the data disclosure filed with the Chrome Web Store and Microsoft Edge Add-ons Store:</p>
+      <ol>
+        <li><strong>Local processing only.</strong> All analysis runs entirely within your browser. No conversation data is sent to any server.</li>
+        <li><strong>No data transmission.</strong> Vibe<span class="vibe-ai">AI</span> FoldSpace does not transmit, upload, or share any user data externally.</li>
+        <li><strong>No tracking.</strong> We do not use analytics, telemetry, or tracking of any kind.</li>
+        <li><strong>No data selling.</strong> We do not sell, rent, or share data with third parties.</li>
+        <li><strong>Local storage only.</strong> Consent preferences and session settings are stored locally using Chrome's built-in storage API. This data never leaves your device.</li>
+        <li><strong>No conversation content transmitted.</strong> No conversation content is transmitted externally under any circumstance.</li>
+        <li><strong>User-deletable.</strong> All stored data is user-deletable via browser settings or the extension's reset function.</li>
+        <li><strong>Device-bound.</strong> This data never leaves your device.</li>
+      </ol>
+    </section>
+
+    <section class="privacy-section" id="ip">
+      <div class="privacy-section-header">
+        <div class="section-num">7</div>
+        <h2>Open Source Commitment &amp; Intellectual Property</h2>
+      </div>
+      <p>
+        Vibe<span class="vibe-ai">AI</span> FoldSpace's analysis engine is built on transparent, auditable code with no external
+        dependencies. All JavaScript submitted to the Chrome Web Store and Microsoft Edge Add-ons
+        Store is human-readable, unminified, and unobfuscated — consistent with both stores' policies
+        and Hugonomy's commitment to transparency.
+      </p>
+      <p>
+        A patent application for the cognitive engagement architecture underlying
+        Vibe<span class="vibe-ai">AI</span> FoldSpace is in progress with the USPTO (Provisional Application No. 63/856,714).
+        A provisional application establishes a priority date but does not confer granted patent rights.
+        Hugonomy Systems claims common-law trademark rights through commercial use in the following product names:
+        Hugonomy&#x2122;, HugoScore&#x2122;, Vibe<span class="vibe-ai">AI</span>&#x2122;, FoldSpace&#x2122;,
+        AllMinds Lens&#x2122;, AllMinds Council&#x2122;. None of these marks are currently registered with the USPTO.
+      </p>
+      <a href="https://github.com/TNL-Origin/hugonomy-foldspace" target="_blank" rel="noopener noreferrer" class="github-source-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        View Vibe<span class="vibe-ai">AI</span> FoldSpace on GitHub
+      </a>
+    </section>
+
+    <section class="privacy-section" id="contact">
+      <div class="privacy-section-header">
+        <div class="section-num">8</div>
+        <h2>Questions or Concerns</h2>
+      </div>
+      <p>If you have questions about this privacy policy or how Vibe<span class="vibe-ai">AI</span> FoldSpace handles data, contact us directly. We respond to all privacy inquiries.</p>
+      <div class="contact-card">
+        <p class="contact-name">Hugonomy Systems&#x2122;</p>
+        <p>Joseph D. Tingling MD/PhD &mdash; Founder &amp; CEO</p>
+        <p>Urbana, Illinois, USA</p>
+        <p class="contact-links">&#x1F4E7; <a href="mailto:joseph@hugonomy.com">joseph@hugonomy.com</a></p>
+        <p>&#x1F310; <a href='/'>hugonomy.com</a></p>
+        <p class="contact-legal">
+          Patent Pending — USPTO Provisional Application No. 63/856,714<br>
+          &copy; 2025–2026 Hugonomy Systems. All rights reserved.
+        </p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class='nav-logo footer-logo' href='/'>
+        <img src="assets/icons/icon128.png" alt="Hugonomy Systems" class="footer-logo-img">
+        <span class="footer-logo-text">Hugonomy Systems&#x2122;</span>
+      </a>
+      <p class="footer-brand-desc">
+        Joseph D. Tingling MD/PhD &mdash; Founder<br>
+        Champaign-Urbana, Illinois, USA<br>
+        USPTO provisional filed: No. 63/856,714
+      </p>
+    </div>
+    <nav aria-label="Footer navigation">
+      <div class="footer-links">
+        <a href='/'>Home</a>
+        <a href='/vision'>Vision</a>
+        <a href='/about'>About</a>
+        <a href='/news'>News &amp; Media</a>
+        <a href='/privacy'>Privacy</a>
+        <a href="mailto:joseph@hugonomy.com">Contact</a>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Hugonomy Systems&#x2122;. All rights reserved.</p>
+    <p>
+      <a href="https://discord.gg/Q98n4CJRV" target="_blank" rel="noopener noreferrer" class="footer-social-link">Discord</a>
+      <a href="https://glyphweaveralpha.substack.com/" target="_blank" rel="noopener noreferrer" class="footer-social-link">Substack</a>
+      <a href="https://www.youtube.com/@HugonomySystems" target="_blank" rel="noopener noreferrer" class="footer-social-link">YouTube</a>
+      <a href="https://www.linkedin.com/company/hugonomy-systems/" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-link--last">LinkedIn</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+function toggleNav() {
+  var links = document.getElementById('navLinks');
+  var btn = document.getElementById('navHamburger');
+  var open = links.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', open);
+}
+document.addEventListener('click', function(e) {
+  var nav = document.querySelector('nav');
+  if (!nav.contains(e.target)) {
+    document.getElementById('navLinks').classList.remove('open');
+    var btn = document.getElementById('navHamburger');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
+</body>
+</html>
