@@ -935,6 +935,20 @@ footer {
 }
 
 /* ── What's New bar ───────────────────────────────────────────────────── */
+/* ── Live Demo Embed ── */
+.live-demo-section { padding: 60px 0 48px; text-align: center; }
+.live-demo-section .section-sub { margin: 0 auto 32px; }
+.demo-embed-wrap {
+  max-width: 900px; margin: 0 auto;
+  border-radius: 18px; overflow: hidden;
+  border: 1px solid #1e2d40;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.5);
+}
+.demo-embed-wrap iframe {
+  display: block; width: 100%; height: 680px; border: none; background: #070d1a;
+}
+@media (max-width: 680px) { .demo-embed-wrap iframe { height: 1000px; } }
+
 .whats-new-section { padding: 0 0 48px; }
 .whats-new-card {
   background: rgba(79,172,254,0.05); border: 1px solid rgba(79,172,254,0.18);

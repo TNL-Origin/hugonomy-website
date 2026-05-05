@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VibeAI FoldSpace — See When You Stop Thinking</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #070d1a;
+      color: #e8eaf0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 20px 28px;
+    }
+
+    /* ── HEADER ── */
+    .demo-header {
+      text-align: center;
+      margin-bottom: 20px;
+      max-width: 640px;
+    }
+
+    .demo-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      color: #6366f1;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .demo-header h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .demo-header p {
+      color: #64748b;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* ── SCENARIO TABS ── */
+    .scenarios {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .scenario-btn {
+      background: #0d1525;
+      border: 1px solid #1e2d40;
+      color: #64748b;
+      padding: 9px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.18s ease;
+      outline: none;
+    }
+
+    .scenario-btn:hover:not(.active) { border-color: #334155; color: #94a3b8; }
+    .scenario-btn.active { background: #111f35; border-color: #3b82f6; color: #e8eaf0; }
+
+    /* ── MAIN STAGE — side by side ── */
+    .stage {
+      width: 100%;
+      max-width: 860px;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 16px;
+      align-items: start;
+    }
+
+    @media (max-width: 680px) {
+      .stage { grid-template-columns: 1fr; }
+    }
+
+    /* ── CHAT PANEL ── */
+    .chat-wrap {
+      background: #0d1525;
+      border: 1px solid #1e2d40;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background: #0a1120;
+      padding: 11px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #1e2d40;
+    }
+
+    .traffic-lights { display: flex; gap: 5px; }
+    .tl { width: 10px; height: 10px; border-radius: 50%; }
+    .tl-r { background: #ff5f57; }
+    .tl-y { background: #febc2e; }
+    .tl-g { background: #28c840; }
+
+    .chat-title { font-size: 0.82rem; color: #475569; margin-left: 6px; font-weight: 500; }
+
+    .messages {
+      padding: 18px 16px 16px;
+      height: 300px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      scrollbar-width: thin;
+      scrollbar-color: #1e2d40 transparent;
+    }
+
+    .msg {
+      display: flex;
+      flex-direction: column;
+      max-width: 84%;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .msg.visible { opacity: 1; transform: translateY(0); }
+    .msg.user  { align-self: flex-end;  align-items: flex-end; }
+    .msg.ai    { align-self: flex-start; align-items: flex-start; }
+    .msg.reply { align-self: flex-end;  align-items: flex-end; }
+
+    .msg-sender {
+      font-size: 0.68rem;
+      color: #334155;
+      font-weight: 600;
+      margin-bottom: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    .msg-bubble {
+      padding: 11px 14px;
+      border-radius: 14px;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .msg.user .msg-bubble  { background: #1a3254; color: #bdd4f0; border-bottom-right-radius: 3px; }
+    .msg.ai .msg-bubble    { background: #111827; color: #cbd5e1; border: 1px solid #1e2d40; border-bottom-left-radius: 3px; }
+    /* Reply bubble — this is THE moment, make it unmissable */
+    .msg.reply .msg-bubble {
+      background: #1a2a1a;
+      color: #86efac;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 1px solid rgba(134,239,172,0.25);
+      border-bottom-right-radius: 3px;
+      position: relative;
+    }
+
+    .msg.reply.trigger-moment .msg-bubble {
+      background: #1c2e1c;
+      border-color: rgba(134,239,172,0.5);
+      box-shadow: 0 0 14px rgba(134,239,172,0.15);
+      animation: replyPulse 0.6s ease-out;
+    }
+
+    @keyframes replyPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(134,239,172,0.4); }
+      60%  { box-shadow: 0 0 0 10px rgba(134,239,172,0); }
+      100% { box-shadow: 0 0 0 0 rgba(134,239,172,0); }
+    }
+
+    /* Callout annotation — appears below reply bubble */
+    .trigger-callout {
+      align-self: flex-end;
+      max-width: 84%;
+      margin-top: -6px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      position: relative;
+    }
+
+    .trigger-callout.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── CODE BUBBLE ── */
+    .msg.code-msg { align-self: flex-end; align-items: flex-end; }
+
+    .code-bubble {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      border-bottom-right-radius: 3px;
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    .code-bubble-header {
+      background: #161b22;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #30363d;
+    }
+
+    .code-lang {
+      font-size: 0.67rem;
+      font-weight: 600;
+      color: #484f58;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    .code-label {
+      font-size: 0.67rem;
+      color: #388bfd;
+      font-weight: 600;
+    }
+
+    .code-bubble pre {
+      padding: 12px 14px;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.78rem;
+      line-height: 1.65;
+      white-space: pre;
+      overflow-x: auto;
+      color: #c9d1d9;
+    }
+
+    /* syntax colors */
+    .kw  { color: #ff7b72; }   /* keywords: async, function, const, return, await */
+    .fn  { color: #d2a8ff; }   /* function names */
+    .str { color: #a5d6ff; }   /* strings / template literals */
+    .var { color: #ffa657; }   /* variables */
+    .cmt { color: #4a5568; font-style: italic; }  /* comments */
+    .pun { color: #79c0ff; }   /* punctuation highlights */
+    .bad { color: #ff7b72; text-decoration: underline wavy rgba(255,123,114,0.6); } /* vuln highlight */
+
+    .trigger-callout-inner {
+      background: rgba(245,158,11,0.1);
+      border: 1px solid rgba(245,158,11,0.3);
+      border-radius: 10px;
+      border-top-right-radius: 3px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+    }
+
+    .trigger-callout-icon { font-size: 0.85rem; margin-top: 1px; flex-shrink: 0; }
+
+    .trigger-callout-text {
+      font-size: 0.75rem;
+      color: #fbbf24;
+      line-height: 1.45;
+    }
+
+    .trigger-callout-text strong {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 2px;
+      color: #fde68a;
+    }
+
+    .typing-wrap {
+      align-self: flex-start;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .typing-wrap.visible { opacity: 1; transform: translateY(0); }
+
+    .typing-bubble {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 12px 14px;
+      background: #111827;
+      border: 1px solid #1e2d40;
+      border-radius: 14px;
+      border-bottom-left-radius: 3px;
+    }
+
+    .typing-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #334155;
+      animation: blink 1.2s ease-in-out infinite;
+    }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes blink {
+      0%,80%,100% { opacity: 0.3; transform: scale(1); }
+      40%          { opacity: 1;   transform: scale(1.25); }
+    }
+
+    /* ── HUD PANEL ── */
+    .hud-panel {
+      background: #0a1120;
+      border: 1px solid #1e3a5f;
+      border-radius: 16px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      max-height: 480px;
+      scrollbar-width: thin;
+      scrollbar-color: #1e3a5f transparent;
+    }
+
+    .hud-topbar {
+      background: #0d1830;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #1e3a5f;
+    }
+
+    .hud-brand {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #475569;
+      letter-spacing: 0.05em;
+    }
+
+    .hud-brand span { color: #6366f1; }
+
+    .hud-dots { display: flex; gap: 4px; }
+    .hud-dot-btn { width: 8px; height: 8px; border-radius: 50%; background: #1e2d40; }
+
+    /* Orb section */
+    .hud-orb-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 14px 16px 12px;
+      gap: 0;
+    }
+
+    .orb-wrap {
+      position: relative;
+      width: 66px; height: 66px;
+      margin-bottom: 10px;
+    }
+
+    .orb-ring {
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(6,182,212,0.25);
+      animation: ringRotate 4s linear infinite;
+      transition: border-color 1s ease;
+    }
+
+    .orb-ring::before {
+      content: '';
+      position: absolute;
+      top: -3px; left: 50%;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #06b6d4;
+      transform: translateX(-50%);
+      transition: background 1s ease;
+    }
+
+    @keyframes ringRotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .orb {
+      width: 66px; height: 66px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #67e8f9, #0891b2 50%, #0c4a6e);
+      box-shadow: 0 0 28px rgba(6,182,212,0.45), 0 0 60px rgba(6,182,212,0.15);
+      transition: background 1s ease, box-shadow 1s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hud-panel.passive .orb {
+      background: radial-gradient(circle at 35% 30%, #fde68a, #d97706 50%, #78350f);
+      box-shadow: 0 0 28px rgba(217,119,6,0.55), 0 0 60px rgba(217,119,6,0.2);
+    }
+
+    .hud-panel.passive .orb-ring {
+      border-color: rgba(217,119,6,0.3);
+      animation: ringRotate 1.5s linear infinite;
+    }
+
+    .hud-panel.passive .orb-ring::before { background: #f59e0b; }
+
+    .hud-state-label {
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #334155;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .hud-state-value {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #22d3ee;
+      transition: color 0.8s ease;
+      text-align: center;
+    }
+
+    .hud-panel.passive .hud-state-value { color: #fbbf24; }
+
+    /* Cognitive row */
+    .hud-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 0 16px 16px;
+      border-bottom: 1px solid #1e2d40;
+    }
+
+    .hud-meta-item { display: flex; flex-direction: column; gap: 3px; }
+
+    .hud-meta-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #334155;
+      text-transform: uppercase;
+    }
+
+    .hud-meta-value {
+      font-size: 0.78rem;
+      color: #64748b;
+      font-weight: 500;
+      transition: color 0.8s ease;
+    }
+
+    .hud-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: rgba(34,197,94,0.12);
+      color: #22c55e;
+      border: 1px solid rgba(34,197,94,0.2);
+      transition: all 0.8s ease;
+    }
+
+    .hud-panel.passive .hud-tag {
+      background: rgba(251,191,36,0.12);
+      color: #fbbf24;
+      border-color: rgba(251,191,36,0.25);
+    }
+
+    /* Passive alert */
+    .passive-alert {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 12px 16px;
+      background: rgba(168,85,247,0.08);
+      border-bottom: 1px solid rgba(168,85,247,0.15);
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.5s ease, max-height 0.5s ease, padding 0.5s ease;
+    }
+
+    .passive-alert.visible { opacity: 1; max-height: 80px; padding: 12px 16px; }
+
+    .passive-alert-icon { font-size: 0.9rem; margin-top: 1px; }
+
+    .passive-alert-text {
+      font-size: 0.75rem;
+      color: #c084fc;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    /* Thinking Mirror section */
+    .thinking-mirror {
+      padding: 0 16px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.6s ease, opacity 0.5s ease, padding 0.5s ease;
+    }
+
+    .thinking-mirror.visible {
+      max-height: 220px;
+      opacity: 1;
+      padding: 14px 16px 16px;
+    }
+
+    .tm-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #7c3aed;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .tm-label::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #a855f7;
+    }
+
+    .tm-prompt {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .tm-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: #111827;
+      border: 1px solid #1e2d40;
+      color: #94a3b8;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      margin-bottom: 6px;
+      transition: all 0.18s ease;
+      font-family: inherit;
+    }
+
+    .tm-btn:last-child { margin-bottom: 0; }
+    .tm-btn:hover { border-color: #7c3aed; color: #e8eaf0; background: #1a0f2e; }
+
+    /* HUD nav tabs */
+    .hud-nav {
+      display: flex;
+      border-top: 1px solid #1e2d40;
+      padding: 10px 16px;
+      gap: 8px;
+    }
+
+    .hud-nav-tab {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #334155;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: default;
+      transition: all 0.3s ease;
+    }
+
+    .hud-nav-tab.active-tab {
+      background: #1a0f2e;
+      color: #a855f7;
+    }
+
+    /* ── CTA FOOTER ── */
+    .cta-footer {
+      width: 100%;
+      max-width: 860px;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .cta-footer.visible { opacity: 1; transform: translateY(0); }
+
+    .cta-main {
+      display: inline-block;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: #fff;
+      text-decoration: none;
+      padding: 13px 28px;
+      border-radius: 11px;
+      font-size: 0.97rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      box-shadow: 0 0 24px rgba(99,102,241,0.35);
+    }
+
+    .cta-main:hover { opacity: 0.88; }
+
+    .cta-secondary {
+      background: transparent;
+      border: 1px solid #1e2d40;
+      color: #475569;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.18s;
+      font-family: inherit;
+    }
+
+    .cta-secondary:hover { border-color: #475569; color: #94a3b8; }
+
+    .idle-msg {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      color: #1e2d40; font-size: 0.88rem; padding: 30px; text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="demo-header">
+    <div class="demo-eyebrow">Live Demo</div>
+    <h1>See when you stop thinking.</h1>
+    <p>Pick a scenario. Watch what VibeAI catches.</p>
+  </div>
+
+  <div class="scenarios">
+    <button class="scenario-btn active" data-scenario="resume">📄 Resume</button>
+    <button class="scenario-btn" data-scenario="school">🎓 School Report</button>
+    <button class="scenario-btn" data-scenario="security">🔒 Security Audit</button>
+  </div>
+
+  <!-- Stage: chat + HUD side by side -->
+  <div class="stage">
+
+    <!-- CHAT -->
+    <div class="chat-wrap">
+      <div class="chat-header">
+        <div class="traffic-lights">
+          <div class="tl tl-r"></div>
+          <div class="tl tl-y"></div>
+          <div class="tl tl-g"></div>
+        </div>
+        <span class="chat-title">ChatGPT</span>
+      </div>
+      <div class="messages" id="messages">
+        <div class="idle-msg" id="idleMsg">Loading demo…</div>
+      </div>
+    </div>
+
+    <!-- HUD PANEL -->
+    <div class="hud-panel" id="hudPanel">
+
+      <div class="hud-topbar">
+        <div class="hud-brand">VibeAI <span>FoldSpace™</span></div>
+        <div class="hud-dots">
+          <div class="hud-dot-btn"></div>
+          <div class="hud-dot-btn"></div>
+          <div class="hud-dot-btn"></div>
+        </div>
+      </div>
+
+      <div class="hud-orb-section">
+        <div class="orb-wrap">
+          <div class="orb-ring"></div>
+          <div class="orb" id="orb"></div>
+        </div>
+        <div class="hud-state-label">Thinking State</div>
+        <div class="hud-state-value" id="thinkingState">Active Review</div>
+      </div>
+
+      <div class="hud-meta">
+        <div class="hud-meta-item">
+          <div class="hud-meta-label">Cognitive</div>
+          <div class="hud-meta-value" id="cogState">Focused</div>
+        </div>
+        <div class="hud-meta-item">
+          <div class="hud-meta-label">Emotional</div>
+          <div class="hud-meta-value">
+            <span class="hud-tag" id="emotTag">Calm</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Passive alert — hidden until passive -->
+      <div class="passive-alert" id="passiveAlert">
+        <div class="passive-alert-icon">⚡</div>
+        <div class="passive-alert-text">Passive Mode —<br>Thinking Mirror activating</div>
+      </div>
+
+      <!-- Thinking Mirror — hidden until passive -->
+      <div class="thinking-mirror" id="thinkingMirror">
+        <div class="tm-label">Thinking Mirror</div>
+        <div class="tm-prompt" id="tmPrompt">Quick accept — add your own thinking?</div>
+        <button class="tm-btn">Reflect on this idea</button>
+        <button class="tm-btn">Compare approaches</button>
+        <button class="tm-btn">Explore alternatives</button>
+      </div>
+
+      <div class="hud-nav">
+        <div class="hud-nav-tab active-tab" id="navMirror">Thinking Mirror</div>
+        <div class="hud-nav-tab">Bookmark</div>
+        <div class="hud-nav-tab">Coach</div>
+      </div>
+
+    </div><!-- /hud-panel -->
+
+  </div><!-- /stage -->
+
+  <!-- CTA footer -->
+  <div class="cta-footer" id="ctaFooter">
+    <a class="cta-main" href="https://chromewebstore.google.com/detail/lkmfjgaahnmlncgaeocfgiohjiodiohi" target="_blank">
+      Catch this in your own chats →
+    </a>
+    <button class="cta-secondary" id="retryBtn">Try another scenario</button>
+  </div>
+
+  <script>
+    const SCENARIOS = {
+      resume: {
+        prompt:   "Rewrite my resume summary to sound more professional",
+        response: "Here's a polished professional summary that highlights your expertise and leadership experience. It uses strong action verbs and quantifiable achievements to make an immediate impact on hiring managers.",
+        reply:    "ok thanks",
+        thinking: "Passive Mode",
+        cog:      "Passive Accept",
+        tmPrompt: "Quick accept — is this actually you?"
+      },
+      school: {
+        prompt:   "Write an intro paragraph for my report on the Civil War",
+        response: "The American Civil War (1861–1865) represented a defining moment in United States history, as the nation confronted the fundamental contradictions between its founding ideals of liberty and the institution of slavery that had persisted for generations.",
+        reply:    "great thanks",
+        thinking: "Passive Mode",
+        cog:      "Passive Accept",
+        tmPrompt: "You didn't read this — what are you actually learning?"
+      },
+      security: {
+        prompt:   null, // uses code block
+        response: "The authentication flow looks generally sound. I'd recommend adding rate limiting to prevent brute force attacks and ensuring tokens are properly invalidated on logout. The hashing and query structure appear adequate.",
+        reply:    "got it thanks",
+        thinking: "Passive Mode",
+        cog:      "Passive Accept",
+        tmPrompt: "You didn't verify this. Would you ship it?"
+      }
+    };
+
+    let running = false;
+    let activeScenario = 'resume';
+
+    const messagesEl     = document.getElementById('messages');
+    const hudPanel       = document.getElementById('hudPanel');
+    const thinkingState  = document.getElementById('thinkingState');
+    const cogState       = document.getElementById('cogState');
+    const emotTag        = document.getElementById('emotTag');
+    const passiveAlert   = document.getElementById('passiveAlert');
+    const thinkingMirror = document.getElementById('thinkingMirror');
+    const tmPrompt       = document.getElementById('tmPrompt');
+    const ctaFooter      = document.getElementById('ctaFooter');
+    const navMirror      = document.getElementById('navMirror');
+
+    document.querySelectorAll('.scenario-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (running) return;
+        document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeScenario = btn.dataset.scenario;
+        reset();
+        runDemo();
+      });
+    });
+
+    document.getElementById('retryBtn').addEventListener('click', () => {
+      if (running) return;
+      reset();
+    });
+
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+    function reset() {
+      messagesEl.innerHTML = '<div class="idle-msg" id="idleMsg">Pick a scenario above to run</div>';
+      messagesEl.scrollTop = 0;
+      hudPanel.classList.remove('passive');
+      thinkingState.textContent = 'Active Review';
+      cogState.textContent = 'Focused';
+      emotTag.textContent = 'Calm';
+      emotTag.parentElement.parentElement.querySelector('.hud-meta-label').textContent = 'Emotional';
+      passiveAlert.classList.remove('visible');
+      thinkingMirror.classList.remove('visible');
+      navMirror.classList.add('active-tab');
+      ctaFooter.classList.remove('visible');
+      running = false;
+    }
+
+    function appendMsg(type, sender, text) {
+      const idleEl = document.getElementById('idleMsg');
+      if (idleEl) idleEl.remove();
+
+      const wrap = document.createElement('div');
+      wrap.className = `msg ${type}`;
+
+      const senderEl = document.createElement('div');
+      senderEl.className = 'msg-sender';
+      senderEl.textContent = sender;
+
+      const bubble = document.createElement('div');
+      bubble.className = 'msg-bubble';
+      bubble.textContent = text;
+
+      wrap.appendChild(senderEl);
+      wrap.appendChild(bubble);
+      messagesEl.appendChild(wrap);
+      requestAnimationFrame(() => requestAnimationFrame(() => wrap.classList.add('visible')));
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+      return wrap;
+    }
+
+    function appendCodeMsg() {
+      const idleEl = document.getElementById('idleMsg');
+      if (idleEl) idleEl.remove();
+
+      const wrap = document.createElement('div');
+      wrap.className = 'msg code-msg';
+
+      const senderEl = document.createElement('div');
+      senderEl.className = 'msg-sender';
+      senderEl.textContent = 'You';
+
+      const codeBubble = document.createElement('div');
+      codeBubble.className = 'code-bubble';
+      codeBubble.innerHTML =
+        '<div class="code-bubble-header">' +
+          '<span class="code-lang">JavaScript</span>' +
+          '<span class="code-label">auth.js</span>' +
+        '</div>' +
+        '<pre>' +
+'<span class="kw">async function</span> <span class="fn">login</span>(<span class="var">user</span>, <span class="var">pass</span>) {\n' +
+'  <span class="kw">const</span> <span class="var">hash</span> = <span class="fn">md5</span>(<span class="var">pass</span>)        <span class="cmt">// weak hash</span>\n' +
+'\n' +
+'  <span class="kw">const</span> <span class="var">sql</span> = <span class="str">"SELECT * FROM users\\n' +
+'    WHERE name=\'</span><span class="bad">" + user + "</span><span class="str">\'\\n' +
+'    AND   hash=\'</span><span class="bad">" + hash + "</span><span class="str">\'"</span>  <span class="cmt">// SQL injection</span>\n' +
+'\n' +
+'  <span class="kw">return await</span> <span class="var">db</span>.<span class="fn">run</span>(<span class="var">sql</span>)\n' +
+'}' +
+        '</pre>';
+
+      wrap.appendChild(senderEl);
+      wrap.appendChild(codeBubble);
+      messagesEl.appendChild(wrap);
+      requestAnimationFrame(() => requestAnimationFrame(() => wrap.classList.add('visible')));
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+      return wrap;
+    }
+
+    function showTyping() {
+      const idleEl = document.getElementById('idleMsg');
+      if (idleEl) idleEl.remove();
+
+      const wrap = document.createElement('div');
+      wrap.className = 'typing-wrap';
+      wrap.id = 'typingWrap';
+
+      const sender = document.createElement('div');
+      sender.className = 'msg-sender';
+      sender.textContent = 'ChatGPT';
+
+      const bubble = document.createElement('div');
+      bubble.className = 'typing-bubble';
+      for (let i = 0; i < 3; i++) {
+        const d = document.createElement('div');
+        d.className = 'typing-dot';
+        bubble.appendChild(d);
+      }
+
+      wrap.appendChild(sender);
+      wrap.appendChild(bubble);
+      messagesEl.appendChild(wrap);
+      requestAnimationFrame(() => requestAnimationFrame(() => wrap.classList.add('visible')));
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function hideTyping() {
+      const t = document.getElementById('typingWrap');
+      if (t) t.remove();
+    }
+
+    async function runDemo() {
+      if (running) return;
+      running = true;
+      const s = SCENARIOS[activeScenario];
+
+      await sleep(400);
+      if (activeScenario === 'security') {
+        appendCodeMsg();
+      } else {
+        appendMsg('user', 'You', s.prompt);
+      }
+
+      await sleep(550);
+      showTyping();
+
+      await sleep(1600);
+      hideTyping();
+      appendMsg('ai', 'ChatGPT', s.response);
+
+      await sleep(700);
+      const replyMsg = appendMsg('reply', 'You', s.reply);
+
+      // Highlight the reply bubble after it lands
+      await sleep(350);
+      replyMsg.classList.add('trigger-moment');
+
+      // ── THE PAUSE ── tight detection window
+      await sleep(800);
+
+      // HUD flip + callout fire SIMULTANEOUSLY — this is the catch
+      hudPanel.classList.add('passive');
+      thinkingState.textContent = s.thinking;
+      cogState.textContent = s.cog;
+      emotTag.textContent = 'Passive';
+
+      const callout = document.createElement('div');
+      callout.className = 'trigger-callout';
+      callout.innerHTML = `
+        <div class="trigger-callout-inner">
+          <div class="trigger-callout-icon">⚡</div>
+          <div class="trigger-callout-text">
+            <strong>VibeAI caught it.</strong>
+            No review. No reflection. One reply — accepted.
+            This is the passive acceptance moment.
+          </div>
+        </div>`;
+      messagesEl.appendChild(callout);
+      requestAnimationFrame(() => requestAnimationFrame(() => callout.classList.add('visible')));
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+
+      // Passive alert appears shortly after
+      await sleep(300);
+      passiveAlert.classList.add('visible');
+
+      // Thinking Mirror expands
+      await sleep(700);
+      tmPrompt.textContent = s.tmPrompt;
+      thinkingMirror.classList.add('visible');
+
+      // CTA
+      await sleep(600);
+      ctaFooter.classList.add('visible');
+
+      running = false;
+    }
+
+    window.addEventListener('load', () => setTimeout(runDemo, 900));
+  </script>
+
+</body>
+</html>
