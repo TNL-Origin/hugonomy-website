@@ -154,6 +154,17 @@ section { padding: 72px 0; }
   margin-left: auto; margin-right: auto;
 }
 .hero-trigger strong { color: #94a3b8; }
+.hero-descriptor {
+  font-size: clamp(0.88rem, 1.5vw, 1rem);
+  color: #64748b; line-height: 1.65;
+  max-width: 520px; margin: 8px auto 0;
+}
+.hero-vibe-sub {
+  font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+  color: #334155; line-height: 1.5;
+  max-width: 420px; margin: 6px auto 0;
+  font-style: italic;
+}
 .hero-demo-cta { scroll-behavior: smooth; }
 .hero-store-btns { margin-top: 12px; justify-content: center; }
 .so-what-bridge {
