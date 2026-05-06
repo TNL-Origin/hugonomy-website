@@ -950,6 +950,39 @@ footer {
 }
 
 /* ── What's New bar ───────────────────────────────────────────────────── */
+/* ── So What Section ── */
+.so-what-section { padding: 72px 0 64px; text-align: center; }
+.so-what-section .section-sub { margin: 0 auto 48px; }
+.so-what-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  max-width: 860px; margin: 0 auto 48px;
+}
+.so-what-card {
+  background: #0d1525; border: 1px solid #1e2d40;
+  border-radius: 16px; padding: 28px 22px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  text-align: center;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.so-what-card:hover { border-color: #3b82f6; transform: translateY(-3px); }
+.so-what-icon { font-size: 2rem; }
+.so-what-title {
+  font-size: 1rem; font-weight: 700; color: #e8eaf0;
+}
+.so-what-desc {
+  font-size: 0.88rem; color: #64748b; line-height: 1.65;
+}
+.so-what-desc em { color: #94a3b8; font-style: normal; font-weight: 500; }
+.so-what-cta { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.so-what-cta-line {
+  font-size: 0.95rem; color: #475569;
+  max-width: 480px; line-height: 1.5;
+}
+.so-what-btn { font-size: 1rem; padding: 14px 32px; }
+@media (max-width: 680px) {
+  .so-what-grid { grid-template-columns: 1fr; }
+}
+
 /* ── Live Demo Embed ── */
 .live-demo-section { padding: 60px 0 48px; text-align: center; }
 .live-demo-section .section-sub { margin: 0 auto 32px; }
