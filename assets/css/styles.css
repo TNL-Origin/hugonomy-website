@@ -978,6 +978,7 @@ footer {
   font-size: 0.95rem; color: #475569;
   max-width: 480px; line-height: 1.5;
 }
+.so-what-btn-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 .so-what-btn { font-size: 1rem; padding: 14px 32px; }
 @media (max-width: 680px) {
   .so-what-grid { grid-template-columns: 1fr; }
