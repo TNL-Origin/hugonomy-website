@@ -554,6 +554,36 @@
     .tm-btn:last-child { margin-bottom: 0; }
     .tm-btn:hover { border-color: #7c3aed; color: #e8eaf0; background: #1a0f2e; }
 
+    /* Action button — scenario-specific, pulsing, clickable */
+    .tm-action-btn {
+      display: none;
+      width: 100%;
+      text-align: left;
+      background: rgba(99,102,241,0.12);
+      border: 1px solid rgba(99,102,241,0.45);
+      color: #a5b4fc;
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 8px;
+      font-family: inherit;
+      transition: all 0.2s ease;
+      animation: actionPulse 2s ease-in-out infinite;
+    }
+    .tm-action-btn.show { display: block; }
+    .tm-action-btn:hover {
+      background: rgba(99,102,241,0.28);
+      border-color: rgba(99,102,241,0.8);
+      color: #e0e7ff;
+    }
+    .tm-action-btn:disabled { opacity: 0.45; cursor: default; animation: none; }
+    @keyframes actionPulse {
+      0%,100% { opacity: 1; }
+      50%      { opacity: 0.6; }
+    }
+
     /* HUD nav tabs */
     .hud-nav {
       display: flex;
@@ -639,9 +669,9 @@
   </div>
 
   <div class="scenarios">
-    <button class="scenario-btn active" data-scenario="resume">📄 Resume</button>
-    <button class="scenario-btn" data-scenario="school">🎓 School Report</button>
-    <button class="scenario-btn" data-scenario="security">🔒 Security Audit</button>
+    <button type="button" class="scenario-btn active" data-scenario="resume">📄 Resume</button>
+    <button type="button" class="scenario-btn" data-scenario="school">🎓 School Report</button>
+    <button type="button" class="scenario-btn" data-scenario="security">🔒 Security Audit</button>
   </div>
 
   <!-- Stage: chat + HUD side by side -->
@@ -706,9 +736,10 @@
       <div class="thinking-mirror" id="thinkingMirror">
         <div class="tm-label">Thinking Mirror</div>
         <div class="tm-prompt" id="tmPrompt">Quick accept — add your own thinking?</div>
-        <button class="tm-btn">Reflect on this idea</button>
-        <button class="tm-btn">Compare approaches</button>
-        <button class="tm-btn">Explore alternatives</button>
+        <button type="button" class="tm-action-btn" id="tmActionBtn"></button>
+        <button type="button" class="tm-btn">Reflect on this idea</button>
+        <button type="button" class="tm-btn">Compare approaches</button>
+        <button type="button" class="tm-btn">Explore alternatives</button>
       </div>
 
       <div class="hud-nav">
@@ -723,10 +754,10 @@
 
   <!-- CTA footer -->
   <div class="cta-footer" id="ctaFooter">
-    <a class="cta-main" href="https://chromewebstore.google.com/detail/lkmfjgaahnmlncgaeocfgiohjiodiohi" target="_blank">
+    <a class="cta-main" href="https://chromewebstore.google.com/detail/lkmfjgaahnmlncgaeocfgiohjiodiohi" target="_blank" rel="noopener noreferrer">
       Catch this in your own chats →
     </a>
-    <button class="cta-secondary" id="retryBtn">Try another scenario</button>
+    <button type="button" class="cta-secondary" id="retryBtn">Try another scenario</button>
   </div>
 
   <script>
@@ -737,7 +768,10 @@
         reply:    "ok thanks",
         thinking: "Passive Mode",
         cog:      "Passive Accept",
-        tmPrompt: "Quick accept — is this actually you?"
+        tmPrompt: "Quick accept — is this actually you?",
+        actionLabel:    "Challenge this answer",
+        actionPrompt:   "What would challenge this answer? Give me a critical perspective.",
+        actionResponse: "Good question — there are real issues here. The summary says 'leadership experience' but doesn't name a role. 'Results-driven' and 'strong communicator' are filler phrases recruiters skip past. It also assumes a senior audience when your background may not support that framing. A stronger version would name a specific outcome you actually delivered and cut the generic language entirely."
       },
       school: {
         prompt:   "Write an intro paragraph for my report on the Civil War",
@@ -745,15 +779,21 @@
         reply:    "great thanks",
         thinking: "Passive Mode",
         cog:      "Passive Accept",
-        tmPrompt: "You didn't read this — what are you actually learning?"
+        tmPrompt: "You didn't read this — what are you actually learning?",
+        actionLabel:    "Explain the reasoning",
+        actionPrompt:   "Explain the reasoning behind this.",
+        actionResponse: "The framing draws on the mainstream historical consensus — slavery as the root cause, with states' rights as a secondary argument that historians largely view as post-war reframing. The 1861–1865 dates mark Fort Sumter to Appomattox. One thing worth verifying for your report: is 'fundamental contradictions' your teacher's framing, or a specific historian's thesis you should cite? That distinction matters for academic writing."
       },
       security: {
-        prompt:   null, // uses code block
+        prompt:   null,
         response: "The authentication flow looks generally sound. I'd recommend adding rate limiting to prevent brute force attacks and ensuring tokens are properly invalidated on logout. The hashing and query structure appear adequate.",
         reply:    "got it thanks",
         thinking: "Passive Mode",
         cog:      "Passive Accept",
-        tmPrompt: "You didn't verify this. Would you ship it?"
+        tmPrompt: "You didn't verify this. Would you ship it?",
+        actionLabel:    "Ask for evidence",
+        actionPrompt:   "What evidence supports this? What might contradict it?",
+        actionResponse: "Actually — the query structure is NOT adequate. Line 3 concatenates user input directly into the SQL string without parameterization. That's a textbook SQL injection vulnerability. An attacker could input '; DROP TABLE users; -- and it would execute. This should be flagged as critical, not 'generally sound.' The original review missed it entirely."
       }
     };
 
@@ -768,6 +808,7 @@
     const passiveAlert   = document.getElementById('passiveAlert');
     const thinkingMirror = document.getElementById('thinkingMirror');
     const tmPrompt       = document.getElementById('tmPrompt');
+    const tmActionBtn    = document.getElementById('tmActionBtn');
     const ctaFooter      = document.getElementById('ctaFooter');
     const navMirror      = document.getElementById('navMirror');
 
@@ -799,6 +840,9 @@
       emotTag.parentElement.parentElement.querySelector('.hud-meta-label').textContent = 'Emotional';
       passiveAlert.classList.remove('visible');
       thinkingMirror.classList.remove('visible');
+      tmActionBtn.classList.remove('show');
+      tmActionBtn.disabled = false;
+      tmActionBtn.textContent = '';
       navMirror.classList.add('active-tab');
       ctaFooter.classList.remove('visible');
       running = false;
@@ -956,11 +1000,44 @@
       tmPrompt.textContent = s.tmPrompt;
       thinkingMirror.classList.add('visible');
 
-      // CTA
-      await sleep(600);
-      ctaFooter.classList.add('visible');
+      // Action button pulses into view after mirror settles
+      await sleep(500);
+      tmActionBtn.textContent = '→ ' + s.actionLabel;
+      tmActionBtn.classList.add('show');
 
-      running = false;
+      // Shared follow-up sequence — runs whether user clicks or auto-advances
+      let actionFired = false;
+      async function fireAction() {
+        if (actionFired) return;
+        actionFired = true;
+        tmActionBtn.disabled = true;
+
+        appendMsg('user', 'You', s.actionPrompt);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+
+        await sleep(500);
+        showTyping();
+        await sleep(1600);
+        hideTyping();
+        appendMsg('ai', 'ChatGPT', s.actionResponse);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+
+        await sleep(500);
+        hudPanel.classList.remove('passive');
+        thinkingState.textContent = 'Active Review';
+        cogState.textContent = 'Deep Focus';
+        emotTag.textContent = 'Engaged';
+
+        await sleep(400);
+        ctaFooter.classList.add('visible');
+        running = false;
+      }
+
+      tmActionBtn.onclick = fireAction;
+
+      // Auto-advance after 2.2s if user hasn't clicked
+      await sleep(2200);
+      fireAction();
     }
 
     window.addEventListener('load', () => setTimeout(runDemo, 900));
