@@ -155,6 +155,7 @@ section { padding: 72px 0; }
 }
 .hero-trigger strong { color: #94a3b8; }
 .hero-demo-cta { scroll-behavior: smooth; }
+.hero-store-btns { margin-top: 12px; justify-content: center; }
 .so-what-bridge {
   font-size: 0.85rem; color: #334155;
   max-width: 380px; text-align: center;
