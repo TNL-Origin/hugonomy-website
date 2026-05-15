@@ -426,6 +426,15 @@ section { padding: 72px 0; }
 .screenshot-card img { width: 100%; display: block; }
 @media (max-width: 480px) { .screenshots-platform-strip { grid-template-columns: 1fr; } }
 @media (max-width: 900px) { .screenshots-content-grid { grid-template-columns: 1fr; } }
+/* Claude + Gemini side-by-side row (temporary symmetry until each has 2 screenshots) */
+.screenshots-platform-pair {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 24px; margin-top: 40px;
+}
+.screenshots-platform-pair .screenshots-platform-group { margin-top: 0; }
+@media (max-width: 900px) {
+  .screenshots-platform-pair { grid-template-columns: 1fr; gap: 40px; }
+}
 .screenshots-feature-panel {
   position: sticky; top: 100px;
   background: var(--brand-card); border: 1px solid var(--brand-border);
