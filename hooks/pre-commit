@@ -1,0 +1,57 @@
+#!/bin/sh
+#
+# Pre-commit guard: reject commits that reintroduce the abandoned
+# provisional patent reference or "patent pending" language onto
+# Hugonomy's public-facing surfaces.
+#
+# Background: USPTO provisional #63/856,714 was abandoned 2026-04-29.
+# Public "patent pending" copy creates 35 USC §292 false-marking risk
+# and FTC §5 / Lanham §43(a) false-advertising risk. The 2026-05-14
+# cleanup scrubbed every public surface; this hook keeps it that way.
+#
+# Activation (one-time per clone, from repo root):
+#     git config core.hooksPath hooks
+#
+# To bypass intentionally (e.g., editing a historical record), run:
+#     git commit --no-verify
+#
+# Forbidden patterns (case-insensitive):
+FORBIDDEN_REGEX='63/856,714|856714|patent[[:space:]]*pending|patent-pending|provisional[[:space:]]*patent'
+
+RED='\033[0;31m'
+YEL='\033[0;33m'
+NC='\033[0m'
+
+# Gather the staged diff (added lines only — won't trip on context lines
+# from existing content that the commit isn't changing).
+staged_added=$(git diff --cached --diff-filter=AM -U0 -- \
+    | grep -E '^\+' \
+    | grep -v '^+++' \
+    || true)
+
+if [ -z "$staged_added" ]; then
+    exit 0
+fi
+
+# Search for forbidden patterns, case-insensitive.
+hits=$(printf '%s\n' "$staged_added" \
+    | grep -i -nE "$FORBIDDEN_REGEX" \
+    || true)
+
+if [ -n "$hits" ]; then
+    printf "${RED}pre-commit: blocked — abandoned-provisional language detected in staged changes${NC}\n" >&2
+    printf "\n" >&2
+    printf "  Provisional #63/856,714 was abandoned on 2026-04-29.\n" >&2
+    printf "  Reintroducing this text on a public surface creates false-marking\n" >&2
+    printf "  exposure (35 USC §292) and false-advertising exposure (FTC §5).\n" >&2
+    printf "\n" >&2
+    printf "  Offending added lines:\n" >&2
+    printf "%s\n" "$hits" | sed 's/^/    /' >&2
+    printf "\n" >&2
+    printf "${YEL}  If you genuinely need to commit historical/archival content${NC}\n" >&2
+    printf "${YEL}  that quotes the dead provisional, bypass with:${NC}\n" >&2
+    printf "      git commit --no-verify\n" >&2
+    exit 1
+fi
+
+exit 0
