@@ -716,7 +716,16 @@ section { padding: 72px 0; }
 }
 
 /* ── Support ──────────────────────────────────────────────────────────── */
-.support-section { text-align: center; }
+.support-section {
+  text-align: center;
+  padding: 88px 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(142, 68, 173, 0.10) 0%,
+    rgba(142, 68, 173, 0.04) 40%,
+    var(--brand-dark) 75%
+  );
+}
 .support-section .section-sub { margin: 0 auto 36px; }
 .btn-primary--spaced { margin-top: 8px; }
 
