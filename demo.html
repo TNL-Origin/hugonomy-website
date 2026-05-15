@@ -73,6 +73,40 @@
     .scenario-btn:hover:not(.active) { border-color: #334155; color: #94a3b8; }
     .scenario-btn.active { background: #111f35; border-color: #3b82f6; color: #e8eaf0; }
 
+    /* Attention pulse on scenario buttons until first user click.
+       Stops the moment body.engaged is set — see scenario click handler.
+       Honors prefers-reduced-motion. */
+    @keyframes scenarioPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+      50%      { box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.22); }
+    }
+    body:not(.engaged) .scenario-btn {
+      animation: scenarioPulse 1.8s ease-in-out infinite;
+    }
+    body.engaged .scenario-btn { animation: none; }
+
+    /* Bobbing 👇 hint next to "Pick a scenario." until first click */
+    .pick-hint-icon {
+      display: inline-block;
+      margin-left: 6px;
+      font-size: 1.05rem;
+      vertical-align: middle;
+      transition: opacity 0.4s ease;
+    }
+    @keyframes pickHintBob {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(4px); }
+    }
+    body:not(.engaged) .pick-hint-icon {
+      animation: pickHintBob 1.5s ease-in-out infinite;
+    }
+    body.engaged .pick-hint-icon { opacity: 0.35; }
+
+    @media (prefers-reduced-motion: reduce) {
+      body:not(.engaged) .scenario-btn,
+      body:not(.engaged) .pick-hint-icon { animation: none; }
+    }
+
     /* ── MAIN STAGE — side by side ── */
     .stage {
       width: 100%;
@@ -665,7 +699,7 @@
   <div class="demo-header">
     <div class="demo-eyebrow">Live Demo</div>
     <h1>See when you stop thinking.</h1>
-    <p>Pick a scenario. Watch what VibeAI catches.</p>
+    <p>Pick a scenario. Watch what VibeAI catches. <span class="pick-hint-icon" aria-hidden="true">&#x1F447;</span></p>
   </div>
 
   <div class="scenarios">
@@ -829,6 +863,9 @@
 
     document.querySelectorAll('.scenario-btn').forEach(btn => {
       btn.addEventListener('click', () => {
+        // Visitor saw the affordance and acted — kill the pulse/hint
+        // animations regardless of whether a demo is currently running.
+        document.body.classList.add('engaged');
         if (running) return;
         document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
