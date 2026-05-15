@@ -1114,6 +1114,17 @@ document.addEventListener('click', function(e) {
   } else {
     init();
   }
+
+  // Listen for postMessage events from the demo iframe (demo.html) and
+  // route them through the same `cta_click` schema so demo + hero CTAs
+  // appear in one Explore funnel. Origin is verified strictly — only
+  // messages from the same hugonomy.com origin are accepted.
+  window.addEventListener('message', function (e) {
+    if (e.origin !== window.location.origin) return;
+    var d = e.data;
+    if (!d || typeof d !== 'object' || d.type !== 'hugonomy_demo_event') return;
+    fireCtaClick(d.cta_location || 'demo_iframe', d.cta_destination || 'unknown', null);
+  });
 })();
 </script>
 

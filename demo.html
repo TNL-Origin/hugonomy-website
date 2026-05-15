@@ -800,6 +800,21 @@
     let running = false;
     let activeScenario = 'resume';
 
+    // Analytics: postMessage parent (index.html) so GA4 `cta_click` events
+    // fire from one place. Sandboxed iframe with allow-same-origin can
+    // still call window.parent.postMessage; the parent verifies origin.
+    function postDemoEvent(destination) {
+      try {
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({
+            type: 'hugonomy_demo_event',
+            cta_location: 'demo_iframe',
+            cta_destination: destination
+          }, window.location.origin);
+        }
+      } catch (e) { /* silent — analytics must never break the demo */ }
+    }
+
     const messagesEl     = document.getElementById('messages');
     const hudPanel       = document.getElementById('hudPanel');
     const thinkingState  = document.getElementById('thinkingState');
@@ -818,6 +833,7 @@
         document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         activeScenario = btn.dataset.scenario;
+        postDemoEvent('scenario_' + activeScenario);
         reset();
         runDemo();
       });
@@ -825,8 +841,18 @@
 
     document.getElementById('retryBtn').addEventListener('click', () => {
       if (running) return;
+      postDemoEvent('retry');
       reset();
     });
+
+    // Track install-CTA clicks inside the demo iframe (parent's outbound
+    // tracker can't see them — different document context).
+    var demoInstallLink = document.querySelector('.cta-main');
+    if (demoInstallLink) {
+      demoInstallLink.addEventListener('click', function () {
+        postDemoEvent('chrome_store');
+      });
+    }
 
     const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -1033,7 +1059,11 @@
         running = false;
       }
 
-      tmActionBtn.onclick = fireAction;
+      tmActionBtn.onclick = function () {
+        // Only the user-driven click fires the event — auto-advance below stays silent
+        postDemoEvent('mirror_action');
+        fireAction();
+      };
 
       // Auto-advance after 2.2s if user hasn't clicked
       await sleep(2200);
