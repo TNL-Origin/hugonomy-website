@@ -1053,6 +1053,70 @@ document.addEventListener('click', function(e) {
 });
 </script>
 
+<!-- GA4 custom CTA tracking — added 2026-05-14
+     Default GA4 enhanced measurement covers outbound clicks, scroll (90%),
+     video_start/progress/complete, and file_download — but NOT in-page anchor
+     clicks (e.g., "Watch what you missed ↓"). This block adds a single
+     `cta_click` event with `cta_location` + `cta_destination` parameters so
+     we can answer "which CTA is converting?" with one Explore funnel.
+     Slice in GA4 by cta_location / cta_destination — not separate event names.
+     If gtag is unavailable (blocked by extension, network failure, etc.),
+     the listener no-ops silently. Analytics must never break the page. -->
+<script>
+(function () {
+  function fireCtaClick(location, destination, ctaText) {
+    if (typeof gtag !== 'function') return;
+    try {
+      gtag('event', 'cta_click', {
+        cta_location: location,
+        cta_destination: destination,
+        cta_text: (ctaText || '').slice(0, 80) || null,
+        page_path: window.location.pathname || '/'
+      });
+    } catch (e) { /* silent */ }
+  }
+
+  var bindings = [
+    // Hero
+    { sel: '.hero-demo-cta',                                   loc: 'hero',       dest: 'watch_demo_anchor' },
+    { sel: '.hero-store-btns a[href*="chromewebstore"]',       loc: 'hero',       dest: 'chrome_store'      },
+    { sel: '.hero-store-btns a[href*="microsoftedge"]',        loc: 'hero',       dest: 'edge_store'        },
+    { sel: '.hero-img-link',                                   loc: 'hero',       dest: 'youtube_demo_image'},
+    { sel: '.video-link-note--hero a',                         loc: 'hero',       dest: 'youtube_demo_text' },
+    // So-what
+    { sel: '.so-what-btn-row a[href*="chromewebstore"]',       loc: 'so_what',    dest: 'chrome_store'      },
+    { sel: '.so-what-btn-row a[href*="microsoftedge"]',        loc: 'so_what',    dest: 'edge_store'        },
+    // Footer CTA section
+    { sel: '#install-actions a[href*="chromewebstore"]',       loc: 'footer_cta', dest: 'chrome_store'      },
+    { sel: '#install-actions a[href*="microsoftedge"]',        loc: 'footer_cta', dest: 'edge_store'        },
+    // Nav
+    { sel: 'nav .btn-nav',                                     loc: 'nav',        dest: 'install_anchor'    },
+    // Research expand toggle
+    { sel: '.research-expand-btn',                             loc: 'research',   dest: 'expand_studies'    }
+  ];
+
+  function init() {
+    bindings.forEach(function (b) {
+      var nodes = document.querySelectorAll(b.sel);
+      for (var i = 0; i < nodes.length; i++) {
+        (function (node, b) {
+          node.addEventListener('click', function () {
+            var txt = (node.textContent || '').trim().replace(/\s+/g, ' ');
+            fireCtaClick(b.loc, b.dest, txt);
+          });
+        })(nodes[i], b);
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
 </body>
 </html>
 
