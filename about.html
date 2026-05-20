@@ -66,6 +66,16 @@
     @media (max-width: 700px) { .founder-grid { grid-template-columns: 1fr; } }
     .founder-bio p { color: var(--text-secondary); font-size: 0.97rem; line-height: 1.75; margin-bottom: 18px; }
     .founder-bio p:last-child { margin-bottom: 0; }
+    a.paper-link {
+      color: var(--brand-blue);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(108,166,255,0.35);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    a.paper-link:hover {
+      color: #94c2ff;
+      border-bottom-color: rgba(108,166,255,0.7);
+    }
     .founder-aside { display: flex; flex-direction: column; gap: 16px; }
     .founder-aside-card {
       background: var(--brand-card); border: 1px solid var(--brand-border);
@@ -73,6 +83,29 @@
     }
     .founder-aside-card h4 { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-blue); margin-bottom: 8px; }
     .founder-aside-card p { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.55; }
+    /* Linked card variant — whole card is clickable, h4 gets an arrow
+       affordance so the link nature is discoverable. */
+    a.founder-aside-card {
+      display: block; text-decoration: none; color: inherit;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    a.founder-aside-card:hover {
+      border-color: rgba(108,166,255,0.45);
+      background: rgba(108,166,255,0.06);
+      transform: translateY(-1px);
+    }
+    a.founder-aside-card h4::after {
+      content: ' \2197';
+      font-size: 0.78rem;
+      color: var(--brand-blue);
+      margin-left: 4px;
+      opacity: 0.7;
+      transition: opacity 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    a.founder-aside-card:hover h4::after {
+      opacity: 1; transform: translate(2px, -2px);
+    }
     .mission-section { background: var(--brand-mid); padding: 80px 0; }
     .mission-quote {
       max-width: 760px; margin: 48px auto 0;
@@ -222,7 +255,10 @@
         <p>
           After that work, he joined the University of Illinois Urbana-Champaign (UIUC) to conduct
           advanced research in virology and neuroinflammation. His publication in
-          <em>Brain, Behavior, and Immunity</em> (2023) reflects his commitment to rigorous, translational
+          <a class="paper-link"
+             href="https://www.sciencedirect.com/science/article/pii/S2666354624001698"
+             target="_blank" rel="noopener noreferrer"><em>Brain,
+          Behavior, &amp; Immunity &mdash; Health</em> (2024)</a> reflects his commitment to rigorous, translational
           science and the study of human resilience under stress.
         </p>
         <p>
@@ -244,10 +280,13 @@
           <h4>Clinical</h4>
           <p>Critical care physician, Sav-La-Mar Public General Hospital, Jamaica (COVID-19 response)</p>
         </div>
-        <div class="founder-aside-card">
+        <a class="founder-aside-card"
+           href="https://www.sciencedirect.com/science/article/pii/S2666354624001698"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Read Joseph Tingling's paper in Brain, Behavior, &amp; Immunity - Health (opens in new tab)">
           <h4>Publication</h4>
-          <p><em>Brain, Behavior, and Immunity</em>, 2023 — human resilience under neuroinflammatory stress</p>
-        </div>
+          <p><em>Brain, Behavior, &amp; Immunity &mdash; Health</em>, 2024 &mdash; human resilience under neuroinflammatory stress</p>
+        </a>
         <div class="founder-aside-card">
           <h4>Marks</h4>
           <p>Hugonomy&trade;, VibeAI&trade;, FoldSpace&trade;,<br>HugoScore&trade;, Thinking Mirror&trade;</p>
@@ -277,8 +316,11 @@
         <div class="founder-timeline-dot">&#x1F52C;</div>
         <div class="founder-timeline-body">
           <p class="founder-timeline-year">Urbana, Illinois</p>
-          <h4>UIUC — Neuroinflammation Research</h4>
-          <p>Advanced research in virology and neuroinflammation at the University of Illinois Urbana-Champaign. Published in <em>Brain, Behavior, and Immunity</em> (2023).</p>
+          <h4>UIUC &mdash; Neuroinflammation Research</h4>
+          <p>Advanced research in virology and neuroinflammation at the University of Illinois Urbana-Champaign. Published in
+            <a class="paper-link"
+               href="https://www.sciencedirect.com/science/article/pii/S2666354624001698"
+               target="_blank" rel="noopener noreferrer"><em>Brain, Behavior, &amp; Immunity &mdash; Health</em> (2024)</a>.</p>
         </div>
       </div>
 
