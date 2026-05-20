@@ -1444,12 +1444,14 @@ footer {
 .key-scene-text p {
   margin: 0 0 6px;
 }
-/* Desktop default: each sentence on its own line (visual rhythm beat).
-   Mobile override below collapses pairs to a single line per pair to
-   reduce vertical height per Jo's 2026-05-20 mobile-density request. */
+/* Pair sentences flow inline within their .key-scene-pair paragraph on
+   ALL viewports — two sentences per line, with a small space between
+   them. Each pair (the <p>) still creates a block break, so the section
+   reads as paired lines rather than five single-sentence lines. */
 .key-scene-line {
-  display: block;
+  display: inline;
 }
+.key-scene-line + .key-scene-line::before { content: " "; }
 .key-scene-text em {
   color: #f0c040;
   font-style: italic;
@@ -1474,12 +1476,6 @@ footer {
 @media (max-width: 560px) {
   .key-scene-bridge { padding: 40px 0 32px; }
   .key-scene-text { padding: 0 16px; font-size: 1rem; line-height: 1.55; }
-  /* Two-sentences-per-line on mobile to reduce vertical height. Each pair
-     still has paragraph spacing between pairs; only WITHIN a pair do the
-     two sentences flow inline. The space::before keeps the sentence
-     boundary readable. */
-  .key-scene-line { display: inline; }
-  .key-scene-line + .key-scene-line::before { content: " "; }
   .key-scene-pair { margin: 0 0 10px; }
 }
 
