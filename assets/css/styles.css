@@ -1330,18 +1330,10 @@ footer {
   text-align: center; margin-top: 48px;
   font-size: 0.95rem; color: var(--text-secondary); font-style: italic;
 }
-.moment-manifesto {
-  text-align: center; margin-top: 22px;
-  font-size: 1.05rem; color: var(--text-primary); line-height: 1.75;
-  letter-spacing: 0.01em;
-}
-.moment-manifesto strong {
-  display: inline-block; margin-top: 6px;
-  font-size: 1.35rem; font-weight: 800; letter-spacing: -0.01em;
-  background: linear-gradient(90deg, var(--brand-blue), var(--brand-purple));
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; color: transparent;
-}
+/* (.moment-manifesto removed 2026-05-20 — element was deleted from
+   index.html when the moment section moved to position 1; the manifesto
+   text was redundant with the hero's "Don't Outsource Your Mind" tagline
+   directly beneath it.) */
 .vibe-ai {
   color: #ff4d4d; font-weight: 900;
   -webkit-text-fill-color: #ff4d4d;
@@ -1364,6 +1356,108 @@ footer {
   .moment-steps--four .moment-connector { display: block; }
   .moment-step { padding: 12px 0; width: 100%; max-width: 300px; }
   .moment-step--passive::before { inset: -8px -8px; }
+}
+
+/* ── Phase 4 light-card treatment (2026-05-20) ──────────────────────────
+   Per design decision: phases 1-3 keep default palette (blend with the
+   dark navy section background, building intrigue). Phase 4 alone gets
+   a high-contrast WHITE card so it visually pops as the "ohh wow"
+   payoff — the moment VibeAI catches. White-on-navy is the eye-catch.
+   Reflection frame (L7), NOT alarm (red would have signaled judgment). */
+.moment-step--phase4-light {
+  /* Soft cream/white card surface against the dark navy section. */
+  background: #f6f7fb;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  padding: 18px 14px 16px;
+  box-shadow: 0 12px 36px rgba(255, 255, 255, 0.08), 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+/* All colors below are tuned for WCAG AA on the #f6f7fb card surface.
+   Step-num and pill use darker-amber (#8a5e1a / #7a5618) — strong contrast
+   against amber tints. Tags and copy use darker slate (#2f3d5e / #2a3a5c)
+   instead of the dim-on-dark hues we'd use on the navy bg. */
+.moment-step--phase4-light .moment-step-num {
+  background: #ffffff;
+  border-color: #b9852e;
+  color: #8a5e1a;
+}
+.moment-step--phase4-light .moment-step-tag {
+  color: #2f3d5e;
+}
+.moment-step--phase4-light .moment-passive-pill {
+  background: rgba(240, 192, 64, 0.22);
+  border-color: rgba(184, 130, 32, 0.65);
+  color: #7a5618;
+}
+.moment-step--phase4-light .moment-mirror-card {
+  background: #ffffff;
+  border-color: rgba(60, 130, 220, 0.55);
+  box-shadow: 0 0 18px rgba(79, 172, 254, 0.12);
+}
+.moment-step--phase4-light .moment-mirror-prompts span {
+  background: rgba(60, 130, 220, 0.08);
+  border-color: rgba(60, 130, 220, 0.28);
+  color: #1d2a48;
+}
+.moment-step--phase4-light .moment-step-desc {
+  color: #2a3a5c;
+}
+/* Phase-4 light card uses its own outline; disable the dim amber wash
+   that the .moment-step--passive::before pseudo-element draws. */
+.moment-step--phase4-light.moment-step--passive::before {
+  display: none;
+}
+
+/* ── Lead variant of moment section: it's the FIRST thing under the nav
+   now (was position 2). Slightly tighter top padding so the page doesn't
+   open with a giant gap. ──────────────────────────────────────────── */
+.passive-moment-section--lead { padding-top: 56px; }
+@media (max-width: 720px) {
+  .passive-moment-section--lead { padding-top: 32px; }
+}
+
+/* ── Key-scene bridge: 6-line scenario + dual CTA between moment
+   section and the existing hero. Reads as the transition from
+   "here's the moment" → "here's what we do about it" → hero ratifies.
+   No animation per design decision (full context visible at glance). */
+.key-scene-bridge {
+  padding: 56px 0 48px;
+  background: var(--brand-dark);
+  text-align: center;
+}
+.key-scene-text {
+  max-width: 640px; margin: 0 auto;
+  font-size: clamp(1.05rem, 1.6vw, 1.18rem);
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+.key-scene-text p {
+  margin: 0 0 6px;
+}
+.key-scene-text em {
+  color: #f0c040;
+  font-style: italic;
+  font-weight: 600;
+}
+.key-scene-scope {
+  margin-top: 14px !important;
+  color: var(--text-secondary);
+  font-size: 0.95em;
+}
+.key-scene-tagline {
+  max-width: 640px; margin: 28px auto 24px;
+  font-size: clamp(1.08rem, 1.7vw, 1.22rem);
+  line-height: 1.6;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+.key-scene-cta {
+  display: flex; justify-content: center; gap: 14px;
+  flex-wrap: wrap;
+}
+@media (max-width: 560px) {
+  .key-scene-bridge { padding: 40px 0 32px; }
+  .key-scene-text { padding: 0 16px; }
 }
 
 /* ── HUD moment label (Option 2) ─────────────────────────────────────── */
