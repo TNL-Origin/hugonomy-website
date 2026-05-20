@@ -1409,11 +1409,13 @@ footer {
 }
 
 /* ── Lead variant of moment section: it's the FIRST thing under the nav
-   now (was position 2). Slightly tighter top padding so the page doesn't
-   open with a giant gap. ──────────────────────────────────────────── */
-.passive-moment-section--lead { padding-top: 56px; }
+   now (was position 2). Nav is position:fixed at ~76px tall, so we mirror
+   the hero's 100px top padding so the "THE KEY MOMENT" label clears the
+   nav cleanly (originally set this to 56px which let the nav pinch the
+   label — fixed 2026-05-20 post-deploy). ──────────────────────────── */
+.passive-moment-section--lead { padding-top: 100px; }
 @media (max-width: 720px) {
-  .passive-moment-section--lead { padding-top: 32px; }
+  .passive-moment-section--lead { padding-top: 80px; }
 }
 
 /* ── Key-scene bridge: 6-line scenario + dual CTA between moment
