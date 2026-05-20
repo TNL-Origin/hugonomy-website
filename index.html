@@ -1153,6 +1153,68 @@ document.addEventListener('click', function(e) {
 })();
 </script>
 
+<!-- GA4 section-view tracking — added 2026-05-20
+     Fires a single `section_view` event when each major page section
+     enters the viewport for the first time in the session. Lets us
+     answer "did users actually READ the moment section before clicking
+     install?" in Path Exploration by joining section_view → cta_click.
+     Each section fires at most once per page load (set-based dedup).
+     IntersectionObserver threshold 0.25 means 25% visible — works for
+     sections both taller and shorter than the viewport. Silent no-op
+     if gtag or IntersectionObserver aren't available. -->
+<script>
+(function () {
+  if (typeof gtag !== 'function') return;
+  if (!('IntersectionObserver' in window)) return;
+
+  var seen = Object.create(null);
+
+  function fireSectionView(sectionId) {
+    if (seen[sectionId]) return;
+    seen[sectionId] = true;
+    try {
+      gtag('event', 'section_view', {
+        section_id: sectionId,
+        page_path: window.location.pathname || '/'
+      });
+    } catch (e) { /* silent */ }
+  }
+
+  var sections = [
+    { sel: '#the-moment',          section: 'moment_section'  },
+    { sel: '.key-scene-bridge',    section: 'key_scene'       },
+    { sel: 'header.hero',          section: 'hero'            },
+    { sel: '#live-demo',           section: 'live_demo'       },
+    { sel: '#who-uses',            section: 'personas'        },
+    { sel: '.so-what-section',     section: 'so_what'         },
+    { sel: '#install-actions',     section: 'install_footer'  }
+  ];
+
+  function init() {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var label = entry.target.getAttribute('data-section-track');
+        if (label) fireSectionView(label);
+      });
+    }, { threshold: 0.25 });
+
+    sections.forEach(function (s) {
+      var el = document.querySelector(s.sel);
+      if (!el) return;
+      el.setAttribute('data-section-track', s.section);
+      observer.observe(el);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
 </body>
 </html>
 
