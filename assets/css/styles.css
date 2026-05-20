@@ -97,7 +97,12 @@ section { padding: 72px 0; }
 
 /* ── HERO ─────────────────────────────────────────────────────────────── */
 .hero {
-  padding: 100px 0 56px;
+  /* Top padding trimmed 100→72 on 2026-05-20: hero is no longer the first
+     section under the nav (moment + key-scene precede it), so it doesn't
+     need full nav-clearance — just enough breathing room when scrolled
+     into view. 72px keeps the "Now live" badge clear of the fixed nav
+     overlay (~76px tall) with a few pixels of margin. */
+  padding: 72px 0 56px;
   position: relative; overflow: visible;
 }
 .hero-glow-1 {
@@ -1409,13 +1414,16 @@ footer {
 }
 
 /* ── Lead variant of moment section: it's the FIRST thing under the nav
-   now (was position 2). Nav is position:fixed at ~76px tall, so we mirror
-   the hero's 100px top padding so the "THE KEY MOMENT" label clears the
-   nav cleanly (originally set this to 56px which let the nav pinch the
-   label — fixed 2026-05-20 post-deploy). ──────────────────────────── */
-.passive-moment-section--lead { padding-top: 100px; }
+   now (was position 2). Nav is position:fixed at ~76px tall, so we keep
+   100px top padding for clean clearance, but trim bottom padding and
+   internal gaps so the hero image comes into view sooner (Jo 2026-05-20:
+   "shorten the scroll distance to the Don't Outsource Your Mind hero").
+   ──────────────────────────────────────────────────────────────────── */
+.passive-moment-section--lead { padding-top: 100px; padding-bottom: 32px; }
+.passive-moment-section--lead .moment-steps { margin-top: 36px; }
+.passive-moment-section--lead .moment-footnote { margin-top: 24px; }
 @media (max-width: 720px) {
-  .passive-moment-section--lead { padding-top: 80px; }
+  .passive-moment-section--lead { padding-top: 80px; padding-bottom: 24px; }
 }
 
 /* ── Key-scene bridge: 6-line scenario + dual CTA between moment
@@ -1423,7 +1431,7 @@ footer {
    "here's the moment" → "here's what we do about it" → hero ratifies.
    No animation per design decision (full context visible at glance). */
 .key-scene-bridge {
-  padding: 56px 0 48px;
+  padding: 28px 0 32px;
   background: var(--brand-dark);
   text-align: center;
 }
@@ -1453,9 +1461,9 @@ footer {
   font-size: 0.95em;
 }
 .key-scene-tagline {
-  max-width: 640px; margin: 28px auto 24px;
+  max-width: 640px; margin: 18px auto 18px;
   font-size: clamp(1.08rem, 1.7vw, 1.22rem);
-  line-height: 1.6;
+  line-height: 1.55;
   color: var(--text-primary);
   font-weight: 500;
 }
