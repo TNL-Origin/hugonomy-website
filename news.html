@@ -139,6 +139,65 @@
     .press-release-contact a { color: var(--brand-blue); }
     .follow-section { padding: 80px 0; }
     .featured-writing-section { padding: 80px 0; background: var(--bg-soft); }
+    /* Compact commentary-note variant — smaller than the featured "Founder
+       commentary" block above (which uses h2.section-title and a 40px-pad
+       card). This is a side-note voice: tighter padding, smaller type,
+       narrower card, lower section padding. Added 2026-05-20 for the
+       Gemini Omni I/O 2026 note. */
+    .commentary-note-section { padding: 56px 0; }
+    .commentary-note-label { font-size: 0.7rem; }
+    .commentary-note-title {
+      font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      text-align: center;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+    .commentary-note-card {
+      max-width: 680px; margin: 28px auto 0;
+      background: var(--brand-card); border: 1px solid var(--brand-border);
+      border-radius: 14px; padding: 28px 30px;
+    }
+    .commentary-note-image {
+      display: block;
+      width: 100%;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 22px;
+      border: 1px solid var(--brand-border);
+    }
+    .commentary-note-body {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+    .commentary-note-body--prompt {
+      margin-top: 8px;
+      padding: 14px 16px;
+      background: rgba(108,166,255,0.06);
+      border-left: 3px solid var(--brand-blue);
+      border-radius: 0 8px 8px 0;
+      color: var(--text-primary);
+    }
+    .commentary-note-footer {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--brand-border);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .commentary-note-footer a { color: var(--brand-blue); }
+    @media (max-width: 560px) {
+      .commentary-note-section { padding: 40px 0; }
+      .commentary-note-card { padding: 22px 18px; border-radius: 12px; margin-top: 20px; }
+      .commentary-note-image { max-height: 200px; margin-bottom: 16px; }
+      .commentary-note-body { font-size: 0.86rem; }
+    }
     .featured-article-card {
       display: block; max-width: 720px; margin: 48px auto 0;
       background: var(--brand-card); border: 1px solid var(--brand-border);
@@ -416,6 +475,83 @@
       <p class="featured-article-sub">After dozens of builds, audits, and late-night debugging sessions, Hugonomy Systems is almost ready for its next step.</p>
       <span class="featured-article-cta">Read on Substack &rarr;</span>
     </a>
+  </div>
+</section>
+
+<!-- ── Commentary note (Gemini Omni, May 20 2026) ─────────────────────── -->
+<section class="commentary-note-section">
+  <div class="container">
+    <p class="section-label commentary-note-label">Commentary note &middot; May 20 2026</p>
+    <h3 class="commentary-note-title">Gemini Omni and the next surface of cognitive offloading.</h3>
+    <div class="commentary-note-card">
+      <img src="assets/images/commentary-gemini-omni.png"
+           alt="Commentary illustration — multimodal AI and cognitive offloading"
+           class="commentary-note-image"
+           loading="lazy">
+      <p class="commentary-note-body">
+        Google released Gemini Omni yesterday at I/O 2026 &mdash; a multimodal model
+        that generates and edits video from text, image, audio, or video input.
+        Rolling out to AI Plus subscribers, and crucially,
+        <strong>free through YouTube Shorts and YouTube Create</strong> starting this week.
+        Hassabis framed it explicitly: <em>"With world models, AI is moving from
+        predicting text to simulating reality."</em>
+      </p>
+
+      <p class="commentary-note-body">
+        A few things worth sitting with, because they touch this subreddit's whole
+        topic in a way nobody covering the launch is naming:
+      </p>
+
+      <p class="commentary-note-body">
+        Nearly all the cognitive-offloading research we follow here &mdash; Gerlich,
+        Kabashkin's Cognitive Atrophy Paradox, the broader literature on AI's effect
+        on thinking &mdash; has studied <strong>text-based AI interaction</strong>.
+        That's what existed when those papers were written. Multimodal generative AI
+        at consumer scale is functionally new ground. We don't yet know what
+        cognitive offloading looks like when the offloadable surface expands from
+        <em>"writing"</em> to <em>"visualizing."</em> The instinct of mentally picturing
+        something before generating it &mdash; a sketch, a scene, a layout &mdash;
+        may be the next thing the cognitive load quietly migrates off of, and we
+        won't have research on it for years.
+      </p>
+
+      <p class="commentary-note-body">
+        The Hassabis "simulating reality" framing is a real philosophical claim about
+        what the model is doing, not just marketing. When the output isn't predicted
+        text but generated reality-fragments, the user's relationship to verification
+        changes. With text you can still read and disagree. With a 10-second video
+        that plausibly shows a thing, the disagreement surface is different &mdash;
+        harder to specify what's wrong, easier to accept the rendered version as how
+        it would actually look.
+      </p>
+
+      <p class="commentary-note-body">
+        The free YouTube Shorts rollout matters more than the AI Plus subscription
+        tier. It puts world-model generation in front of hundreds of millions of
+        users who weren't generative-AI users yesterday. The cognitive-engagement
+        question doesn't get to wait for the research to catch up to that distribution.
+      </p>
+
+      <p class="commentary-note-body">
+        Not a moral panic post &mdash; the model genuinely looks impressive, and
+        most of what people will do with it will be fine. But this sub exists to
+        track the second-order question (what does AI use <em>do to thinking</em>),
+        and the launch suggests the answers we have so far are scoped to a narrower
+        form of AI than the one users will be touching tomorrow.
+      </p>
+
+      <p class="commentary-note-body commentary-note-body--prompt">
+        <strong>Open question for the sub:</strong> what would the equivalent of the
+        Kabashkin / Gerlich studies look like for multimodal generative use?
+        What's the testable cognitive claim, and who's positioned to run it?
+      </p>
+
+      <p class="commentary-note-footer">
+        <a href="https://www.reddit.com/r/AICognitiveWatch/" target="_blank" rel="noopener noreferrer">r/AICognitiveWatch &mdash; join the conversation</a>
+        &nbsp;&middot;&nbsp;
+        Vibe<span class="vibe-ai">AI</span> FoldSpace &mdash; <a href="/">hugonomy.com</a>
+      </p>
+    </div>
   </div>
 </section>
 
