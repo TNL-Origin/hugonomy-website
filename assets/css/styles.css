@@ -1363,6 +1363,20 @@ footer {
   .moment-step--passive::before { inset: -8px -8px; }
 }
 
+/* ── Rotating text (2026-05-21, Phase 2 living prompt stack) ──────────────
+   Subtle 300ms cross-fade applied to the four rotating elements on the
+   moment-section + key-scene-bridge. The element keeps its existing
+   styling (chat bubble, mirror prompt, em); only its text content swaps.
+   prefers-reduced-motion: the JS detects this and disables the rotation
+   entirely (first variant shown statically). CSS-side, the transition
+   itself is reduced. */
+.rotating-text {
+  transition: opacity 0.3s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rotating-text { transition: none; }
+}
+
 /* ── Phase 4 light-card treatment (2026-05-20) ──────────────────────────
    Per design decision: phases 1-3 keep default palette (blend with the
    dark navy section background, building intrigue). Phase 4 alone gets
