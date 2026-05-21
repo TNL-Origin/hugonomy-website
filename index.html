@@ -1240,14 +1240,19 @@ document.addEventListener('click', function(e) {
   var hasSystem = systemGroup.ids.some(exists);
   if (userGroups.length === 0 && !hasSystem) return;
 
-  // Pause on hover over the moment section + pause when off-screen
+  // v3 fix (2026-05-21): removed mouseenter/mouseleave hover-pause.
+  // The mouseenter handler fired when scrolling moved the section UNDER
+  // a stationary cursor — paused stuck true until the next scroll moved
+  // the section back out. Symptom: rotation appeared "frozen" after
+  // scrolling back to the top, restarted only on additional scroll.
+  // The IntersectionObserver below handles the main case (don't rotate
+  // when section is off-screen). Hover-pause could be re-added later
+  // using a mousemove-based detector that distinguishes intentional
+  // hover from scroll-induced cursor overlap, but the simple version
+  // wasn't worth the bug.
   var paused = false;
   var inViewport = true;
   var momentSection = document.getElementById('the-moment');
-  if (momentSection) {
-    momentSection.addEventListener('mouseenter', function () { paused = true; });
-    momentSection.addEventListener('mouseleave', function () { paused = false; });
-  }
   if ('IntersectionObserver' in window && momentSection) {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) { inViewport = entry.isIntersecting; });
