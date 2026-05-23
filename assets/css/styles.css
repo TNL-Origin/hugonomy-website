@@ -22,9 +22,11 @@
 html { scroll-behavior: smooth; }
 
 /* Default anchor color. Prevents browser-default visited purple from showing
-   on any link that doesn't set its own color (class-scoped rules still win). */
+   on any link that doesn't set its own color. :where() keeps the visited
+   override at low specificity so any class-styled anchor (.btn-primary,
+   .nav-links a, etc.) keeps its own color through the visited state. */
 a { color: var(--brand-blue); }
-a:visited { color: var(--brand-blue); }
+a:where(:visited) { color: var(--brand-blue); }
 
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -223,6 +225,7 @@ section { padding: 72px 0; }
   transition: opacity 0.2s, transform 0.15s;
   box-shadow: 0 6px 28px rgba(79,172,254,0.28);
 }
+.btn-primary:visited { color: #fff; }
 .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
 .btn-secondary {
   display: inline-flex; align-items: center; gap: 8px;
@@ -231,6 +234,7 @@ section { padding: 72px 0; }
   text-decoration: none; font-weight: 600; font-size: 0.97rem;
   transition: border-color 0.2s, background 0.2s;
 }
+.btn-secondary:visited { color: var(--text-primary); }
 .btn-secondary:hover { border-color: rgba(108,166,255,0.35); background: rgba(108,166,255,0.06); }
 
 .pillars {
