@@ -98,6 +98,35 @@
     .timeline-badge--approval { background: rgba(34,197,94,0.1); color: #4ade80; border: 1px solid rgba(34,197,94,0.2); }
     .timeline-badge--milestone { background: rgba(251,191,36,0.1); color: #fbbf24; border: 1px solid rgba(251,191,36,0.2); }
     .timeline-badge--press { background: rgba(142,68,173,0.1); color: #c77dff; border: 1px solid rgba(142,68,173,0.25); }
+    /* v2.22 pre-release preview treatment (2026-05-21) — emphasized
+       border + subtle glow distinguishes the upcoming-release card from
+       past timeline entries. Video container has tight rounded edges + own
+       border. Closing tagline gets a separator line above + center align. */
+    .timeline-item--preview {
+      border-color: rgba(79,172,254,0.55);
+      box-shadow: 0 0 32px rgba(79,172,254,0.10);
+    }
+    .preview-video-wrap {
+      margin: 14px 0 18px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--brand-border);
+      background: rgba(0,0,0,0.4);
+    }
+    .preview-video-wrap video {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+    .preview-tagline {
+      margin-top: 18px !important;
+      padding-top: 14px;
+      border-top: 1px solid var(--brand-border);
+      text-align: center;
+      font-size: 0.92rem !important;
+      color: var(--text-primary) !important;
+    }
     @media (max-width: 760px) {
       .timeline-item { grid-template-columns: 1fr; gap: 12px; padding: 24px; }
       .timeline-date { padding-top: 0; }
@@ -273,6 +302,57 @@
     <h2 class="section-title">The story so far.</h2>
 
     <div class="timeline">
+
+      <!-- v2.22 PRE-RELEASE CAMPAIGN (added 2026-05-21) -->
+      <!-- Sits above v2.20.1 in the timeline as the most-recent / upcoming entry.
+           Tied to LinkedIn videos posted earlier today that drove early attention. -->
+      <div class="timeline-item timeline-item--featured timeline-item--preview">
+        <div class="timeline-date">
+          <strong>Summer 2026</strong>
+          v2.22 &middot; Preview
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-badge timeline-badge--launch">Pre-release preview</div>
+          <h3>Passive Mode recognition, improved.</h3>
+
+          <div class="preview-video-wrap">
+            <video controls preload="metadata" playsinline>
+              <source src="assets/video/v2.22-preview-passive-mode.mp4" type="video/mp4">
+              Your browser doesn't support HTML5 video. Download the preview:
+              <a href="assets/video/v2.22-preview-passive-mode.mp4">v2.22 preview video</a>
+            </video>
+          </div>
+
+          <p><strong>School work. Resume drafting. Code analysis.</strong></p>
+
+          <p>
+            The universal reflex to a thorough AI answer is the same three letters:
+            <em>&ldquo;ok thanks.&rdquo;</em>
+          </p>
+
+          <p>
+            We built the moment-detection architecture that recognizes when the
+            conversation flattens &mdash; when the back-and-forth stops being back-and-forth.
+            <strong>The Hugo Orb turns yellow</strong> the instant it surfaces.
+          </p>
+
+          <p>Your AI never asks if you actually understood. We do.</p>
+
+          <p>
+            <strong>Passive Mode recognition improved. Coming in v2.22, Summer 2026.</strong>
+          </p>
+
+          <p>
+            Visit <a href="/">hugonomy.com</a> &middot;
+            join the conversation at
+            <a href="https://www.reddit.com/r/AICognitiveWatch/" target="_blank" rel="noopener noreferrer">r/AICognitiveWatch</a>
+          </p>
+
+          <p class="preview-tagline">
+            <em>Stay curious. Keep thinking. Use Vibe<span class="vibe-ai">AI</span> FoldSpace and Vibe with your AI.</em>
+          </p>
+        </div>
+      </div>
 
       <!-- v2.20.1 approval -->
       <div class="timeline-item timeline-item--featured">

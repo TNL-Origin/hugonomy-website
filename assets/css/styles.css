@@ -1073,6 +1073,86 @@ footer {
   font-weight: 700; font-size: 0.75rem; top: 1px;
 }
 
+/* ── v2.22 pre-release preview card (added 2026-05-21) ─────────────────
+   Sits above the existing v2.20.1 .whats-new-card in the homepage's
+   .whats-new-section. Tied to the LinkedIn pre-release video campaign.
+   Visual language inherits the brand-blue tint of whats-new-card but
+   takes more vertical space for video + narrative copy. */
+.v22-preview-card {
+  background: rgba(79,172,254,0.05);
+  border: 1px solid rgba(79,172,254,0.32);
+  border-radius: 14px;
+  padding: 26px 30px;
+  max-width: 860px;
+  margin: 0 auto 24px;
+  box-shadow: 0 0 32px rgba(79,172,254,0.08);
+}
+.v22-preview-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+  margin-bottom: 8px;
+}
+.v22-preview-title {
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+.v22-preview-video-wrap {
+  margin: 0 0 18px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--brand-border);
+  background: rgba(0,0,0,0.4);
+}
+.v22-preview-video-wrap video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+.v22-preview-body p {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin: 0 0 12px;
+}
+.v22-preview-body strong {
+  color: var(--text-primary);
+}
+.v22-preview-body em {
+  color: #f0c040;
+  font-style: italic;
+}
+.v22-preview-links {
+  font-size: 0.85rem !important;
+  color: var(--text-muted) !important;
+  margin-top: 14px !important;
+}
+.v22-preview-links a {
+  color: var(--brand-blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(108,166,255,0.35);
+}
+.v22-preview-tagline {
+  margin-top: 16px !important;
+  padding-top: 14px;
+  border-top: 1px solid var(--brand-border);
+  text-align: center;
+  font-size: 0.92rem !important;
+  color: var(--text-primary) !important;
+}
+@media (max-width: 760px) {
+  .v22-preview-card {
+    padding: 22px 20px;
+  }
+}
+
 /* ── Why Local-First ──────────────────────────────────────────────────── */
 @media (max-width: 760px) {
   .whats-new-card {
