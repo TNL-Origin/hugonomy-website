@@ -21,6 +21,11 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
+/* Default anchor color. Prevents browser-default visited purple from showing
+   on any link that doesn't set its own color (class-scoped rules still win). */
+a { color: var(--brand-blue); }
+a:visited { color: var(--brand-blue); }
+
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   background:
