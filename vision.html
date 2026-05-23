@@ -101,6 +101,82 @@
       .stack-product-logo-right--council { width: min(155px, 42vw); }
       .research-visual--stack { margin-top: 18px; }
     }
+    /* Position statement (added 2026-05-22) — long-form essay layout with
+       generous reading column + section subheads. Distinct from other vision
+       sections because the body is paragraph-heavy academic prose, not
+       card grids. */
+    .position-statement-section {
+      padding: 80px 0 64px;
+    }
+    .position-statement-body {
+      max-width: 720px;
+      margin: 36px auto 0;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+    .position-statement-body p {
+      margin: 0 0 18px;
+    }
+    .position-statement-body p strong {
+      color: var(--text-primary);
+    }
+    .position-statement-body em {
+      color: var(--text-primary);
+    }
+    .position-statement-preamble {
+      font-size: 1.02rem;
+      color: var(--text-secondary);
+      font-style: italic;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--brand-border);
+      margin-bottom: 32px !important;
+    }
+    .position-statement-subhead {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      margin: 36px 0 14px;
+    }
+    .position-statement-subhead--refs {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--brand-border);
+    }
+    .position-statement-sig {
+      margin-top: 32px !important;
+      padding-top: 20px;
+      border-top: 1px solid var(--brand-border);
+      text-align: right;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+    }
+    .position-statement-refs {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .position-statement-refs li {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 14px;
+      padding-left: 16px;
+      border-left: 2px solid var(--brand-border);
+    }
+    .position-statement-refs a {
+      color: var(--brand-blue);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(108,166,255,0.35);
+    }
+    .position-statement-refs a:hover {
+      border-bottom-color: rgba(108,166,255,0.7);
+    }
+    @media (max-width: 720px) {
+      .position-statement-body { padding: 0 12px; font-size: 0.96rem; }
+      .position-statement-subhead { font-size: 1.08rem; }
+    }
     .doctrine-section { background: var(--brand-mid); padding: 80px 0; }
     .doctrine-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 48px; }
     .doctrine-card {
@@ -182,6 +258,155 @@
     </p>
   </div>
 </header>
+
+<!-- ── Position Statement (added 2026-05-22) — Joseph's formal position on
+     human-AI cognitive governance. Sits before The Open Question because
+     the position establishes the philosophical ground; The Open Question
+     turns it into a testable research question. ──────────────────────── -->
+<section class="position-statement-section" id="position-statement">
+  <div class="container">
+    <p class="section-label">Position statement</p>
+    <h2 class="section-title">Where Hugonomy Stands &mdash; A Position, Not a Conclusion</h2>
+    <div class="position-statement-body">
+      <p class="position-statement-preamble">
+        This is a public statement of where my thinking sits at this moment. It is not a
+        manifesto. It is not a finished theory. It is a marker &mdash; so that future versions
+        of this work can be traced back to what I actually believed, and what I did not yet
+        know, when I started building.
+      </p>
+
+      <h3 class="position-statement-subhead">The observation that motivates this work</h3>
+
+      <p><strong>Human-AI cognition is a coupled system.</strong></p>
+
+      <p>
+        This isn't a metaphor. Edwin Hutchins's foundational work on <em>distributed
+        cognition</em> (<em>Cognition in the Wild</em>, 1995) showed that complex cognitive
+        tasks &mdash; navigating a Navy ship across an ocean, for instance &mdash; aren't
+        performed by individual minds working with tools to help. They're performed by the
+        whole system: navigator, chart, compass, rangefinder, the bearings being called out,
+        the procedures, the other crew members, the ship itself. Remove the compass and you
+        don't have a navigator working without a key tool. You have a fundamentally different
+        cognitive system that computes position differently. The thinking is <em>in</em> the
+        configuration. The unit of analysis is the whole functional system, not the individual
+        mind.
+      </p>
+
+      <p>
+        This is what happens when a person works with a generative AI. The thinking is no
+        longer happening only inside the person's head. It is distributed across the person,
+        the model, and the artifacts they produce together. And the output of that system can
+        look indistinguishable whether the person did most of the cognitive work or almost
+        none of it. <em>The artifact does not reveal who did the thinking.</em>
+      </p>
+
+      <p>
+        Prior cognitive tools externalized capability <em>visibly</em>. The calculator shows
+        you what it computed. The map shows you the route. The compass shows you the bearing,
+        but not the destination; the large language model shows you the destination, but hides
+        the bearing. The user always knew where their work ended and the tool's began. Large
+        language models externalize <em>reasoning itself</em>, and they do so invisibly. A
+        user can read a fluent answer and feel intellectually involved because they touched
+        the artifact, while the key reasoning transitions occurred outside them. A programmer
+        can accept a confident solution before fully modeling its logic. The user often cannot
+        detect, in the moment, when evaluation stopped and acceptance began.
+      </p>
+
+      <p>
+        I want to be clear about what this position is not. It is not anti-offloading.
+        Cognitive offloading is inevitable, often beneficial, and frequently the right move
+        &mdash; no one should compute compound interest by hand for the sake of cognitive
+        purity. The concern is not delegation itself. It is <em>unexamined</em> delegation,
+        where the boundary between human reasoning and machine reasoning becomes invisible to
+        the human inside the loop. This is the cognitive-offloading problem named by
+        researchers like Gerlich and Kabashkin, and it is the load-bearing concern in the
+        recent work of UIUC's Mary Frances Phillips and Koustuv Saha. The question is not
+        whether AI is dangerous. The question is what kind of thinker the human becomes when
+        most of their thinking is delegable, <em>and they cannot see, in the moment, that the
+        delegation is happening.</em>
+      </p>
+
+      <h3 class="position-statement-subhead">The framework I am operating within</h3>
+
+      <p>
+        The cognitive dynamic between a human and an AI falls into one of three states.
+        <em>Negative-sum:</em> the human's capacity atrophies &mdash; the system produces good
+        output, but the person doing the work loses some of their ability to do it without the
+        AI. <em>Zero-sum:</em> the AI substitutes for the human without growth or loss &mdash;
+        the task gets done, but the human doesn't develop. <em>Positive-sum:</em> the AI frees
+        the human into thinking they could not have reached alone &mdash; the human grows by
+        working with the system.
+      </p>
+
+      <p>
+        Which state any given interaction occupies is set by <em>the human's engagement</em>.
+        And engagement is precisely the variable that is invisible to both the user and any
+        external system.
+      </p>
+
+      <p>
+        I believe most current AI interactions sit in the zero-sum or negative-sum state by
+        default. Not because users are careless, but because nothing in the system makes the
+        cognitive distribution visible to them. The ship's navigator can see the compass. The
+        AI user cannot see where their thinking ends and the model's begins.
+      </p>
+
+      <h3 class="position-statement-subhead">The direction this work is pointed</h3>
+
+      <p>
+        The dominant response to this problem locates the safeguard inside the AI itself:
+        train models to refuse when refusal would protect the user from offloading. This is
+        the work serious people are doing, and it matters. But it is incomplete. Refusal
+        systems are unreliable, institutional adoption lags, and the user remains the only
+        party present in every interaction.
+      </p>
+
+      <p>
+        Beyond the AI-system layer and the institutional layer, I am building toward a third:
+        a <em>user-facing reflection layer</em> that makes the user's own cognitive engagement
+        visible to them in real time, without forcing judgment from the system itself. The aim
+        is not to police the user. The aim is <em>sovereign awareness</em> &mdash; by which I
+        mean the user's ability to see, evaluate, interrupt, and redirect the thinking
+        happening across themselves and the system. The user remains the active, governing
+        party in their own cognition, with the AI serving as the instrument rather than the
+        agent.
+      </p>
+
+      <p>
+        This is the bet. The instrument exists in early form. Whether it works at scale is an
+        empirical question I cannot answer alone. The work, and this statement, are public so
+        that the position is on record and the question is examinable.
+      </p>
+
+      <p class="position-statement-sig">
+        &mdash; Joseph Tingling, MD/PhD<br>
+        <em>Hugonomy &mdash; May 2026</em>
+      </p>
+
+      <h3 class="position-statement-subhead position-statement-subhead--refs">References</h3>
+
+      <ul class="position-statement-refs">
+        <li>
+          Gerlich, M. (2025). AI tools in society: Impacts on cognitive offloading and the
+          future of critical thinking. <em>Societies, 15</em>(1), Article 6.
+          <a href="https://doi.org/10.3390/soc15010006" target="_blank" rel="noopener noreferrer">https://doi.org/10.3390/soc15010006</a>
+        </li>
+        <li>
+          Hutchins, E. (1995). <em>Cognition in the wild.</em> MIT Press.
+        </li>
+        <li>
+          Kabashkin, I. (2025). Cognitive atrophy paradox of AI&ndash;human interaction: From
+          cognitive growth and atrophy to balance. <em>Information, 16</em>(11), Article 1009.
+          <a href="https://doi.org/10.3390/info16111009" target="_blank" rel="noopener noreferrer">https://doi.org/10.3390/info16111009</a>
+        </li>
+        <li>
+          Phillips, M. F., &amp; Saha, K. (2026, April). Ethical guidelines for AI. University
+          of Illinois Urbana-Champaign.
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 <!-- ── The Open Question ─────────────────────────────────────────────── -->
 <section class="study-section" id="study">

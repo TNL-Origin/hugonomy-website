@@ -116,6 +116,22 @@
     .mission-quote p { font-size: 1.05rem; line-height: 1.75; color: var(--text-primary); margin-bottom: 16px; }
     .mission-quote p:last-of-type { margin-bottom: 0; }
     .mission-quote cite { display: block; margin-top: 20px; font-size: 0.85rem; color: var(--text-muted); font-style: normal; }
+    .mission-position-pointer {
+      max-width: 760px; margin: 28px auto 0;
+      text-align: center;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .mission-position-pointer a {
+      color: var(--brand-blue);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(108,166,255,0.35);
+      transition: border-color 0.2s;
+    }
+    .mission-position-pointer a:hover {
+      border-bottom-color: rgba(108,166,255,0.7);
+    }
     .approach-section { padding: 80px 0; }
     .approach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 48px; }
     .approach-card {
@@ -363,6 +379,11 @@
       </p>
       <cite>— J. D. Tingling, MD/PhD · Founder &amp; CEO, Hugonomy Systems · Urbana, Illinois, 2026</cite>
     </div>
+    <p class="mission-position-pointer">
+      For the full philosophical position behind this work &mdash; the human-AI cognition framework, the
+      three-state engagement model, and the cited research &mdash;
+      <a href="/vision#position-statement">read Joseph's position statement &rarr;</a>
+    </p>
   </div>
 </section>
 
