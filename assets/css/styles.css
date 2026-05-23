@@ -1456,6 +1456,18 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .rotating-text { transition: none; }
 }
+/* v2.22 (2026-05-21): --user modifier for rotating phrases that should
+   visibly stand out (amber accent + italic + heavier weight). Applied
+   on the v2.22 preview card's closing-phrase em. Color matches the
+   scene-em treatment in the key-scene-bridge for cross-page consistency.
+   Without this modifier the rotation is still active but the rotating
+   word is visually indistinguishable from surrounding text — fixed
+   2026-05-21 after Jo flagged "I'm not seeing it move." */
+.rotating-text--user {
+  color: #f0c040;
+  font-style: italic;
+  font-weight: 600;
+}
 
 /* ── Card 4 Mirror-card alternating border (2026-05-21) ────────────────────
    Per Jo's directive: Card 4 (the Thinking Mirror) gets an alternating

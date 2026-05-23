@@ -1223,12 +1223,12 @@ document.addEventListener('click', function(e) {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   var FADE_MS = 300;
-  // v3 cadence (2026-05-21, second post-deploy adjustment):
-  //   - Cards 1 + 3 + scene em at 1.6s (slower than 1s baseline so
-  //     longer Card 1 prompts are readable, but still fast enough
-  //     to feel like rapid-fire moments)
-  //   - Card 4 at 2s (system-voice; alternating border in sync with
-  //     each prompt swap)
+  // v3 cadence (2026-05-21, locked at 1.6s after one round-trip):
+  //   - Cards 1 + 3 + scene em + v2.22-preview-phrase at 1.6s (Jo
+  //     considered 1.4s, reverted to 1.6s — the slower pace gives
+  //     longer Card 1 prompts readable display time)
+  //   - Card 4 stays at 2s (system-voice; longer prompts; alternating
+  //     border tied to each swap)
   var USER_TIER_MS = 1600;
   var SYSTEM_TIER_MS = 2000;
 

@@ -868,6 +868,10 @@ document.addEventListener('click', function(e) {
     '“cool”',
     '“makes sense”'
   ];
+  // v3 cadence (2026-05-21, locked at 1.6s to match homepage):
+  // Jo considered 1.4s, reverted to 1.6s after testing. Slower pace
+  // gives the rotation room to breathe; visitor can read each phrase
+  // before the next swap.
   var ROTATION_MS = 1600;
   var FADE_MS = 300;
   var idx = 0;
