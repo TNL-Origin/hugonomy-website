@@ -127,6 +127,18 @@
       font-size: 0.92rem !important;
       color: var(--text-primary) !important;
     }
+    /* v2.22 preview rotating phrase — same visual as homepage scene-em
+       (amber accent for user-voice rotation). Standalone JS at end of
+       file drives the swap. */
+    .v22-rotating-phrase {
+      color: #f0c040;
+      font-style: italic;
+      font-weight: 600;
+      transition: opacity 0.3s ease-in-out;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .v22-rotating-phrase { transition: none; }
+    }
     @media (max-width: 760px) {
       .timeline-item { grid-template-columns: 1fr; gap: 12px; padding: 24px; }
       .timeline-date { padding-top: 0; }
@@ -326,8 +338,8 @@
           <p><strong>School work. Resume drafting. Code analysis.</strong></p>
 
           <p>
-            The universal reflex to a thorough AI answer is the same three letters:
-            <em>&ldquo;ok thanks.&rdquo;</em>
+            The universal reflex to a thorough AI answer is a brief closing phrase:
+            <em id="rotate-v22-preview-phrase-news" class="v22-rotating-phrase">&ldquo;ok thanks&rdquo;</em>.
           </p>
 
           <p>
@@ -830,6 +842,57 @@ document.addEventListener('click', function(e) {
     btn.setAttribute('aria-expanded', 'false');
   }
 });
+</script>
+
+<!-- v2.22 preview rotating phrase (added 2026-05-21) — cycles the
+     closing-phrase em through the same 9 verified-trigger phrases as the
+     homepage Card 3 / scene-em rotation. Self-contained; no shared JS
+     dependency. Same 1.6s cadence as the homepage so cross-page
+     experience reads consistently. Respects prefers-reduced-motion. -->
+<script>
+(function () {
+  if (!('matchMedia' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var el = document.getElementById('rotate-v22-preview-phrase-news');
+  if (!el) return;
+
+  var VALUES = [
+    '“ok thanks”',
+    '“got it”',
+    '“perfect thanks”',
+    '“looks good”',
+    '“awesome”',
+    '“great”',
+    '“thx”',
+    '“cool”',
+    '“makes sense”'
+  ];
+  var ROTATION_MS = 1600;
+  var FADE_MS = 300;
+  var idx = 0;
+  var paused = false;
+  var inViewport = true;
+
+  // Pause rotation when section is off-screen (perf + battery friendly)
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) { inViewport = entry.isIntersecting; });
+    }, { threshold: 0 });
+    observer.observe(el);
+  }
+
+  setInterval(function () {
+    if (paused || !inViewport) return;
+    idx = (idx + 1) % VALUES.length;
+    var newVal = VALUES[idx];
+    el.style.opacity = '0';
+    setTimeout(function () {
+      el.textContent = newVal;
+      el.style.opacity = '1';
+    }, FADE_MS);
+  }, ROTATION_MS);
+})();
 </script>
 </body>
 </html>
