@@ -63,6 +63,66 @@
       pointer-events: none;
     }
     .news-hero .container { position: relative; z-index: 1; }
+
+    /* ── Social Feed Section (TikTok, YouTube, etc.) ──────────────────── */
+    .social-feed-section { padding: 64px 0 32px; }
+    .social-feed-section .container { max-width: 960px; }
+    .social-feed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+    .social-feed-card {
+      display: flex; align-items: flex-start; gap: 16px;
+      background: var(--brand-card); border: 1px solid var(--brand-border);
+      border-radius: 14px; padding: 22px 24px;
+      text-decoration: none; color: inherit;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .social-feed-card:hover {
+      border-color: rgba(108,166,255,0.35);
+      transform: translateY(-2px);
+    }
+    .social-feed-card-glyph {
+      font-size: 1.6rem;
+      width: 44px; height: 44px; flex-shrink: 0;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(108,166,255,0.08);
+      color: var(--brand-blue);
+    }
+    .social-feed-card-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+    .social-feed-card-platform {
+      font-size: 0.72rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+    .social-feed-card-handle {
+      font-size: 1.05rem; font-weight: 700; color: var(--text-primary);
+    }
+    .social-feed-card-desc {
+      font-size: 0.85rem; color: var(--text-secondary);
+      line-height: 1.5; margin: 4px 0 6px;
+    }
+    .social-feed-card-cta {
+      font-size: 0.82rem; font-weight: 600; color: var(--brand-blue);
+    }
+    .social-feed-card--featured {
+      border-color: rgba(242,195,95,0.4);
+      box-shadow: 0 0 0 1px rgba(242,195,95,0.08) inset;
+    }
+    .social-feed-card--featured .social-feed-card-glyph {
+      background: rgba(242,195,95,0.12);
+      color: #f2c35f;
+    }
+    .social-feed-card--featured .social-feed-card-cta {
+      color: #f2c35f;
+    }
+    @media (max-width: 640px) {
+      .social-feed-section { padding: 48px 0 24px; }
+      .social-feed-card { padding: 18px 20px; }
+    }
+
     .timeline-section { padding: 80px 0; }
     .timeline { display: grid; gap: 32px; max-width: 860px; margin: 48px auto 0; }
     .timeline-item {
@@ -313,6 +373,72 @@
     </p>
   </div>
 </header>
+
+<!-- ── Social Feed (TikTok + YouTube) ────────────────────────────────── -->
+<section class="social-feed-section">
+  <div class="container">
+    <p class="section-label">Watch &middot; Follow</p>
+    <h2 class="section-title">Built in public, across formats.</h2>
+    <p class="section-sub">
+      Short-form cuts on TikTok &middot; longer explainers on YouTube.
+      The build process, in your feed.
+    </p>
+
+    <div class="social-feed-grid">
+      <!-- ── FEATURED TOP PICKS ──────────────────────────────────────── -->
+      <!-- Update weekly: swap the href + (optional) description. The card
+           styling is automatic — just replace the URL with your new pick. -->
+      <a href="https://www.tiktok.com/@jaydawg788/video/7643283884720934174"
+         target="_blank" rel="noopener noreferrer"
+         class="social-feed-card social-feed-card--featured">
+        <div class="social-feed-card-glyph">&#9733;</div>
+        <div class="social-feed-card-body">
+          <div class="social-feed-card-platform">TikTok &middot; Top pick</div>
+          <div class="social-feed-card-handle">Watch the current top cut</div>
+          <div class="social-feed-card-desc">Highest-performing TikTok this week. Short-form, ~15 seconds.</div>
+          <div class="social-feed-card-cta">Watch &rarr;</div>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=hZrnbTNM3IU"
+         target="_blank" rel="noopener noreferrer"
+         class="social-feed-card social-feed-card--featured">
+        <div class="social-feed-card-glyph">&#9733;</div>
+        <div class="social-feed-card-body">
+          <div class="social-feed-card-platform">YouTube &middot; Top pick</div>
+          <div class="social-feed-card-handle">Watch the current featured video</div>
+          <div class="social-feed-card-desc">Featured YouTube explainer this week. Longer-form walkthrough.</div>
+          <div class="social-feed-card-cta">Watch &rarr;</div>
+        </div>
+      </a>
+
+      <!-- ── PROFILE CARDS ──────────────────────────────────────────── -->
+      <a href="https://www.tiktok.com/@jaydawg788"
+         target="_blank" rel="noopener noreferrer"
+         class="social-feed-card">
+        <div class="social-feed-card-glyph">&#9654;</div>
+        <div class="social-feed-card-body">
+          <div class="social-feed-card-platform">TikTok</div>
+          <div class="social-feed-card-handle">@jaydawg788</div>
+          <div class="social-feed-card-desc">Short-form cuts from the build process. Generated with Gemini, posted weekly.</div>
+          <div class="social-feed-card-cta">Watch the profile &rarr;</div>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/@HugonomySystems"
+         target="_blank" rel="noopener noreferrer"
+         class="social-feed-card">
+        <div class="social-feed-card-glyph">&#9654;</div>
+        <div class="social-feed-card-body">
+          <div class="social-feed-card-platform">YouTube</div>
+          <div class="social-feed-card-handle">@HugonomySystems</div>
+          <div class="social-feed-card-desc">Longer-form explainers, product walkthroughs, and the philosophy behind the build.</div>
+          <div class="social-feed-card-cta">Subscribe &rarr;</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- ── Timeline ──────────────────────────────────────────────────────── -->
 <section class="timeline-section">
