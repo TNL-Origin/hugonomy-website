@@ -66,12 +66,18 @@
 
     /* ── Social Feed Section (TikTok, YouTube, etc.) ──────────────────── */
     .social-feed-section { padding: 64px 0 32px; }
-    .social-feed-section .container { max-width: 960px; }
+    .social-feed-section .container { max-width: 1140px; }
     .social-feed-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
       margin-top: 32px;
+    }
+    @media (max-width: 980px) {
+      .social-feed-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    }
+    @media (max-width: 640px) {
+      .social-feed-grid { grid-template-columns: 1fr; }
     }
     .social-feed-card {
       display: flex; align-items: flex-start; gap: 16px;
