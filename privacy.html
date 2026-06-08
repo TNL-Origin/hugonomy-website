@@ -296,8 +296,8 @@
       </p>
       <div class="privacy-meta">
         <span class="privacy-meta-item"><strong>Effective:</strong> March 2026</span>
-        <span class="privacy-meta-item"><strong>Last Updated:</strong> April 2026</span>
-        <span class="privacy-meta-item"><strong>Version:</strong> 2.20.x</span>
+        <span class="privacy-meta-item"><strong>Last Updated:</strong> June 2026</span>
+        <span class="privacy-meta-item"><strong>Version:</strong> 2.22.x</span>
         <span class="privacy-meta-item"><strong>Applies to:</strong> Chrome &amp; Edge extension</span>
         <span class="privacy-meta-item"><strong>Publisher:</strong> Hugonomy Systems&#x2122;</span>
       </div>
@@ -441,6 +441,9 @@
       <p class="data-section-label">AI Chat Text — read-only, never transmitted</p>
       <div class="yes-list-item"><span class="yes-icon">&#x1F4AC;</span> Read-only access to conversations on ChatGPT, Claude.ai, and Gemini (current page only). Used to compute engagement stage locally. Never stored, transmitted, or shared.</div>
 
+      <p class="data-section-label data-section-label--spaced">Bookmark previews — important disclosure</p>
+      <p>If you explicitly click the bookmark button on a message, the first 80 characters of that message are stored as a preview, alongside an optional user-supplied note (capped at 200 characters). This is the only place where chat content reaches persistent storage. Bookmarks live in <code>chrome.storage.local</code> under <code>vibeai_bookmarks</code> and are never transmitted off your device.</p>
+
       <p class="data-section-label data-section-label--spaced">chrome.storage.local — on your device only</p>
       <table class="data-table">
         <thead>
@@ -448,27 +451,38 @@
         </thead>
         <tbody>
           <tr><td><code>consentGiven</code></td><td>Boolean — whether you have granted consent to activate the extension</td><td>Yes — uninstall or reset</td></tr>
-          <tr><td><code>vibeai_bookmarks</code></td><td>Up to 100 user-created bookmarks of conversation moments</td><td>Yes — via extension settings</td></tr>
-          <tr><td><code>vibeai_session_log</code></td><td>Up to 50 session reflections, 2,000 character cap per entry</td><td>Yes — via extension settings</td></tr>
+          <tr><td><code>vibeai_install_timestamp</code></td><td>Timestamp of first install (used only for the optional uninstall feedback URL — see Section 5)</td><td>Yes — clears on uninstall</td></tr>
+          <tr><td><code>vibeai_bookmarks</code></td><td>Up to 100 user-created bookmarks — each includes an 80-char message preview (see disclosure above)</td><td>Yes — via extension settings</td></tr>
+          <tr><td><code>vibeai_session_log</code></td><td>Up to 50 session reflections</td><td>Yes — via extension settings</td></tr>
           <tr><td><code>vibeai_intro_version</code></td><td>Walkthrough version key — tracks which onboarding version you saw</td><td>Yes — clears on uninstall</td></tr>
-          <tr><td><code>vibeai_onboarded</code></td><td>Boolean — whether onboarding nudge has been shown</td><td>Yes — clears on uninstall</td></tr>
-          <tr><td>HUD position</td><td>Saved panel position preference</td><td>Yes — resets on uninstall</td></tr>
+          <tr><td><code>vibeai_onboarding_demo_completed</code></td><td>Whether you've completed the "First Catch" onboarding demo</td><td>Yes — clears on uninstall</td></tr>
+          <tr><td><code>vibeai_artifact_last_offered_at</code></td><td>Cooldown timestamp for reflection artifact prompts</td><td>Yes — clears on uninstall</td></tr>
+          <tr><td><code>vibeai_first_interaction_overlay_seen</code></td><td>Whether you've seen the first-interaction overlay</td><td>Yes — clears on uninstall</td></tr>
+          <tr><td><code>vibeai_hud_position_x</code>, <code>vibeai_hud_position_y</code></td><td>Where you've placed the HUD on the page</td><td>Yes — clears on uninstall</td></tr>
+          <tr><td><code>vibeai_hud_width</code>, <code>vibeai_hud_height</code></td><td>Your preferred HUD size</td><td>Yes — clears on uninstall</td></tr>
+          <tr><td><code>vibeaiTheme</code></td><td>Your theme preference</td><td>Yes — clears on uninstall</td></tr>
+          <tr><td><code>vibeaiLexicon</code></td><td>Your lexicon language preference</td><td>Yes — clears on uninstall</td></tr>
+          <tr><td><code>vibeai_coach_level</code></td><td>Coach Intensity setting (Off / Minimal / Standard / Active)</td><td>Yes — clears on uninstall</td></tr>
         </tbody>
       </table>
 
-      <p class="data-section-label data-section-label--spaced">localStorage — session preferences, on your device only</p>
+      <p class="data-section-label data-section-label--spaced">localStorage — page-scoped preferences, on your device only</p>
       <table class="data-table">
         <thead>
           <tr><th>Key</th><th>What it stores</th></tr>
         </thead>
         <tbody>
-          <tr><td><code>vibeai_snooze_until</code></td><td>Focus Mode snooze timer — auto-expires, never transmitted</td></tr>
-          <tr><td><code>vibeai_hasSeenIntro</code></td><td>Whether walkthrough has been completed this session</td></tr>
-          <tr><td><code>vibeai-hud-width</code></td><td>HUD panel width preference</td></tr>
-          <tr><td><code>vibeai_trend_v1</code></td><td>Coach trend data — used locally for context-aware coaching</td></tr>
-          <tr><td><code>vibeai_coach_level</code></td><td>Your selected coaching intensity (Off / Minimal / Standard / Active)</td></tr>
+          <tr><td><code>vibeai-hud-width</code></td><td>Fallback HUD width preference</td></tr>
+          <tr><td><code>vibeai_snooze_until</code></td><td>Focus Mode expiration timestamp — auto-expires, never transmitted</td></tr>
+          <tr><td><code>vibeai_user_name</code></td><td>Optional name you've set via the ••• menu</td></tr>
+          <tr><td><code>vibeai_consentGiven</code></td><td>Local mirror of your consent state</td></tr>
+          <tr><td><code>vibeai_founder_checkin_last_at</code></td><td>Cooldown for occasional founder check-in prompts</td></tr>
+          <tr><td><code>vibeai_consent_v1</code>, <code>vibeai_prefs_v1</code>, <code>vibeai_trend_v1</code>, <code>vibeai_lexicon_hide_v1</code></td><td>Coach panel preferences and short-term trend cache (contains no chat content)</td></tr>
         </tbody>
       </table>
+
+      <p class="data-section-label data-section-label--spaced" id="uninstall-feedback">Section 5 — Optional Uninstall Feedback</p>
+      <p>If you remove VibeAI FoldSpace, your browser will open an optional GitHub feedback form pre-filled with the extension version, days since install, and your browser type (Chrome or Edge). No personal information, chat content, or behavioral data is included. Submitting the form is entirely voluntary — closing the tab sends nothing.</p>
     </section>
 
     <section class="privacy-section" id="what-we-dont">
