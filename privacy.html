@@ -453,6 +453,7 @@
           <tr><td><code>consentGiven</code></td><td>Boolean — whether you have granted consent to activate the extension</td><td>Yes — uninstall or reset</td></tr>
           <tr><td><code>vibeai_install_timestamp</code></td><td>Timestamp of first install (used only for the optional uninstall feedback URL — see Section 5)</td><td>Yes — clears on uninstall</td></tr>
           <tr><td><code>vibeai_bookmarks</code></td><td>Up to 100 user-created bookmarks — each includes an 80-char message preview (see disclosure above)</td><td>Yes — via extension settings</td></tr>
+          <tr><td><code>bookmarks</code></td><td>Legacy bookmarks store from earlier versions — 140-char content cap, redacted via background.js, same on-device-only policy</td><td>Yes — clears on uninstall</td></tr>
           <tr><td><code>vibeai_session_log</code></td><td>Up to 50 session reflections</td><td>Yes — via extension settings</td></tr>
           <tr><td><code>vibeai_intro_version</code></td><td>Walkthrough version key — tracks which onboarding version you saw</td><td>Yes — clears on uninstall</td></tr>
           <tr><td><code>vibeai_onboarding_demo_completed</code></td><td>Whether you've completed the "First Catch" onboarding demo</td><td>Yes — clears on uninstall</td></tr>
