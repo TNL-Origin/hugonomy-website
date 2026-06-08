@@ -325,8 +325,8 @@
     <h3>&#x26A1; TL;DR — Privacy in 30 seconds</h3>
     <ul class="privacy-tldr-list">
       <li><span>&#x2705;</span> <span>Everything Vibe<span class="vibe-ai">AI</span> FoldSpace analyzes runs inside your browser — nothing is ever sent to any server.</span></li>
-      <li><span>&#x2705;</span> <span>We collect no personal data, no conversation content, no behavioral profile. Zero.</span></li>
-      <li><span>&#x2705;</span> <span>The only storage used is Chrome's local <code>chrome.storage.local</code> — it stays on your device and you can clear it anytime.</span></li>
+      <li><span>&#x2705;</span> <span>We collect no personal data, no behavioral profile, and no conversation content beyond bookmarks you create yourself (80-char message preview — see Section 3).</span></li>
+      <li><span>&#x2705;</span> <span>Storage stays on your device — <code>chrome.storage.local</code> for most preferences, plus a small set of <code>localStorage</code> keys for page-scoped state (Section 3). You can clear either anytime.</span></li>
       <li><span>&#x2705;</span> <span>No accounts required. No login. No email. Nothing that identifies you.</span></li>
       <li><span>&#x2705;</span> <span>Local-only is an <strong>architectural constraint</strong> — cloud processing is impossible by design, not just disabled by policy.</span></li>
     </ul>
@@ -426,8 +426,11 @@
       </p>
       <p>
         The extension observes conversation structure on supported AI chat platforms (ChatGPT,
-        Claude.ai, and Gemini) to determine your current engagement stage. It never reads,
-        stores, or transmits the actual content of your conversations.
+        Claude.ai, and Gemini) to determine your current engagement stage. Chat content is
+        read locally for that classification and immediately discarded — it is never transmitted
+        and never persisted, with one explicit exception: if you click the bookmark button on a
+        message, the first 80 characters of that message are stored as a preview on your device
+        only. See Section 3 (Bookmark previews) for the full disclosure.
       </p>
     </section>
 
@@ -439,7 +442,7 @@
       <p>All data listed below remains on your device only and is never transmitted externally.</p>
 
       <p class="data-section-label">AI Chat Text — read-only, never transmitted</p>
-      <div class="yes-list-item"><span class="yes-icon">&#x1F4AC;</span> Read-only access to conversations on ChatGPT, Claude.ai, and Gemini (current page only). Used to compute engagement stage locally. Never stored, transmitted, or shared.</div>
+      <div class="yes-list-item"><span class="yes-icon">&#x1F4AC;</span> Read-only access to conversations on ChatGPT, Claude.ai, and Gemini (current page only). Used to compute engagement stage locally, then discarded. Never transmitted or shared. One persistent-storage exception: when you click the bookmark button, an 80-char preview of that single message is stored on your device — see Bookmark previews below.</div>
 
       <p class="data-section-label data-section-label--spaced">Bookmark previews — important disclosure</p>
       <p>If you explicitly click the bookmark button on a message, the first 80 characters of that message are stored as a preview, alongside an optional user-supplied note (capped at 200 characters). This is the only place where chat content reaches persistent storage. Bookmarks live in <code>chrome.storage.local</code> under <code>vibeai_bookmarks</code> and are never transmitted off your device.</p>
