@@ -283,6 +283,15 @@
       margin-bottom: 22px;
       border: 1px solid var(--brand-border);
     }
+    /* Modifier for full infographic images where the top + bottom carry
+       information (titles, brand strips, key labels) that cover-cropping
+       would eat. Use this on any image where the whole frame matters.
+       Added 2026-06-22 for the Mythos NSA commentary infographic. */
+    .commentary-note-image--full {
+      max-height: none;
+      height: auto;
+      object-fit: contain;
+    }
     .commentary-note-body {
       color: var(--text-secondary);
       font-size: 0.88rem;
@@ -310,6 +319,7 @@
       .commentary-note-section { padding: 40px 0; }
       .commentary-note-card { padding: 22px 18px; border-radius: 12px; margin-top: 20px; }
       .commentary-note-image { max-height: 200px; margin-bottom: 16px; }
+      .commentary-note-image--full { max-height: none; }
       .commentary-note-body { font-size: 0.86rem; }
     }
     .featured-article-card {
@@ -789,7 +799,7 @@
     <div class="commentary-note-card">
       <img src="assets/images/commentary-mythos-nsa.png"
            alt="Commentary illustration — viral AI security story and the fluency trap"
-           class="commentary-note-image"
+           class="commentary-note-image commentary-note-image--full"
            loading="lazy">
 
       <p class="commentary-note-body">
