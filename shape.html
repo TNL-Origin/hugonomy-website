@@ -42,12 +42,13 @@
   </script>
   <!-- End MailerLite Universal -->
   <style>
-    /* ── Shape page (deep-link only — NOT in main nav) ───────────────
+    /* ── Shape page ─────────────────────────────────────────────────
        Mobile-first landing page for social-traffic email capture +
        install funnel. Inline privacy disclosure (does NOT modify the
        CWS-linked /privacy page — by design, scope-locked 2026-06-25).
-       MailerLite embed placeholder; founder pastes the live snippet
-       post-build. */
+       MailerLite Universal in <head>, embed div in body (account
+       2471308, form uNrOIC). To swap the form: edit data-form attr
+       in body. To swap the account: edit ml('account', '...') in head. */
 
     .shape-hero {
       padding: 120px 24px 56px;
@@ -177,26 +178,6 @@
       color: var(--text-secondary);
       line-height: 1.6;
       margin-bottom: 24px;
-    }
-
-    /* MailerLite embed placeholder — founder swaps this block out for
-       the actual MailerLite-generated <div class="ml-embedded">…</div>
-       + <script> snippet from their account dashboard. */
-    .mailerlite-mount {
-      margin: 0 0 18px;
-      padding: 22px;
-      background: rgba(108,166,255,0.06);
-      border: 1px dashed rgba(108,166,255,0.35);
-      border-radius: 12px;
-      color: var(--text-secondary);
-      font-size: 0.92rem;
-      line-height: 1.55;
-    }
-    .mailerlite-mount strong { color: var(--text-primary); }
-    .mailerlite-mount .mount-note {
-      margin-top: 8px;
-      font-size: 0.82rem;
-      color: var(--text-muted);
     }
 
     /* Inline privacy disclosure right under the form */
