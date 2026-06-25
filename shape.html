@@ -95,6 +95,50 @@
       line-height: 1.55;
     }
 
+    /* Video reinforcement strip — between hero text and form.
+       User-controlled playback (no autoplay) per brief: "quiet and
+       respectful." Same pattern as news.html v2.22 demo card. */
+    .shape-video-section { padding: 32px 0 12px; }
+    .shape-video-section .container { max-width: 520px; }
+    .shape-video-wrap {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--brand-border);
+      background: rgba(0,0,0,0.5);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+    }
+    .shape-video-wrap video {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+    .shape-video-caption {
+      margin-top: 12px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* Community line in install band — Discord callout, secondary to
+       install CTAs. */
+    .shape-community-note {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--brand-border);
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .shape-community-note a {
+      color: var(--brand-blue);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(108,166,255,0.35);
+    }
+    .shape-community-note a:hover { border-bottom-color: rgba(108,166,255,0.7); }
+
     /* Form section */
     .shape-form-section { padding: 56px 0; }
     .shape-form-section .container { max-width: 720px; }
@@ -240,6 +284,25 @@
   </div>
 </header>
 
+<!-- ── Video strip ───────────────────────────────────────────────────
+     The calculus / Fluency Trap cut — the top-performing TikTok cut
+     from the June 22 viral drop. User-controlled playback (no autoplay)
+     per brief: quiet and respectful. -->
+<section class="shape-video-section">
+  <div class="container">
+    <div class="shape-video-wrap">
+      <video controls preload="metadata" playsinline poster="assets/images/hero-lifestyle-hud.jpg">
+        <source src="assets/video/student-calculus-fluency-trap.mp4" type="video/mp4">
+        Your browser doesn't support HTML5 video. Download:
+        <a href="assets/video/student-calculus-fluency-trap.mp4">The Fluency Trap — calculus moment (MP4)</a>
+      </video>
+    </div>
+    <p class="shape-video-caption">
+      A 15-second look at the moment we built Vibe<span class="vibe-ai">AI</span> FoldSpace to catch.
+    </p>
+  </div>
+</section>
+
 <!-- ── Form ────────────────────────────────────────────────────────── -->
 <section class="shape-form-section">
   <div class="container">
@@ -294,6 +357,10 @@
       <a href="https://microsoftedge.microsoft.com/addons/detail/kbdhbghaidmildhhbodkppnnhklmddfh"
          target="_blank" rel="noopener noreferrer" class="btn-secondary">Add to Edge</a>
     </div>
+    <p class="shape-community-note">
+      Want to talk to other users while you're here?
+      <a href="https://discord.gg/uPZZvHfA" target="_blank" rel="noopener noreferrer">Join the Hugonomy Discord &rarr;</a>
+    </p>
   </div>
 </section>
 
