@@ -32,6 +32,15 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="canonical" href="https://hugonomy.com/shape">
+  <!-- MailerLite Universal (account 2471308) — required once per page that hosts a MailerLite form. -->
+  <script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2471308');
+  </script>
+  <!-- End MailerLite Universal -->
   <style>
     /* ── Shape page (deep-link only — NOT in main nav) ───────────────
        Mobile-first landing page for social-traffic email capture +
@@ -317,25 +326,17 @@
       </p>
 
       <!-- ─────────────────────────────────────────────────────────────
-           MailerLite EMBED MOUNT POINT
-           Replace this entire .mailerlite-mount block with the
-           MailerLite-generated embed snippet from your account:
-             https://app.mailerlite.com/forms/embedded
-           Required fields when creating the form in MailerLite:
-             1. Email (required)
-             2. Short-answer text: "Where did AI make you feel too passive?" (optional)
-             3. Checkbox: "I'd help test future builds" (optional)
-           Set the destination group/list, then click "Embedded form" →
-           "Generate code" → paste the FULL snippet here.
-           CTA button label inside MailerLite should be:
-             "Help shape what comes next"
+           MailerLite embed — wired 2026-06-25
+           Account: 2471308 · Form: uNrOIC ("Hugonomy-Shapes-EList" group)
+           Form fields (per MailerLite-side config):
+             - Email (required)
+             - CTA button: "Help shape what comes next"
+           Submissions land in MailerLite group "Hugonomy-Shapes-EList"
+           and notify joseph@hugonomy.com per founder-follow-up rule.
+           To swap the form later: change data-form="uNrOIC" to the new
+           form ID. Universal snippet stays in <head>.
            ───────────────────────────────────────────────────────────── -->
-      <div class="mailerlite-mount" id="ml-mount">
-        <strong>Email signup form mounts here.</strong>
-        <div class="mount-note">
-          (Founder: paste the MailerLite embed snippet from your account into the <code>#ml-mount</code> div above, replacing this placeholder. Required fields: email + short-answer question + checkbox. CTA button: "Help shape what comes next".)
-        </div>
-      </div>
+      <div class="ml-embedded" data-form="uNrOIC"></div>
       <!-- ─────────────────────────────────────────────────────────── -->
 
       <!-- Inline privacy disclosure — at point of collection.
