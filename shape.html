@@ -180,6 +180,67 @@
       margin-bottom: 24px;
     }
 
+    /* ── MailerLite embed isolation ─────────────────────────────────
+       Our dark-theme global CSS bleeds into MailerLite's injected form
+       (inputs go invisible, buttons lose click targets). These overrides
+       scope MailerLite's own class names so the form renders correctly
+       on a dark background card without touching anything else. */
+    .ml-embedded { width: 100%; }
+    .ml-embedded .ml-form-embedWrapper { border-radius: 8px; overflow: hidden; }
+    .ml-embedded .ml-form-embedBody { padding: 0 !important; background: transparent !important; }
+    .ml-embedded input[type="email"],
+    .ml-embedded input[type="text"] {
+      background: #fff !important;
+      color: #111 !important;
+      border: 1px solid #ccc !important;
+      border-radius: 6px !important;
+      padding: 10px 14px !important;
+      font-size: 0.97rem !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      margin-bottom: 10px !important;
+    }
+    .ml-embedded input[type="email"]:focus,
+    .ml-embedded input[type="text"]:focus {
+      outline: 2px solid #6ca6ff !important;
+      border-color: #6ca6ff !important;
+    }
+    .ml-embedded button[type="submit"],
+    .ml-embedded .ml-form-embedSubmit button {
+      background: #f0c040 !important;
+      color: #0a0f20 !important;
+      border: none !important;
+      border-radius: 8px !important;
+      padding: 12px 20px !important;
+      font-size: 0.97rem !important;
+      font-weight: 700 !important;
+      cursor: pointer !important;
+      width: 100% !important;
+      margin-top: 6px !important;
+      transition: opacity 0.15s !important;
+    }
+    .ml-embedded button[type="submit"]:hover,
+    .ml-embedded .ml-form-embedSubmit button:hover {
+      opacity: 0.88 !important;
+    }
+    .ml-embedded label {
+      color: var(--text-secondary) !important;
+      font-size: 0.88rem !important;
+      margin-bottom: 4px !important;
+      display: block !important;
+    }
+    .ml-embedded .ml-form-checkboxRow {
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 10px !important;
+      margin-top: 10px !important;
+    }
+    .ml-embedded .ml-form-checkboxRow input[type="checkbox"] {
+      width: auto !important;
+      margin: 0 !important;
+      flex-shrink: 0 !important;
+    }
+
     /* Inline privacy disclosure right under the form */
     .shape-privacy-note {
       margin: 14px 0 0;
