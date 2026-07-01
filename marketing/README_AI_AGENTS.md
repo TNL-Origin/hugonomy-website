@@ -9,7 +9,7 @@ One central CSV (`marketing_experiments_master.csv`) that tracks every marketing
 |-------|------|---------------|
 | **Copilot** | Reads analytics pages, normalizes raw data into schema rows | No — hands row to Claude |
 | **Claude (mClaude)** | Appends rows, commits, pushes. Governance. | YES |
-| **Chamlin (ChatGPT)** | Strategy, funnel analysis, trend detection, weekly reports | No |
+| **Chamlin (ChatGPT)** | Strategy, funnel analysis, trend detection, weekly reports. Can write directly to CSV if Claude is unavailable. | YES (backup writer) |
 | **Gemini** | Creative scoring — hook, thumbnail, pacing | No — sends notes to Claude to append |
 | **Jo** | Final authority. Adds Notes_Human. Sets Decisions. | Via Claude |
 
@@ -18,9 +18,11 @@ One central CSV (`marketing_experiments_master.csv`) that tracks every marketing
 1. Jo opens analytics page in browser
 2. Jo tells Copilot: "Read this page and extract the metrics"
 3. Copilot outputs a structured row using the schema below
-4. Jo pastes the row here for Claude
-5. Claude appends the row to `marketing_experiments_master.csv`, commits, pushes
-6. Chamlin reads the updated file for analysis
+4. Jo pastes the row to Claude or Chamlin
+5. Primary writer (Claude) appends the row, commits, pushes — Chamlin writes directly if Claude is unavailable
+6. All AIs read from the same GitHub file for analysis
+
+**Sovereignty note:** Chamlin has direct GitHub write access as a backup writer. If Claude (Anthropic) becomes unavailable for any external reason, Chamlin can maintain the ledger without interruption. The CSV format ensures no vendor lock-in.
 
 ## Schema (28 columns)
 
