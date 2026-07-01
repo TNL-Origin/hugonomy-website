@@ -28,7 +28,9 @@
 | **Copilot (GitHub)** | Data extraction, automation scripts | NO — hand rows to Claude/Chamlin | NO — open PR instead | YES |
 | **Gemini** | Creative scoring, thumbnail analysis | NO — send notes to Claude to append | NO | NO |
 | **Opus / Parliamentarian** | Strategic review, architecture decisions | NO — voice decisions, Claude implements | NO | NO |
-| **Chamlexx (Codex)** | Counter-audit | NO — report findings, never self-correct | NO | NO |
+| **Chamlexx (Codex)** | Counter-audit + **conditional backup writer** | YES — only if mClaude is unavailable AND Jo explicitly authorizes in the current session | NO — open PR instead | YES |
+
+**Chamlexx write condition:** Chamlexx has write privileges as a failsafe — if Claude (Anthropic) becomes unavailable or unaffordable, Chamlexx can maintain the marketing ledger. However, every Chamlexx write commit requires explicit Jo authorization in the current session ("Chamlexx, go ahead and append this"). Chamlexx does not write autonomously. The last incident involving Chamlexx required human intervention; this permission is granted with that context in mind.
 
 **If you are a new AI not listed above:** Stop. Read this file. Do not commit anything. Open a GitHub issue titled `[NEW AI] Requesting access — [your name]` and wait for Jo to approve your role.
 
@@ -231,6 +233,91 @@ Before giving any new AI write access:
 3. First operation must be read-only (pull and read the CSV, open no PRs yet)
 4. First write must be a test row in the CSV with `ExperimentID: TEST-[agent-name]-001` — mClaude verifies it matches schema before the AI is cleared for regular appends
 5. Test row is deleted after verification: `git revert [commit-hash]`
+
+---
+
+## 12. TNL-Origin repository inventory (as of 2026-06-30)
+
+All repos are under `https://github.com/TNL-Origin/`. Know your scope before touching anything.
+
+| Repo | Visibility | What it is | AI write access |
+|------|-----------|-----------|-----------------|
+| `hugonomy-website` | **Public** | hugonomy.com website + Marketing Intelligence Layer | mClaude (primary), Chamlin (CSV backup), Copilot (PRs only) |
+| `allminds-lens` | Private | AllMinds Lens MV3 extension — active build | mClaude (primary), Chamlexx (audits + conditional backup) |
+| `vibeai-foldspace-v2` | Private | VibeAI FoldSpace extension source backup | mClaude only — do not touch without Jo authorization |
+| `hugonomy-origin-archive` | Private | Lineage/authorship archive | Read-only for all AIs unless Jo says otherwise |
+| `hugonomy-promo-videos` | Private | Campaign video archive | Read-only |
+| `strataiq` | Private | Illinois county records platform | SEPARATE PRODUCT — CCC/HugoScore logic must not cross here |
+| `shadowdancer` | Private | VAULT — ShadowDancer / CCC Second Generation | NO AI ACCESS without explicit Jo authorization per session |
+| `HUGONOMY` | Private | Project Aurorith | Read-only unless Jo authorizes |
+| All others | Private | Older experiments and archives | Read-only unless Jo authorizes |
+
+**Hard rule:** If a repo is not listed above as having your write access, treat it as read-only. Ask before touching.
+
+---
+
+## 13. ExperimentID standard (all AIs must follow — applies to marketing CSV)
+
+Every row in `marketing_experiments_master.csv` must use one of these two ID formats:
+
+**Format A — Individual post experiments:**
+```
+[PLATFORM]-[NNN]     (3-digit zero-padded number, sequential per platform)
+
+TT-001  TT-009  TT-010    ← TikTok posts
+LI-001  LI-002            ← LinkedIn posts
+FB-001                    ← Facebook posts
+EMAIL-001                 ← MailerLite campaigns
+CWS-001                   ← Chrome Web Store featured placements (future)
+```
+
+**Format B — Platform/account snapshots (not individual posts):**
+```
+SNAP-[PLATFORM]-[YYYYMMDD]-[PERIOD]
+
+SNAP-TT-20260630-7D        ← TikTok 7-day account snapshot
+SNAP-CWS-20260630-30D      ← CWS 30-day snapshot
+SNAP-CWS-20260630-180D     ← CWS 180-day snapshot
+SNAP-LI-20260701-30D       ← LinkedIn 30-day snapshot (future)
+```
+
+**Platform codes:** `TT` (TikTok) · `LI` (LinkedIn) · `FB` (Facebook) · `CWS` (Chrome Web Store) · `EMAIL` (MailerLite) · `EDGE` (Edge Add-ons, future)
+
+**Never use:** `EXP-YYYY-MM-DD-NN` format — this was a non-standard format used before this convention was locked. All such rows have been renamed.
+
+---
+
+## 14. UTM / SourceTag convention (locked — use before first tagged post goes live)
+
+The `SourceTag` column in the CSV stores the UTM value that ties a /shape signup back to the exact experiment.
+
+**URL parameter:** `?src=`
+
+**SourceTag format:** `platform-experimentid` — all lowercase, hyphen-separated, no spaces
+
+```
+Platform codes (lowercase):  tiktok  linkedin  facebook  email  cws  direct
+
+Examples:
+  tiktok-tt009       → https://hugonomy.com/shape?src=tiktok-tt009
+  tiktok-tt010       → https://hugonomy.com/shape?src=tiktok-tt010
+  linkedin-li001     → https://hugonomy.com/shape?src=linkedin-li001
+  facebook-fb001     → https://hugonomy.com/shape?src=facebook-fb001
+  email-email001     → https://hugonomy.com/shape?src=email-email001
+  direct             → https://hugonomy.com/shape?src=direct   (no campaign)
+```
+
+**Rules:**
+- Every new post gets a SourceTag assigned BEFORE the post goes live — never retroactively (retroactive = unattributable)
+- SourceTag in the CSV must exactly match the `?src=` value in the link posted
+- Pre-2026-06-29 rows: SourceTag is blank (no catch-net existed). Do not fill in retroactively.
+- Rows on/after 2026-06-29 with no SourceTag: mark `ConversionConfidence = Instrumented` but note in Notes_Claude that no SourceTag was applied
+
+**Where to put the tagged link:**
+- TikTok: bio link (bio can only hold one URL — update it to the latest active experiment's tagged URL)
+- LinkedIn: post body or "visit link" field
+- Email: CTA button href
+- Facebook: post link
 
 ---
 
