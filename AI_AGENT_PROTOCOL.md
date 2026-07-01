@@ -34,9 +34,46 @@
 
 ---
 
-## 3. Safe write protocol
+## 3. Mandatory agent attribution (every commit)
 
-### 3A — Low-risk: appending data to marketing CSV (direct to main)
+Every commit to this repo from an AI agent **must** include an `Agent:` trailer at the bottom of the commit message. This is how Jo knows who touched what and when.
+
+**Required format:**
+```
+Agent: [Name] ([Model/Version]) | [YYYY-MM-DD] | [role]
+```
+
+**Examples:**
+```
+Agent: mClaude (Claude Sonnet 4.6) | 2026-06-30 | primary-writer
+Agent: Chamlin (ChatGPT-4o) | 2026-06-30 | backup-writer
+Agent: Copilot (GitHub Copilot) | 2026-06-30 | automation
+```
+
+**Full commit message template:**
+```
+[scope]: [what changed] — [brief reason]
+
+[optional body: why, backfill notes, schema version, etc.]
+
+Agent: [Name] ([Model]) | [YYYY-MM-DD] | [role]
+Co-Authored-By: [Name] <[email or noreply]>
+```
+
+**Why this matters:** Git shows the account that pushed (often shared as TNL-Origin), but not which AI decided to make the change. The `Agent:` trailer makes the audit trail human-readable without reading the full diff. Jo can run `git log --grep="Agent: Chamlin"` to see every Chamlin commit at a glance.
+
+If you forget the trailer on a commit: do not amend. Add a follow-up commit:
+```
+meta: add attribution to [previous-commit-hash]
+
+Agent: [Name] ([Model]) | [YYYY-MM-DD] | [role]
+```
+
+---
+
+## 4. Safe write protocol
+
+### 4A — Low-risk: appending data to marketing CSV (direct to main)
 
 Data appends are low-risk because git history is the backup. Follow exactly:
 
@@ -51,7 +88,7 @@ Data appends are low-risk because git history is the backup. Follow exactly:
 
 If push is rejected (remote diverged): `git pull --no-rebase origin main` → resolve conflict → push. **Never force-push to main.**
 
-### 3B — Medium-risk: schema changes, README updates, script changes
+### 4B — Medium-risk: schema changes, README updates, script changes
 
 ```
 1. git pull origin main
@@ -62,13 +99,13 @@ If push is rejected (remote diverged): `git pull --no-rebase origin main` → re
 6. tag Jo or leave a comment explaining what changed and why
 ```
 
-### 3C — High-risk: website HTML/CSS/JS, netlify.toml, privacy.html, workflows
+### 4C — High-risk: website HTML/CSS/JS, netlify.toml, privacy.html, workflows
 
 **Stop. Do not write directly.** Open a PR with your proposed changes and tag `@TNL-Origin` in the PR description. Wait for Jo to review before merging. These files are live on hugonomy.com and Chrome/Edge stores — a mistake is public.
 
 ---
 
-## 4. Merge conflict protocol
+## 5. Merge conflict protocol
 
 > **Hard rule from research (AgenticFlict, GitHub agentic workflows): Humans resolve agent conflicts. Not other agents.**
 
@@ -85,7 +122,7 @@ When you hit a merge conflict:
 
 ---
 
-## 5. Circuit breakers — STOP and wait for Jo
+## 6. Circuit breakers — STOP and wait for Jo
 
 Stop all repo operations and open a GitHub issue if ANY of these occur:
 
@@ -101,7 +138,7 @@ Stop all repo operations and open a GitHub issue if ANY of these occur:
 
 ---
 
-## 6. Backup procedure (before any risky operation)
+## 7. Backup procedure (before any risky operation)
 
 Before schema changes, bulk edits, or anything that touches more than 3 rows at once:
 
@@ -122,7 +159,7 @@ Tags live on GitHub and are not affected by branch resets.
 
 ---
 
-## 7. Hard lines (repo-wide — non-negotiable)
+## 8. Hard lines (repo-wide — non-negotiable)
 
 These apply to every file in this repo, not just marketing/:
 
@@ -134,7 +171,7 @@ These apply to every file in this repo, not just marketing/:
 
 ---
 
-## 8. Escalation matrix
+## 9. Escalation matrix
 
 | Situation | Action | Where |
 |-----------|--------|--------|
@@ -148,7 +185,7 @@ These apply to every file in this repo, not just marketing/:
 
 ---
 
-## 9. Recovery playbook (if something goes wrong)
+## 10. Recovery playbook (if something goes wrong)
 
 ```bash
 # See recent commits
@@ -170,9 +207,22 @@ git tag | grep backup/
 
 **Never run `git reset --hard` on main without Jo's explicit approval.** It rewrites history and can destroy commits from other agents.
 
+```bash
+# Audit by agent — see everything a specific AI touched
+git log --oneline --grep="Agent: Chamlin"
+git log --oneline --grep="Agent: mClaude"
+git log --oneline --grep="Agent: Copilot"
+
+# See all agent commits in one view
+git log --oneline --grep="Agent:"
+
+# See what an agent changed in a specific file over time
+git log --oneline --grep="Agent: Chamlin" -- marketing/marketing_experiments_master.csv
+```
+
 ---
 
-## 10. Adding a new AI to this repo
+## 11. Adding a new AI to this repo
 
 Before giving any new AI write access:
 
