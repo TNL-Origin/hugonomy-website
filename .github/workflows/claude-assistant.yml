@@ -1,0 +1,32 @@
+name: Claude Website Assistant
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  issue_comment:
+    types: [created]
+
+jobs:
+  claude:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+    steps:
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            You are reviewing changes to the Hugonomy Systems website (hugonomy.com).
+
+            On every PR automatically check:
+            1. IP HARD LINE: Flag any reference to IP filings, provisional numbers, USPTO, or pending-application claims — per HUGONOMY_LESSONS_LEARNED.md 2026-05-14, all such language was scrubbed and must not return.
+            2. CSP: If netlify.toml Content-Security-Policy was changed, verify no trusted domains were removed and no unsafe-eval was added.
+            3. PRIVACY: If shape.html or any form page was changed, confirm the MailerLite privacy disclosure is still present.
+            4. BROKEN LINKS: Flag any href pointing to localhost, placeholder URLs, or internal paths that don't exist.
+            5. STORE COMPLIANCE: Flag any changes to extension-linked pages (privacy.html) — these are CWS-linked and need policy review before changing.
+
+            For @claude mentions in comments: answer the question or implement the requested change.
+
+            Keep responses concise. Flag blockers clearly. Approve if no issues found.
