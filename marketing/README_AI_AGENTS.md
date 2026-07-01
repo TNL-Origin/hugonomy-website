@@ -1,30 +1,74 @@
 # Hugonomy Marketing Intelligence Layer — AI Agent Instructions
+# Repo: https://github.com/TNL-Origin/hugonomy-website | Branch: main
 
-## What this folder is
-One central CSV (`marketing_experiments_master.csv`) that tracks every marketing experiment across all platforms. One row = one post/experiment.
+## Cold-start resume command
+At the start of any new session, Jo will say:
+> "Read marketing/README_AI_AGENTS.md and resume."
 
-## Who does what
+Read this file first. It is the canonical source. No prior session memory required.
 
-| Agent | Role | Write to CSV? |
-|-------|------|---------------|
-| **Copilot** | Reads analytics pages, normalizes raw data into schema rows | No — hands row to Claude |
-| **Claude (mClaude)** | Appends rows, commits, pushes. Governance. | YES |
-| **Chamlin (ChatGPT)** | Strategy, funnel analysis, trend detection, weekly reports. Can write directly to CSV if Claude is unavailable. | YES (backup writer) |
-| **Gemini** | Creative scoring — hook, thumbnail, pacing | No — sends notes to Claude to append |
-| **Jo** | Final authority. Adds Notes_Human. Sets Decisions. | Via Claude |
+---
+
+## What this is
+One central CSV that tracks every Hugonomy marketing experiment across all platforms.
+One row = one post or experiment. GitHub is the system of record — not any individual AI.
+
+**Repo:** `https://github.com/TNL-Origin/hugonomy-website`
+**Branch:** `main`
+**Folder:** `marketing/`
+
+```
+marketing/
+├── marketing_experiments_master.csv   ← THE LEDGER (one row per experiment)
+├── README_AI_AGENTS.md                ← this file — canonical source for all AIs
+└── generate_ledger_xlsx.py            ← run locally to produce a formatted .xlsx
+```
+
+---
+
+## AI responsibilities
+
+| Agent | Role | Can write to CSV? |
+|-------|------|-------------------|
+| **Copilot** | Reads analytics pages, normalizes raw metrics into schema rows | No — hands row to Claude or Jo |
+| **Claude (mClaude)** | Primary writer. Appends rows, commits, pushes. Governance. | YES — primary |
+| **Chamlin (ChatGPT)** | Strategy, funnel analysis, trend detection, weekly reports. Backup writer if Claude is unavailable. | YES — backup |
+| **Gemini** | Creative scoring — hook, thumbnail, pacing. Writes Notes_Gemini. | No — sends notes to Claude to append |
+| **Jo** | Final authority. Adds Notes_Human, sets Decisions, approves experiments. | Via Claude or Chamlin |
+
+**Sovereignty principle:** Claude is primary writer. Chamlin writes directly if Claude (Anthropic) is unavailable for any external reason. CSV format — no vendor lock-in. Any AI with GitHub access can maintain the ledger.
+
+---
 
 ## Workflow (every new experiment)
 
-1. Jo opens analytics page in browser
-2. Jo tells Copilot: "Read this page and extract the metrics"
-3. Copilot outputs a structured row using the schema below
+1. Jo opens platform analytics page in Edge/Chrome
+2. Jo tells Copilot: *"Read this page and extract the metrics"*
+3. Copilot outputs a structured row matching the schema below
 4. Jo pastes the row to Claude or Chamlin
-5. Primary writer (Claude) appends the row, commits, pushes — Chamlin writes directly if Claude is unavailable
-6. All AIs read from the same GitHub file for analysis
+5. Writing AI appends the row to `marketing_experiments_master.csv`, commits, pushes
+6. All AIs read from the same GitHub file for analysis and strategy
 
-**Sovereignty note:** Chamlin has direct GitHub write access as a backup writer. If Claude (Anthropic) becomes unavailable for any external reason, Chamlin can maintain the ledger without interruption. The CSV format ensures no vendor lock-in.
+---
 
-## Schema (28 columns)
+## Commit message convention
+
+```
+marketing: add [ExperimentID] — [Platform] [ContentTitle]
+```
+
+Examples:
+```
+marketing: add TT-009 — TikTok "Fluency Trap Remix — Student Version"
+marketing: add LI-001 — LinkedIn "Don't Outsource Your Mind launch post"
+marketing: update TT-001 — add Saves + RetentionRate from Copilot pull
+```
+
+Always append — never overwrite existing rows. Keep blank platform-placeholder rows at the bottom.
+
+---
+
+## CSV schema (28 columns)
 
 ```
 ExperimentID      — Format: TT-001, LI-001, FB-001, EMAIL-001, CWS-001
@@ -33,41 +77,66 @@ Platform          — TikTok | LinkedIn | Facebook | MailerLite | ChromeWebStore
 ChannelType       — Organic | Paid | Owned | Partnership
 ContentTitle      — Short human-readable title
 ContentURL        — Direct link to the live post
-HookType          — Problem-Agitate | Identity | Question-Challenge | Bold-Claim | Transformation | Philosophical
+HookType          — Problem-Agitate | Identity | Question-Challenge | Bold-Claim | Transformation | Philosophical | Announcement
 PrimaryGoal       — Awareness | Conversion | Retention | Engagement
-Hook              — Verbatim hook text (first 3 seconds / first line)
+Hook              — Verbatim hook text (first 3 seconds or first line)
 CoreMessage       — The main argument or claim
-CTA               — Call to action shown
+CTA               — Call to action shown (e.g. "Visit hugonomy.com/shape")
 TargetAudience    — Who this was aimed at
-Views             — Raw views / reach
+Views             — Raw view count
 Impressions       — Impressions (if platform separates from Views)
 WatchTime         — Average watch time (seconds or mm:ss)
-RetentionRate     — % retention
+RetentionRate     — % retention (e.g. "42%")
 Likes             — Count
 Comments          — Count
 Shares            — Count
 Saves             — Count
-ProfileVisits     — Count
+ProfileVisits     — Count attributed to this post
 WebsiteClicks     — Clicks to hugonomy.com or /shape
-ExtensionInstalls — Attributed installs (CWS)
+ExtensionInstalls — Attributed CWS installs
 WaitlistSignups   — /shape form submissions attributed to this post
-Notes_Human       — Jo's interpretation
-Notes_Gemini      — Gemini creative scoring notes
-Notes_Claude      — Claude architecture / governance notes
-Decision          — Scale | Repeat | Remix | Investigate | Kill (+ rationale)
+Notes_Human       — Jo's interpretation and context
+Notes_Gemini      — Gemini creative scoring (hook, thumbnail, pacing)
+Notes_Claude      — Claude governance or architecture notes
+Decision          — Scale | Repeat | Remix | Investigate | Kill (+ one-line rationale)
 ```
 
-## Claude's append instruction
+### Decision definitions
+| Decision | Meaning |
+|----------|---------|
+| **Scale** | Top performer in its lane. Make more like this immediately. |
+| **Repeat** | Solid signal. Replicate format with minor variation. |
+| **Remix** | Core concept works but execution needs a change (pacing, hook, delivery). |
+| **Investigate** | Anomalous engagement signal. Read comments, understand who it reached before deciding. |
+| **Kill** | Format or framing does not work on this platform. Do not repeat. |
 
-When Jo says "append this row", Claude should:
-1. Read the current CSV (never overwrite, always append)
-2. Add the new row at the bottom (above any blank platform-placeholder rows)
-3. Keep blank platform-placeholder rows at the bottom
-4. Commit: `marketing: add [ExperimentID] — [Platform] [ContentTitle]`
-5. Push to origin main
+---
 
-## Hard lines (apply to this file too)
+## Copilot row-extraction prompt (standard)
 
-- No IP filing references, provisional numbers, or USPTO language
-- No API keys or credentials in any marketing file
-- This file is public-safe — treat it as if the Chrome Web Store reviewer can see it
+Jo gives Copilot this prompt when on a platform analytics page:
+
+> "Read this page and extract the metrics. Output a structured row for marketing_experiments_master.csv using these columns: ExperimentID, Date, Platform, ChannelType, ContentTitle, ContentURL, HookType, PrimaryGoal, Hook, CoreMessage, CTA, TargetAudience, Views, Impressions, WatchTime, RetentionRate, Likes, Comments, Shares, Saves, ProfileVisits, WebsiteClicks, ExtensionInstalls, WaitlistSignups. Leave blanks for anything not shown on the page."
+
+---
+
+## Governance rules (apply to this file and all marketing data)
+
+- IP HARD LINE: No references to IP filings, application numbers, filing agencies, or pending-application claims anywhere in this folder (see HUGONOMY_LESSONS_LEARNED.md 2026-05-14)
+- No API keys, tokens, or credentials in any marketing file
+- This folder is public-safe — treat all content as visible to the Chrome Web Store reviewer and the general public
+- Notes_Human is Jo's sovereign interpretation — do not overwrite it; only Jo edits that column
+- Decisions are set by Jo or confirmed by Jo — AIs may propose, Jo finalizes
+- When in doubt about a row: append and flag, do not skip
+
+---
+
+## Current experiment count (as of 2026-06-30)
+
+- TT-001 through TT-008 (8 TikTok organic posts, pre-populated with views/likes/comments)
+- LI-001, LI-002, FB-001, EMAIL-001 (blank rows, ready for data)
+- Gaps: Saves, Impressions, RetentionRate, ProfileVisits, WebsiteClicks pending Copilot pull
+
+---
+
+*Last updated: 2026-06-30 by mClaude (Claude Sonnet). Update this file whenever the schema or workflow changes.*
