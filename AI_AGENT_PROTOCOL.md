@@ -9,9 +9,7 @@
 
 | Path | What it is | Risk level |
 |------|-----------|------------|
-| `marketing/marketing_experiments_master.csv` | Marketing Intelligence Layer — one row per experiment | LOW (data append) |
-| `marketing/README_AI_AGENTS.md` | Canonical workflow doc for all AIs | MEDIUM (schema governance) |
-| `marketing/generate_ledger_xlsx.py` | xlsx formatter — run locally only | LOW |
+| **Marketing Intelligence Layer** | Moved to **private** repo `TNL-Origin/hugonomy-marketing` — see Section 12 | PRIVATE |
 | `*.html`, `*.css`, `*.js` | hugonomy.com website source | HIGH (live site) |
 | `netlify.toml` | Netlify config, CSP headers | HIGH (breaks live site if wrong) |
 | `privacy.html` | Chrome/Edge store linked privacy policy | CRITICAL (store compliance) |
@@ -242,7 +240,8 @@ All repos are under `https://github.com/TNL-Origin/`. Know your scope before tou
 
 | Repo | Visibility | What it is | AI write access |
 |------|-----------|-----------|-----------------|
-| `hugonomy-website` | **Public** | hugonomy.com website + Marketing Intelligence Layer | mClaude (primary), Chamlin (CSV backup), Copilot (PRs only) |
+| `hugonomy-website` | **Public** | hugonomy.com website only — protocol files live here | mClaude (primary), Copilot (PRs only) |
+| `hugonomy-marketing` | **Private** | Marketing Intelligence Layer — experiment ledger, UTM tracking, analytics | mClaude (primary), Chamlin (CSV backup with Jo auth) |
 | `allminds-lens` | Private | AllMinds Lens MV3 extension — active build | mClaude (primary), Chamlexx (audits + conditional backup) |
 | `vibeai-foldspace-v2` | Private | VibeAI FoldSpace extension source backup | mClaude only — do not touch without Jo authorization |
 | `hugonomy-origin-archive` | Private | Lineage/authorship archive | Read-only for all AIs unless Jo says otherwise |

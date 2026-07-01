@@ -16,7 +16,9 @@ It tells you:
 - How to escalate problems
 
 ## Step 2 — Understand the marketing data
-Read [`marketing/README_AI_AGENTS.md`](marketing/README_AI_AGENTS.md)
+The Marketing Intelligence Layer is in a **separate private repo**: `TNL-Origin/hugonomy-marketing`
+
+If you have access, read: `https://github.com/TNL-Origin/hugonomy-marketing/blob/main/README_AI_AGENTS.md`
 
 It tells you:
 - The exact CSV schema (32 columns)
