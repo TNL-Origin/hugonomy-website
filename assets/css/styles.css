@@ -1798,3 +1798,93 @@ footer {
     scroll-behavior: auto !important;
   }
 }
+
+/* ── MailerLite embedded-form styling (shared) ──────────────────────────
+   Added 2026-07-03 for the homepage mobile-bridge form (REDESIGN SPEC v1.0
+   §3). shape.html has its own identical inline copy (predates this file) —
+   left as-is, harmless duplication, not consolidated this pass. Any future
+   page hosting a .ml-embedded form gets this styling automatically. */
+.ml-embedded { width: 100%; }
+.ml-embedded .ml-form-embedWrapper { border-radius: 8px; overflow: hidden; }
+.ml-embedded .ml-form-embedBody { padding: 0 !important; background: transparent !important; }
+.ml-embedded input[type="email"],
+.ml-embedded input[type="text"] {
+  background: #fff !important;
+  color: #111 !important;
+  border: 1px solid #ccc !important;
+  border-radius: 6px !important;
+  padding: 10px 14px !important;
+  font-size: 0.97rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin-bottom: 10px !important;
+}
+.ml-embedded input[type="email"]:focus,
+.ml-embedded input[type="text"]:focus {
+  outline: 2px solid #6ca6ff !important;
+  border-color: #6ca6ff !important;
+}
+.ml-embedded button[type="submit"],
+.ml-embedded .ml-form-embedSubmit button {
+  background: #f0c040 !important;
+  color: #0a0f20 !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 12px 20px !important;
+  font-size: 0.97rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  margin-top: 6px !important;
+  transition: opacity 0.15s !important;
+}
+.ml-embedded button[type="submit"]:hover,
+.ml-embedded .ml-form-embedSubmit button:hover {
+  opacity: 0.88 !important;
+}
+.ml-embedded label {
+  color: var(--text-secondary) !important;
+  font-size: 0.88rem !important;
+  margin-bottom: 4px !important;
+  display: block !important;
+}
+.ml-embedded .ml-form-checkboxRow {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  margin-top: 10px !important;
+}
+.ml-embedded .ml-form-checkboxRow input[type="checkbox"] {
+  width: auto !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+/* Mobile-bridge widget reuses the /shape MailerLite form (uNrOIC — no dedicated
+   form exists), which injects its OWN "Give feedback. Shape the next build."
+   heading/subtext. That's wrong context here — the surrounding hero copy already
+   says "Send yourself the link." Hide MailerLite's injected heading, SCOPED to
+   #heroMobileBridge only, so shape.html's own use of the same form is untouched. */
+#heroMobileBridge .ml-embedded .ml-form-embedContent {
+  display: none !important;
+}
+
+/* Mobile-bridge card container (self-audit fix, 2026-07-03): originally reused
+   faculty.html's ".faculty-summary-card" / ".faculty-flyer-note" classes, but
+   those are defined in faculty.html's own page-scoped <style> block, not this
+   shared stylesheet — so on index.html they had NO effect at all and the card
+   rendered as plain unboxed text. Defining proper shared rules here instead. */
+.mobile-bridge-card {
+  text-align: center;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 28px 32px;
+  background: var(--bg-soft);
+  border: 1px solid var(--brand-border);
+  border-radius: 16px;
+}
+.mobile-bridge-note {
+  font-size: 0.82rem;
+  color: var(--text-tertiary, #8a93a8);
+  margin-top: 14px;
+}

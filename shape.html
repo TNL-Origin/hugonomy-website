@@ -292,7 +292,7 @@
     }
   </style>
 </head>
-<body>
+<body data-src-default="homepage">
 
 <!-- ── Nav ───────────────────────────────────────────────────────────
      /shape is deep-link only — intentionally NOT highlighted in nav
@@ -466,36 +466,8 @@ document.addEventListener('click', function(e) {
   }
 });
 </script>
-<script>
-  (function () {
-    function handleMLSubmit(e) {
-      var form = e.target;
-      if (!form || form.tagName !== 'FORM') return;
-      var wrapper = form.closest ? form.closest('.ml-embedded') : null;
-      if (!wrapper) return;
-      e.preventDefault();
-      e.stopPropagation();
-      var submitBtn = form.querySelector('button[type="submit"]');
-      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
-      fetch(form.action, {
-        method: form.method || 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      })
-      .then(function (r) { return r.json(); })
-      .then(function (json) {
-        if (json.success) {
-          wrapper.innerHTML = '<div style="padding:32px 16px;text-align:center;color:#f0c040;font-size:1.1rem;font-weight:700;line-height:1.5;">Got it — founder reply within 2 days.<br><span style="font-size:0.9rem;font-weight:400;color:#ccc;">Check your inbox for a note from joseph@hugonomy.com</span></div>';
-        } else {
-          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Help shape what comes next'; }
-        }
-      })
-      .catch(function () {
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Help shape what comes next'; }
-      });
-    }
-    document.addEventListener('submit', handleMLSubmit, true);
-  })();
-</script>
+<!-- MailerLite submit handling + ?src= attribution capture — shared script,
+     see content/canon.md "Attribution channel registry" and assets/js/attribution.js -->
+<script src="assets/js/attribution.js"></script>
 </body>
 </html>

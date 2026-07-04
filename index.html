@@ -12,6 +12,17 @@
     gtag('js', new Date());
     gtag('config', 'G-ZVT4SCXJSF');
   </script>
+  <!-- MailerLite Universal (account 2471308) — required for the mobile-bridge form
+       in the hero (REDESIGN SPEC v1.0 §3). Was previously only loaded on shape.html;
+       the mobile-bridge widget rendered as an empty gap without this. -->
+  <script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2471308');
+  </script>
+  <!-- End MailerLite Universal -->
   <meta name="description" content="A browser extension for ChatGPT, Claude &amp; Gemini that catches you the moment you stop thinking. AI is your ideas engine. VibeAI is your thinking cockpit.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="author" content="Joseph D. Tingling MD/PhD">
@@ -42,7 +53,7 @@
           "name": "Hugonomy Systems",
           "alternateName": "Hugonomy",
           "url": "https://hugonomy.com/",
-          "logo": "https://hugonomy.com/assets/icons/icon512.png",
+          "logo": "https://hugonomy.com/assets/icons/icon128.png",
           "description": "Hugonomy Systems builds local-first tools that help people stay aware while using AI.",
           "founder": {
             "@type": "Person",
@@ -68,7 +79,7 @@
     }
   </script>
 </head>
-<body>
+<body data-src-default="homepage">
 
 <!-- ── Nav ─────────────────────────────────────────────────────────── -->
 <nav aria-label="Site navigation">
@@ -267,8 +278,8 @@
           Watch what you missed &darr;
         </a>
       </div>
-      <p class="cta-note hero-cta-note">&#x2B50; <strong>100+ installs</strong> &middot; Free forever &middot; No account required</p>
-      <div class="cta-group hero-store-btns">
+      <p class="cta-note hero-cta-note">&#x2B50; <strong>nearly 200 installs</strong> &middot; Free forever &middot; No account required</p>
+      <div class="cta-group hero-store-btns" id="heroStoreBtns">
         <a href="https://chromewebstore.google.com/detail/lkmfjgaahnmlncgaeocfgiohjiodiohi"
            target="_blank" rel="noopener noreferrer" class="btn-secondary">
           Add to Chrome — Free
@@ -278,6 +289,32 @@
           Add to Edge — Free
         </a>
       </div>
+      <!-- Mobile bridge (REDESIGN SPEC v1.0 §3): hidden by default, JS-revealed on
+           touch/narrow viewports since FoldSpace is desktop-only. Reuses the same
+           MailerLite form as /shape (data-form uNrOIC) — no separate form exists in
+           the MailerLite account for this specific flow yet; if a dedicated
+           mobile-bridge form with different fields/copy is wanted, that needs to be
+           created in the MailerLite dashboard and its form ID swapped in here. -->
+      <div class="cta-group hero-mobile-bridge" id="heroMobileBridge" style="display:none;">
+        <div class="mobile-bridge-card">
+          <p style="margin-bottom:14px;"><strong>You're on your phone — FoldSpace lives on your laptop.</strong></p>
+          <p style="margin-bottom:16px; font-size:0.92rem;">Send yourself the link:</p>
+          <div class="ml-embedded" data-form="uNrOIC" data-src-override="mobile-bridge" data-success-message="Sent. Open it next time you're at your computer."></div>
+          <p class="mobile-bridge-note">or search &quot;VibeAI FoldSpace&quot; in the Chrome Web Store later.</p>
+        </div>
+      </div>
+      <script>
+        (function () {
+          var isMobile = window.matchMedia('(max-width: 720px)').matches ||
+            /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || '');
+          if (isMobile) {
+            var btns = document.getElementById('heroStoreBtns');
+            var bridge = document.getElementById('heroMobileBridge');
+            if (btns) btns.style.display = 'none';
+            if (bridge) bridge.style.display = '';
+          }
+        })();
+      </script>
       <div class="hero-product-id">
         <img src="assets/images/logo-vibeai-foldspace.png" alt="VibeAI FoldSpace by Hugonomy Systems" class="hero-product-logo">
       </div>
@@ -731,7 +768,7 @@
       <div class="research-card">
         <h4>14 points of accuracy lost &mdash; even after 20 hours of AI literacy training.</h4>
         <p>Single-blind RCT, 44 physicians, all of whom completed a 20-hour AI literacy program. When LLM suggestions contained errors, diagnostic accuracy dropped 14 percentage points (73.3% vs 84.9% control). The lesson cuts deep: institutional training, by itself, doesn't prevent automation bias. The user-side intervention isn't optional &mdash; it's the missing layer.</p>
-        <span class="research-year">Qazi et al., 2025 &mdash; NEJM AI (RCT)</span>
+        <span class="research-year">Qazi et al., 2026 &mdash; NEJM AI (RCT)</span>
         <a href="https://doi.org/10.1056/AIoa2501001"
            target="_blank" rel="noopener noreferrer" class="research-link">Read the paper &#x2197;</a>
       </div>
@@ -1400,6 +1437,7 @@ document.addEventListener('click', function(e) {
   }
 })();
 </script>
+<script src="assets/js/attribution.js"></script>
 
 </body>
 </html>
