@@ -891,9 +891,11 @@ section { padding: 72px 0; }
 }
 .research-expand-btn:hover { background: var(--brand-card); color: var(--text-primary); }
 .research-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  display: flex; flex-direction: column; gap: 10px; max-width: 680px; margin: 0 auto;
   max-height: 0; overflow: hidden; transition: max-height 0.45s ease;
 }
+.study-hook { font-size: 1rem; font-weight: 700; margin-bottom: 10px; color: var(--text-primary); }
+.study-body-text { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; margin-bottom: 12px; }
 .research-card {
   background: var(--brand-card); border: 1px solid var(--brand-border);
   border-radius: var(--radius); padding: 28px 28px 24px;
@@ -946,7 +948,7 @@ section { padding: 72px 0; }
 .ref-stack { max-width: 680px; margin: 24px auto 8px; display: flex; flex-direction: column; gap: 10px; }
 .ref-stack-item {
   background: var(--brand-card); border: 1px solid var(--brand-border);
-  border-radius: 16px; overflow: hidden;
+  border-radius: 16px; overflow: hidden; flex-shrink: 0;
   transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s, opacity 0.25s;
   -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
 }
@@ -971,7 +973,7 @@ section { padding: 72px 0; }
 .ref-stack-body {
   max-height: 0; overflow: hidden; transition: max-height 0.35s ease;
 }
-.ref-stack-item--open .ref-stack-body { max-height: 260px; }
+.ref-stack-item--open .ref-stack-body { max-height: 520px; }
 .ref-stack-body-inner { padding: 0 20px 20px; border-top: 1px solid var(--brand-border); }
 .ref-stack-citation { font-size: 0.84rem; color: var(--text-secondary); line-height: 1.6; margin-top: 14px; }
 .ref-stack-why { font-size: 0.84rem; color: var(--text-primary); line-height: 1.6; margin-top: 10px; font-style: italic; }
