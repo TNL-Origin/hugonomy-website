@@ -170,26 +170,10 @@
     .position-statement-mirror a:hover {
       border-bottom-color: rgba(108,166,255,0.7);
     }
-    .position-statement-refs {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .position-statement-refs li {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 14px;
-      padding-left: 16px;
-      border-left: 2px solid var(--brand-border);
-    }
-    .position-statement-refs a {
-      color: var(--brand-blue);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(108,166,255,0.35);
-    }
-    .position-statement-refs a:hover {
-      border-bottom-color: rgba(108,166,255,0.7);
+    .position-statement-refs-note {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin: 0 0 4px;
     }
     @media (max-width: 720px) {
       .position-statement-body { padding: 0 12px; font-size: 0.96rem; }
@@ -411,46 +395,106 @@
       </p>
 
       <h3 class="position-statement-subhead position-statement-subhead--refs">References</h3>
+      <p class="position-statement-refs-note">Click any reference to expand it. Sorted strongest evidence first.</p>
 
-      <ul class="position-statement-refs">
-        <li>
-          Arditi, A., Obeso, O., Syed, A., Paleka, D., Panickssery, N., Gurnee, W., &amp; Nanda, N.
-          (2024). Refusal in language models is mediated by a single direction.
-          <em>Advances in Neural Information Processing Systems, 38</em>.
-          <a href="https://arxiv.org/abs/2406.11717" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2406.11717</a>
-        </li>
-        <li>
-          Gerlich, M. (2025). AI tools in society: Impacts on cognitive offloading and the
-          future of critical thinking. <em>Societies, 15</em>(1), Article 6.
-          <a href="https://doi.org/10.3390/soc15010006" target="_blank" rel="noopener noreferrer">https://doi.org/10.3390/soc15010006</a>
-        </li>
-        <li>
-          Hutchins, E. (1995). <em>Cognition in the wild.</em> MIT Press.
-        </li>
-        <li>
-          Kabashkin, I. (2025). Cognitive atrophy paradox of AI&ndash;human interaction: From
-          cognitive growth and atrophy to balance. <em>Information, 16</em>(11), Article 1009.
-          <a href="https://doi.org/10.3390/info16111009" target="_blank" rel="noopener noreferrer">https://doi.org/10.3390/info16111009</a>
-        </li>
-        <li>
-          Phillips, M. F., &amp; Saha, K. (2026, April 14). Ethical guidelines for AI.
-          <em>The Opinion Pages</em>.
-          <a href="https://theopinionpages.com/2026/04/ethical-guidelines-for-ai/" target="_blank" rel="noopener noreferrer">https://theopinionpages.com/2026/04/ethical-guidelines-for-ai/</a>
-        </li>
-        <li>
-          Qazi, I. A., Ali, A., Khawaja, A. U., Akhtar, M. J., Sheikh, A. Z., &amp; Alizai, M. H.
-          (2026). Automation bias in large language model&ndash;assisted diagnostic reasoning
-          among physicians trained in AI literacy &mdash; A randomized clinical trial.
-          <em>NEJM AI</em>.
-          <a href="https://doi.org/10.1056/AIoa2501001" target="_blank" rel="noopener noreferrer">https://doi.org/10.1056/AIoa2501001</a>
-        </li>
-        <li>
-          Zhang, Y., Li, M., Han, W., Yao, Y., Cen, Z., &amp; Zhao, D. (2025). Safety is not only
-          about refusal: Reasoning-enhanced fine-tuning for interpretable LLM safety.
-          <em>arXiv preprint</em> arXiv:2503.05021.
-          <a href="https://arxiv.org/abs/2503.05021" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2503.05021</a>
-        </li>
-      </ul>
+      <div class="ref-stack" id="refStack" role="list" aria-label="References">
+        <div class="ref-stack-item ref-stack-item--open" role="listitem">
+          <button type="button" class="ref-stack-tab" aria-expanded="true">
+            <span class="ref-stack-tab-title">Qazi et al. (2026) &mdash; NEJM AI</span>
+            <span class="ref-stack-tab-meta"><span class="evidence-tier evidence-tier--t1">T1 &middot; RCT</span><span class="ref-stack-caret">&#x25BE;</span></span>
+          </button>
+          <div class="ref-stack-body">
+            <div class="ref-stack-body-inner">
+              <p class="ref-stack-citation">Qazi, I. A., Ali, A., Khawaja, A. U., Akhtar, M. J., Sheikh, A. Z., &amp; Alizai, M. H. (2026). Automation bias in large language model&ndash;assisted diagnostic reasoning among physicians trained in AI literacy &mdash; A randomized clinical trial. <em>NEJM AI</em>.</p>
+              <p class="ref-stack-why">The only experimental (not correlational) evidence in this list &mdash; 20 hours of AI-literacy training did not prevent automation bias.</p>
+              <a class="ref-stack-doi" href="https://doi.org/10.1056/AIoa2501001" target="_blank" rel="noopener noreferrer">doi.org/10.1056/AIoa2501001 &#x2197;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ref-stack-item" role="listitem">
+          <button type="button" class="ref-stack-tab" aria-expanded="false">
+            <span class="ref-stack-tab-title">Gerlich (2025) &mdash; Societies</span>
+            <span class="ref-stack-tab-meta"><span class="evidence-tier evidence-tier--empirical">T3</span><span class="ref-stack-caret">&#x25BE;</span></span>
+          </button>
+          <div class="ref-stack-body">
+            <div class="ref-stack-body-inner">
+              <p class="ref-stack-citation">Gerlich, M. (2025). AI tools in society: Impacts on cognitive offloading and the future of critical thinking. <em>Societies, 15</em>(1), Article 6.</p>
+              <p class="ref-stack-why">n = 666, r = &minus;0.75 between cognitive offloading and critical-thinking scores. Correlational, not causal &mdash; stated plainly, not hidden.</p>
+              <a class="ref-stack-doi" href="https://doi.org/10.3390/soc15010006" target="_blank" rel="noopener noreferrer">doi.org/10.3390/soc15010006 &#x2197;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ref-stack-item" role="listitem">
+          <button type="button" class="ref-stack-tab" aria-expanded="false">
+            <span class="ref-stack-tab-title">Kabashkin (2025) &mdash; Information</span>
+            <span class="ref-stack-tab-meta"><span class="evidence-tier evidence-tier--framework">T4</span><span class="ref-stack-caret">&#x25BE;</span></span>
+          </button>
+          <div class="ref-stack-body">
+            <div class="ref-stack-body-inner">
+              <p class="ref-stack-citation">Kabashkin, I. (2025). Cognitive atrophy paradox of AI&ndash;human interaction: From cognitive growth and atrophy to balance. <em>Information, 16</em>(11), Article 1009.</p>
+              <p class="ref-stack-why">A theoretical model, not a measurement &mdash; the CSI/CAP framework Hugonomy's internal measurement vocabulary is built on.</p>
+              <a class="ref-stack-doi" href="https://doi.org/10.3390/info16111009" target="_blank" rel="noopener noreferrer">doi.org/10.3390/info16111009 &#x2197;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ref-stack-item" role="listitem">
+          <button type="button" class="ref-stack-tab" aria-expanded="false">
+            <span class="ref-stack-tab-title">Hutchins (1995) &mdash; <em>Cognition in the Wild</em></span>
+            <span class="ref-stack-tab-meta"><span class="evidence-tier evidence-tier--framework">T4</span><span class="ref-stack-caret">&#x25BE;</span></span>
+          </button>
+          <div class="ref-stack-body">
+            <div class="ref-stack-body-inner">
+              <p class="ref-stack-citation">Hutchins, E. (1995). <em>Cognition in the wild.</em> MIT Press.</p>
+              <p class="ref-stack-why">The foundational distributed-cognition text &mdash; thinking has always been partly external. The question is whether the external part stays reflective or goes passive.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ref-stack-item" role="listitem">
+          <button type="button" class="ref-stack-tab" aria-expanded="false">
+            <span class="ref-stack-tab-title">Zhang et al. (2025) &mdash; arXiv preprint</span>
+            <span class="ref-stack-tab-meta"><span class="evidence-tier evidence-tier--framework">T4</span><span class="ref-stack-caret">&#x25BE;</span></span>
+          </button>
+          <div class="ref-stack-body">
+            <div class="ref-stack-body-inner">
+              <p class="ref-stack-citation">Zhang, Y., Li, M., Han, W., Yao, Y., Cen, Z., &amp; Zhao, D. (2025). Safety is not only about refusal: Reasoning-enhanced fine-tuning for interpretable LLM safety. <em>arXiv preprint</em> arXiv:2503.05021.</p>
+              <p class="ref-stack-why">Technical grounding on how model-side safety reasoning works &mdash; the model-side layer Hugonomy's reception-layer instrumentation sits alongside, not on top of.</p>
+              <a class="ref-stack-doi" href="https://arxiv.org/abs/2503.05021" target="_blank" rel="noopener noreferrer">arxiv.org/abs/2503.05021 &#x2197;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ref-stack-item" role="listitem">
+          <button type="button" class="ref-stack-tab" aria-expanded="false">
+            <span class="ref-stack-tab-title">Arditi et al. (2024) &mdash; NeurIPS</span>
+            <span class="ref-stack-tab-meta"><span class="evidence-tier evidence-tier--framework">T4</span><span class="ref-stack-caret">&#x25BE;</span></span>
+          </button>
+          <div class="ref-stack-body">
+            <div class="ref-stack-body-inner">
+              <p class="ref-stack-citation">Arditi, A., Obeso, O., Syed, A., Paleka, D., Panickssery, N., Gurnee, W., &amp; Nanda, N. (2024). Refusal in language models is mediated by a single direction. <em>Advances in Neural Information Processing Systems, 38</em>.</p>
+              <p class="ref-stack-why">Mechanistic-interpretability grounding for how models represent refusal internally &mdash; background context, not a claim about users.</p>
+              <a class="ref-stack-doi" href="https://arxiv.org/abs/2406.11717" target="_blank" rel="noopener noreferrer">arxiv.org/abs/2406.11717 &#x2197;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ref-stack-item" role="listitem">
+          <button type="button" class="ref-stack-tab" aria-expanded="false">
+            <span class="ref-stack-tab-title">Phillips &amp; Saha (2026) &mdash; The Opinion Pages</span>
+            <span class="ref-stack-tab-meta"><span class="evidence-tier evidence-tier--framework">T5</span><span class="ref-stack-caret">&#x25BE;</span></span>
+          </button>
+          <div class="ref-stack-body">
+            <div class="ref-stack-body-inner">
+              <p class="ref-stack-citation">Phillips, M. F., &amp; Saha, K. (2026, April 14). Ethical guidelines for AI. <em>The Opinion Pages</em>.</p>
+              <p class="ref-stack-why">Expert commentary, not a study &mdash; included for the ethics framing, not as evidence of an effect.</p>
+              <a class="ref-stack-doi" href="https://theopinionpages.com/2026/04/ethical-guidelines-for-ai/" target="_blank" rel="noopener noreferrer">theopinionpages.com &#x2197;</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -778,6 +822,27 @@ document.addEventListener('click', function(e) {
     btn.setAttribute('aria-expanded', 'false');
   }
 });
+
+// Reference stack — one card open at a time, folder-tab visual.
+(function () {
+  var stack = document.getElementById('refStack');
+  if (!stack) return;
+  var items = stack.querySelectorAll('.ref-stack-item');
+  items.forEach(function (item) {
+    var tab = item.querySelector('.ref-stack-tab');
+    tab.addEventListener('click', function () {
+      var wasOpen = item.classList.contains('ref-stack-item--open');
+      items.forEach(function (other) {
+        other.classList.remove('ref-stack-item--open');
+        other.querySelector('.ref-stack-tab').setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.classList.add('ref-stack-item--open');
+        tab.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+})();
 </script>
 </body>
 </html>
