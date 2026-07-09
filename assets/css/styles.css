@@ -924,6 +924,75 @@ section { padding: 72px 0; }
 .research-journal-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.55; margin-top: 4px; flex: 1; }
 .research-journal-link { font-size: 0.75rem; color: var(--text-muted); margin-top: 6px; }
 
+/* ── Evidence tier badges (shared vocabulary with hugonomy-evidence claims.md) ──
+   Restrained on purpose: two visual states, not five colors. T1 (RCT) gets a
+   solid accent — it's the strongest single study. Everything else empirical
+   (T2/T3) gets an outlined accent. Framework/commentary (T4/T5) gets a quiet
+   muted label — conceptual weight, not measured weight. */
+.evidence-tier {
+  display: inline-block; font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 999px; line-height: 1.4;
+}
+.evidence-tier--t1 { background: var(--brand-blue); color: var(--brand-dark); }
+.evidence-tier--empirical { border: 1px solid rgba(108,166,255,0.45); color: var(--brand-blue); }
+.evidence-tier--framework { color: var(--text-muted); border: 1px solid var(--brand-border); }
+
+/* ── Stacked-folder accordion (n8n-inspired: one card forward and sharp,
+   the rest recede as closed tabs). Used for vision.html's reference list.
+   Progressive enhancement over a plain <ul>/<li> — screen readers and no-JS
+   visitors still get every citation in document order; JS only adds the
+   open/close visual behavior. ── */
+.ref-stack { max-width: 680px; margin: 24px auto 8px; display: flex; flex-direction: column; gap: 10px; }
+.ref-stack-item {
+  background: var(--brand-card); border: 1px solid var(--brand-border);
+  border-radius: 16px; overflow: hidden;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s, opacity 0.25s;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+.ref-stack-item:not(.ref-stack-item--open) {
+  opacity: 0.72; transform: scale(0.985);
+}
+.ref-stack-item:not(.ref-stack-item--open):hover { opacity: 0.92; border-color: rgba(120,160,255,0.28); }
+.ref-stack-item--open {
+  opacity: 1; transform: none;
+  border-color: rgba(120,160,255,0.35);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.32);
+}
+.ref-stack-tab {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  gap: 14px; padding: 15px 20px; background: none; border: none; cursor: pointer;
+  text-align: left; font: inherit; color: var(--text-primary);
+}
+.ref-stack-tab-title { font-size: 0.92rem; font-weight: 600; }
+.ref-stack-tab-meta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.ref-stack-caret { color: var(--text-muted); font-size: 0.8rem; transition: transform 0.25s; }
+.ref-stack-item--open .ref-stack-caret { transform: rotate(180deg); color: var(--brand-blue); }
+.ref-stack-body {
+  max-height: 0; overflow: hidden; transition: max-height 0.35s ease;
+}
+.ref-stack-item--open .ref-stack-body { max-height: 260px; }
+.ref-stack-body-inner { padding: 0 20px 20px; border-top: 1px solid var(--brand-border); }
+.ref-stack-citation { font-size: 0.84rem; color: var(--text-secondary); line-height: 1.6; margin-top: 14px; }
+.ref-stack-why { font-size: 0.84rem; color: var(--text-primary); line-height: 1.6; margin-top: 10px; font-style: italic; }
+.ref-stack-doi { display: inline-block; margin-top: 10px; font-size: 0.8rem; color: var(--brand-blue); text-decoration: none; border-bottom: 1px solid rgba(108,166,255,0.3); }
+.ref-stack-doi:hover { border-color: var(--brand-blue); }
+
+/* ── Homepage research section: peek tabs (quick-jump preview of the
+   collapsed grid). Same "folder tab" visual language as ref-stack, scaled
+   down — clicking one opens the full grid AND scrolls to that study. ── */
+.research-peek { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: -6px auto 22px; max-width: 680px; }
+.research-peek-tab {
+  background: var(--brand-card); border: 1px solid var(--brand-border);
+  border-radius: 999px; padding: 6px 14px 6px 12px;
+  font-size: 0.76rem; color: var(--text-secondary); cursor: pointer;
+  display: flex; align-items: center; gap: 6px;
+  transition: opacity 0.2s, border-color 0.2s, transform 0.2s;
+  opacity: 0.75;
+}
+.research-peek-tab:hover { opacity: 1; border-color: rgba(120,160,255,0.32); transform: translateY(-1px); }
+.research-card--highlight { border-color: var(--brand-blue) !important; box-shadow: 0 0 0 1px var(--brand-blue), 0 0 24px rgba(108,166,255,0.18); }
+
 /* ── Footer ───────────────────────────────────────────────────────────── */
 footer {
   background: var(--bg);
