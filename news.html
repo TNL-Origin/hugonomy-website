@@ -375,6 +375,20 @@
   </div>
 </nav>
 
+<!-- ── Page section nav (in-page jump nav) ─────────────────────────────── -->
+<nav class="section-nav" id="sectionNav" aria-label="Page sections">
+  <button type="button" class="section-nav-toggle" id="sectionNavToggle" aria-expanded="false" aria-controls="sectionNavList" onclick="toggleSectionNav()">
+    <span class="section-nav-toggle-icon" aria-hidden="true">&#9776;</span>
+    <span>Sections</span>
+  </button>
+  <ul class="section-nav-list" id="sectionNavList">
+    <li><a href="#social" data-section="social"><span class="section-nav-dot" aria-hidden="true"></span>Social Feed</a></li>
+    <li><a href="#timeline" data-section="timeline"><span class="section-nav-dot" aria-hidden="true"></span>Timeline</a></li>
+    <li><a href="#press" data-section="press"><span class="section-nav-dot" aria-hidden="true"></span>Press</a></li>
+    <li><a href="#follow" data-section="follow"><span class="section-nav-dot" aria-hidden="true"></span>Follow</a></li>
+  </ul>
+</nav>
+
 <header class="news-hero">
   <div class="container">
     <div class="page-brand-strip">
@@ -392,7 +406,7 @@
 </header>
 
 <!-- ── Social Feed (TikTok + YouTube) ────────────────────────────────── -->
-<section class="social-feed-section">
+<section class="social-feed-section" id="social">
   <div class="container">
     <p class="section-label">Watch &middot; Follow</p>
     <h2 class="section-title">Built in public, across formats.</h2>
@@ -458,7 +472,7 @@
 </section>
 
 <!-- ── Timeline ──────────────────────────────────────────────────────── -->
-<section class="timeline-section">
+<section class="timeline-section" id="timeline">
   <div class="container">
     <p class="section-label">Timeline</p>
     <h2 class="section-title">The story so far.</h2>
@@ -730,7 +744,7 @@
 </section>
 
 <!-- ── Press release ─────────────────────────────────────────────────── -->
-<section class="press-section">
+<section class="press-section" id="press">
   <div class="container">
     <p class="section-label">For immediate release</p>
     <h2 class="section-title">Hugonomy Systems announces VibeAI FoldSpace v2.22.0 live on Chrome Web Store and Microsoft Edge Add-ons.</h2>
@@ -1063,7 +1077,7 @@
 </section>
 
 <!-- ── Follow ─────────────────────────────────────────────────────────── -->
-<section class="follow-section">
+<section class="follow-section" id="follow">
   <div class="container">
     <p class="section-label">Follow along</p>
     <h2 class="section-title">Where we publish.</h2>
@@ -1176,6 +1190,48 @@ document.addEventListener('click', function(e) {
     btn.setAttribute('aria-expanded', 'false');
   }
 });
+
+// Page section nav — mobile/tablet toggle + scrollspy active-state
+function toggleSectionNav() {
+  var nav = document.getElementById('sectionNav');
+  var btn = document.getElementById('sectionNavToggle');
+  var open = nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+}
+document.addEventListener('click', function (e) {
+  var sectionNav = document.getElementById('sectionNav');
+  if (sectionNav && !sectionNav.contains(e.target)) {
+    sectionNav.classList.remove('open');
+    document.getElementById('sectionNavToggle').setAttribute('aria-expanded', 'false');
+  }
+});
+document.querySelectorAll('.section-nav-list a').forEach(function (link) {
+  link.addEventListener('click', function () {
+    var nav = document.getElementById('sectionNav');
+    nav.classList.remove('open');
+    document.getElementById('sectionNavToggle').setAttribute('aria-expanded', 'false');
+  });
+});
+(function () {
+  var links = document.querySelectorAll('.section-nav-list a[data-section]');
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var linkById = {};
+  links.forEach(function (l) { linkById[l.getAttribute('data-section')] = l; });
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      var link = linkById[entry.target.id];
+      if (!link) return;
+      if (entry.isIntersecting) {
+        links.forEach(function (l) { l.classList.remove('active'); });
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-110px 0px -75% 0px', threshold: 0 });
+  Object.keys(linkById).forEach(function (id) {
+    var section = document.getElementById(id);
+    if (section) observer.observe(section);
+  });
+})();
 </script>
 
 <!-- v2.22 preview rotating phrase (added 2026-05-21) — cycles the

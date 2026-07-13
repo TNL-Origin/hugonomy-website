@@ -1961,3 +1961,115 @@ footer {
   color: var(--text-tertiary, #8a93a8);
   margin-top: 14px;
 }
+
+/* Anchor-jump clearance under the fixed ~76px top nav, for section-nav
+   targets and any other in-page anchor link. */
+section[id] { scroll-margin-top: 100px; }
+
+/* ── Page section nav (in-page jump nav, added 2026-07-13) ──────────────
+   3-4 curated anchor links per page, letting a reader jump straight to a
+   major section instead of scrolling. Wide screens: a slim vertical rail
+   in the left margin, active section highlighted via scrollspy. Below
+   ~1400px there isn't enough margin beside the 1140px content column for
+   a rail without overlapping content, so it collapses to a small floating
+   toggle (bottom-left) that opens the same links as a popup list — this
+   is the shape that actually works down through tablet and phone widths,
+   not a squeezed sidebar. ──────────────────────────────────────────── */
+.section-nav {
+  position: fixed;
+  top: 50%;
+  left: 24px;
+  transform: translateY(-50%);
+  z-index: 90;
+}
+.section-nav-toggle { display: none; }
+.section-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+}
+.section-nav-list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+.section-nav-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--text-muted);
+  flex-shrink: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+.section-nav-list a:hover,
+.section-nav-list a:focus-visible {
+  color: var(--text-primary);
+}
+.section-nav-list a:hover .section-nav-dot,
+.section-nav-list a:focus-visible .section-nav-dot {
+  background: var(--brand-blue);
+}
+.section-nav-list a.active {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.section-nav-list a.active .section-nav-dot {
+  background: var(--brand-blue);
+  transform: scale(1.35);
+  box-shadow: 0 0 0 3px var(--glow);
+}
+
+@media (max-width: 1400px) {
+  .section-nav {
+    top: auto;
+    bottom: 22px;
+    left: 20px;
+    transform: none;
+  }
+  .section-nav-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(5, 8, 22, 0.85);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--brand-border);
+    border-radius: 999px;
+    padding: 10px 16px;
+    color: var(--text-primary);
+    font-size: 0.78rem;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .section-nav-toggle-icon { font-size: 0.9rem; line-height: 1; }
+  .section-nav-list {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 0;
+    background: rgba(5, 8, 22, 0.95);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--brand-border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: none;
+    min-width: 180px;
+  }
+  .section-nav.open .section-nav-list { display: flex; }
+  .section-nav-list a { font-size: 0.84rem; }
+}
+
+@media (max-width: 640px) {
+  .section-nav { left: 14px; bottom: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-nav-dot { transition: none; }
+}

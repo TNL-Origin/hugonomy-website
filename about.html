@@ -217,6 +217,20 @@
   </div>
 </nav>
 
+<!-- ── Page section nav (in-page jump nav) ─────────────────────────────── -->
+<nav class="section-nav" id="sectionNav" aria-label="Page sections">
+  <button type="button" class="section-nav-toggle" id="sectionNavToggle" aria-expanded="false" aria-controls="sectionNavList" onclick="toggleSectionNav()">
+    <span class="section-nav-toggle-icon" aria-hidden="true">&#9776;</span>
+    <span>Sections</span>
+  </button>
+  <ul class="section-nav-list" id="sectionNavList">
+    <li><a href="#founder" data-section="founder"><span class="section-nav-dot" aria-hidden="true"></span>Founder</a></li>
+    <li><a href="#why" data-section="why"><span class="section-nav-dot" aria-hidden="true"></span>Why It Matters</a></li>
+    <li><a href="#products" data-section="products"><span class="section-nav-dot" aria-hidden="true"></span>Products</a></li>
+    <li><a href="#support" data-section="support"><span class="section-nav-dot" aria-hidden="true"></span>Support</a></li>
+  </ul>
+</nav>
+
 <header class="about-hero">
   <div class="container">
     <div class="page-brand-strip">
@@ -236,7 +250,7 @@
 </header>
 
 <!-- ── Founder ───────────────────────────────────────────────────────── -->
-<section class="founder-section">
+<section class="founder-section" id="founder">
   <div class="container">
     <p class="section-label">The founder</p>
     <h2 class="section-title">Joseph D. Tingling, MD/PhD</h2>
@@ -476,7 +490,7 @@
 </section>
 
 <!-- ── Hugonomy Stack / Product Family (moved from homepage 2026-05-21) -->
-<section class="product-family-section">
+<section class="product-family-section" id="products">
   <div class="container">
     <p class="section-label">The Hugonomy stack</p>
     <h2 class="section-title">Three products. Three horizons.</h2>
@@ -868,6 +882,48 @@ document.addEventListener('click', function(e) {
     btn.setAttribute('aria-expanded', 'false');
   }
 });
+
+// Page section nav — mobile/tablet toggle + scrollspy active-state
+function toggleSectionNav() {
+  var nav = document.getElementById('sectionNav');
+  var btn = document.getElementById('sectionNavToggle');
+  var open = nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+}
+document.addEventListener('click', function (e) {
+  var sectionNav = document.getElementById('sectionNav');
+  if (sectionNav && !sectionNav.contains(e.target)) {
+    sectionNav.classList.remove('open');
+    document.getElementById('sectionNavToggle').setAttribute('aria-expanded', 'false');
+  }
+});
+document.querySelectorAll('.section-nav-list a').forEach(function (link) {
+  link.addEventListener('click', function () {
+    var nav = document.getElementById('sectionNav');
+    nav.classList.remove('open');
+    document.getElementById('sectionNavToggle').setAttribute('aria-expanded', 'false');
+  });
+});
+(function () {
+  var links = document.querySelectorAll('.section-nav-list a[data-section]');
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var linkById = {};
+  links.forEach(function (l) { linkById[l.getAttribute('data-section')] = l; });
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      var link = linkById[entry.target.id];
+      if (!link) return;
+      if (entry.isIntersecting) {
+        links.forEach(function (l) { l.classList.remove('active'); });
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-110px 0px -75% 0px', threshold: 0 });
+  Object.keys(linkById).forEach(function (id) {
+    var section = document.getElementById(id);
+    if (section) observer.observe(section);
+  });
+})();
 </script>
 </body>
 </html>
