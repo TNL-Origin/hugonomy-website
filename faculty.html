@@ -88,6 +88,19 @@
   </div>
 </nav>
 
+<!-- ── Page section nav (in-page jump nav) ─────────────────────────────── -->
+<nav class="section-nav" id="sectionNav" aria-label="Page sections">
+  <button type="button" class="section-nav-toggle" id="sectionNavToggle" aria-expanded="false" aria-controls="sectionNavList" onclick="toggleSectionNav()">
+    <span class="section-nav-toggle-icon" aria-hidden="true">&#9776;</span>
+    <span>Sections</span>
+  </button>
+  <ul class="section-nav-list" id="sectionNavList">
+    <li><a href="#why-now" data-section="why-now"><span class="section-nav-dot" aria-hidden="true"></span>Why Now</a></li>
+    <li><a href="#study-design" data-section="study-design"><span class="section-nav-dot" aria-hidden="true"></span>The Study</a></li>
+    <li><a href="#asks" data-section="asks"><span class="section-nav-dot" aria-hidden="true"></span>Get Involved</a></li>
+  </ul>
+</nav>
+
 <!-- ── Hero ──────────────────────────────────────────────────────────── -->
 <section class="faculty-hero">
   <div class="container">
@@ -119,7 +132,7 @@
 </section>
 
 <!-- ── Why now ───────────────────────────────────────────────────────── -->
-<section class="faculty-section">
+<section class="faculty-section" id="why-now">
   <div class="container">
     <p class="section-label">Why this, why now</p>
     <h2 class="section-title">The research signal exists. The real-time test doesn't — yet.</h2>
@@ -203,7 +216,7 @@
 </section>
 
 <!-- ── Three asks ────────────────────────────────────────────────────── -->
-<section class="faculty-section">
+<section class="faculty-section" id="asks">
   <div class="container">
     <p class="section-label">What a partnership could look like</p>
     <h2 class="section-title">Three ways to get involved.</h2>
@@ -292,6 +305,48 @@ document.addEventListener('click', function(e) {
     btn.setAttribute('aria-expanded', 'false');
   }
 });
+
+// Page section nav — mobile/tablet toggle + scrollspy active-state
+function toggleSectionNav() {
+  var nav = document.getElementById('sectionNav');
+  var btn = document.getElementById('sectionNavToggle');
+  var open = nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+}
+document.addEventListener('click', function (e) {
+  var sectionNav = document.getElementById('sectionNav');
+  if (sectionNav && !sectionNav.contains(e.target)) {
+    sectionNav.classList.remove('open');
+    document.getElementById('sectionNavToggle').setAttribute('aria-expanded', 'false');
+  }
+});
+document.querySelectorAll('.section-nav-list a').forEach(function (link) {
+  link.addEventListener('click', function () {
+    var nav = document.getElementById('sectionNav');
+    nav.classList.remove('open');
+    document.getElementById('sectionNavToggle').setAttribute('aria-expanded', 'false');
+  });
+});
+(function () {
+  var links = document.querySelectorAll('.section-nav-list a[data-section]');
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var linkById = {};
+  links.forEach(function (l) { linkById[l.getAttribute('data-section')] = l; });
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      var link = linkById[entry.target.id];
+      if (!link) return;
+      if (entry.isIntersecting) {
+        links.forEach(function (l) { l.classList.remove('active'); });
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-110px 0px -75% 0px', threshold: 0 });
+  Object.keys(linkById).forEach(function (id) {
+    var section = document.getElementById(id);
+    if (section) observer.observe(section);
+  });
+})();
 </script>
 <script src="assets/js/attribution.js"></script>
 </body>
