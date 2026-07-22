@@ -1398,6 +1398,13 @@ footer {
   margin-left: auto;
   margin-right: auto;
 }
+.landing-tagline {
+  color: var(--text-primary);
+  font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+  font-weight: 700;
+  margin: 10px auto 18px;
+  text-align: center;
+}
 .landing-summary {
   max-width: 850px;
   margin-left: auto;
