@@ -85,7 +85,7 @@ with sync_playwright() as p:
    else:assert pg.locator('.analytics-banner').is_visible()
    c.close();results['consent'].append({'engine':engine,'case':name,'pass':True})
   c,pg,outside=context(js=False);pg.goto(BASE+'/',wait_until='networkidle');assert not outside
-  assert pg.locator('.systems-path').get_attribute('href')=='/systems.html';c.close()
+  assert pg.locator('.systems-path').get_attribute('href')=='/foldspace';c.close()
   results['consent'].append({'engine':engine,'case':'javascript-disabled-no-analytics-and-readable-links','pass':True})
   b.close()
   (OUT/('final-'+engine+'.json')).write_text(json.dumps(results,indent=2),encoding='utf8')
