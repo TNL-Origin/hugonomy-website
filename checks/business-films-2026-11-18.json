@@ -1,0 +1,227 @@
+[
+  {
+    "route": "/business/",
+    "width": 1440,
+    "decodeAndPlay": true,
+    "noAutoplay": true,
+    "noVideoDownloadBeforePlay": true,
+    "captions": [
+      "Know My Business.",
+      "Your knowledge.",
+      "Their next step."
+    ],
+    "transcript": true,
+    "overflow": false,
+    "externalRequests": [],
+    "errors": [],
+    "media": {
+      "duration": 10.026667,
+      "width": 1280,
+      "height": 720,
+      "tracks": 1
+    }
+  },
+  {
+    "route": "/business/",
+    "width": 1024,
+    "decodeAndPlay": true,
+    "noAutoplay": true,
+    "noVideoDownloadBeforePlay": true,
+    "captions": [
+      "Know My Business.",
+      "Your knowledge.",
+      "Their next step."
+    ],
+    "transcript": true,
+    "overflow": false,
+    "externalRequests": [],
+    "errors": [],
+    "media": {
+      "duration": 10.026667,
+      "width": 1280,
+      "height": 720,
+      "tracks": 1
+    }
+  },
+  {
+    "route": "/business/",
+    "width": 820,
+    "decodeAndPlay": true,
+    "noAutoplay": true,
+    "noVideoDownloadBeforePlay": true,
+    "captions": [
+      "Know My Business.",
+      "Your knowledge.",
+      "Their next step."
+    ],
+    "transcript": true,
+    "overflow": false,
+    "externalRequests": [],
+    "errors": [],
+    "media": {
+      "duration": 10.026667,
+      "width": 1280,
+      "height": 720,
+      "tracks": 1
+    }
+  },
+  {
+    "route": "/business/",
+    "width": 390,
+    "decodeAndPlay": true,
+    "noAutoplay": true,
+    "noVideoDownloadBeforePlay": true,
+    "captions": [
+      "Know My Business.",
+      "Your knowledge.",
+      "Their next step."
+    ],
+    "transcript": true,
+    "overflow": false,
+    "externalRequests": [],
+    "errors": [],
+    "media": {
+      "duration": 10.026667,
+      "width": 1280,
+      "height": 720,
+      "tracks": 1
+    }
+  },
+  {
+    "route": "/business/",
+    "width": 320,
+    "decodeAndPlay": true,
+    "noAutoplay": true,
+    "noVideoDownloadBeforePlay": true,
+    "captions": [
+      "Know My Business.",
+      "Your knowledge.",
+      "Their next step."
+    ],
+    "transcript": true,
+    "overflow": false,
+    "externalRequests": [],
+    "errors": [],
+    "media": {
+      "duration": 10.026667,
+      "width": 1280,
+      "height": 720,
+      "tracks": 1
+    }
+  },
+  {
+    "route": "/business/sebanori/#example",
+    "width": 1440,
+    "decodeAndPlay": true,
+    "noAutoplay": true,
+    "noVideoDownloadBeforePlay": true,
+    "captions": [
+      "Before the shift, choose what to learn.",
+      "Afterward, reflect together.",
+      "Know My Business.",
+      "Experience becomes shared knowledge."
+    ],
+    "transcript": true,
+    "overflow": false,
+    "externalRequests": [],
+    "errors": [],
+    "media": {
+      "duration": 10,
+      "width": 1920,
+      "height": 1080,
+      "tracks": 1
+    }
+  },
+  {
+    "route": "/business/sebanori/#example",
+    "width": 1024,
+    "decodeAndPlay": true,
+    "noAutoplay": true,
+    "noVideoDownloadBeforePlay": true,
+    "captions": [
+      "Before the shift, choose what to learn.",
+      "Afterward, reflect together.",
+      "Know My Business.",
+      "Experience becomes shared knowledge."
+    ],
+    "transcript": true,
+    "overflow": false,
+    "externalRequests": [],
+    "errors": [],
+    "media": {
+      "duration": 10,
+      "width": 1920,
+      "height": 1080,
+      "tracks": 1
+    }
+  },
+  {
+    "route": "/business/sebanori/#example",
+    "width": 820,
+    "decodeAndPlay": true,
+    "noAutoplay": true,
+    "noVideoDownloadBeforePlay": true,
+    "captions": [
+      "Before the shift, choose what to learn.",
+      "Afterward, reflect together.",
+      "Know My Business.",
+      "Experience becomes shared knowledge."
+    ],
+    "transcript": true,
+    "overflow": false,
+    "externalRequests": [],
+    "errors": [],
+    "media": {
+      "duration": 10,
+      "width": 1920,
+      "height": 1080,
+      "tracks": 1
+    }
+  },
+  {
+    "route": "/business/sebanori/#example",
+    "width": 390,
+    "decodeAndPlay": true,
+    "noAutoplay": true,
+    "noVideoDownloadBeforePlay": true,
+    "captions": [
+      "Before the shift, choose what to learn.",
+      "Afterward, reflect together.",
+      "Know My Business.",
+      "Experience becomes shared knowledge."
+    ],
+    "transcript": true,
+    "overflow": false,
+    "externalRequests": [],
+    "errors": [],
+    "media": {
+      "duration": 10,
+      "width": 1920,
+      "height": 1080,
+      "tracks": 1
+    }
+  },
+  {
+    "route": "/business/sebanori/#example",
+    "width": 320,
+    "decodeAndPlay": true,
+    "noAutoplay": true,
+    "noVideoDownloadBeforePlay": true,
+    "captions": [
+      "Before the shift, choose what to learn.",
+      "Afterward, reflect together.",
+      "Know My Business.",
+      "Experience becomes shared knowledge."
+    ],
+    "transcript": true,
+    "overflow": false,
+    "externalRequests": [],
+    "errors": [],
+    "media": {
+      "duration": 10,
+      "width": 1920,
+      "height": 1080,
+      "tracks": 1
+    }
+  }
+]
