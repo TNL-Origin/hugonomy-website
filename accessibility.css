@@ -19,3 +19,7 @@ sup.tm{font-size:12px}
 .example-section .section-heading>p,.lab-guidance p,#contact>p:not(.eyebrow),.contact-small{color:#55655a}
 .lab-focus p{color:#4f5f55}
 .status-pill.boundary{color:#7c5230}
+/* Step numbers are informative text; opacity had reduced their contrast. */
+.lab-steps button span{opacity:1}
+/* Keep photograph captions readable independently of the underlying pixels. */
+.photo-caption{background:#153e34;padding:16px;border-radius:6px}

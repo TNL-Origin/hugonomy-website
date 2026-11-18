@@ -1,46 +1,27 @@
-# Shared landing-page integration — draft review
+# Shared landing-page integration ? draft review
 
-Prepared November 17, 2026. **Do not merge or deploy until Jo approves the launch candidate.** This branch is a proposed source change; the current website is unchanged.
-
-## Routes
+Prepared November 17, 2026. **Unmerged candidate; do not deploy without Jo's separate approval.** The complete readiness result and limits are in [DEPLOYMENT_READINESS.md](DEPLOYMENT_READINESS.md).
 
 | Address | Purpose |
 |---|---|
-| `/` | Shared landing page; full-panel links to Systems and Business |
-| `/systems.html` | Systems introduction, existing vision/news, and visible FoldSpace installation link |
+| `/` | Shared homepage with Systems and Business paths |
+| `/systems.html` | Systems introduction, vision/news and FoldSpace installation link |
 | `/business/` | Business introduction and contact choices |
-| `/business/sebanori/` | SEBANORI explanation and fictional, template-based walkthrough |
-| `/foldspace` and `/foldspace.html` | Preserved original FoldSpace homepage, with its own canonical/share URL |
-| `/privacy` and `/privacy.html` | Existing extension privacy page, unedited |
-| `/website-notices.html` | Proposed shared-website notice, distinct from the extension policy |
+| `/business/sebanori/` | SEBANORI explanation and fictional walkthrough |
+| `/foldspace` and `/foldspace.html` | Preserved original FoldSpace homepage |
+| `/privacy` and `/privacy.html` | Existing extension policy, unedited |
+| `/website-notices.html` | Website data practices and analytics-choice scope |
 
-Existing `/#install`, `/#install-actions` and `/#research` links remain usable on the new homepage. The original FoldSpace page keeps its store buttons, markup, attribution code, event handlers and mailing-list integration. Its canonical and Open Graph URL point to `/foldspace`; those are the only substantive source changes to the preserved page. The new homepage also exposes the two existing store URLs directly.
+Existing `/#install`, `/#install-actions` and `/#research` destinations stay usable. The FoldSpace page retains its store links, attribution/events, mailing-list code and original content; its canonical/share URL changes to `/foldspace`. Existing vision, about, news, shape, faculty and demo pages and their assets remain unchanged.
 
-Old vision, about, news, shape, faculty and demo pages and their assets are retained. No extension privacy file, security header, redirect, workflow or site setting is changed. New preview files collided only with `index.html`; this is an additive integration plus the deliberate homepage and sitemap replacements.
+This is a static Netlify website. No application server, database, account system or live AI integration is required for these pages. Contact selection changes a mailto link; it does not send mail. The sample walkthrough uses fictional data in page memory.
 
-## Hosting and data flow
+Jo selected opt-in Google Analytics for the five new shared pages. Accept/reject choices and a footer preference control implement that decision. Existing FoldSpace pages keep their original analytics. Hosting request logs and Netlify performance monitoring are separate; the notice explains the boundary. The draft CSP adds only named Google tag endpoints needed by this implementation, preserving all existing directives and other protections. Privacy, redirects, robots and workflows are unchanged.
 
-This remains a static website served by the existing Netlify configuration. No new application server, database, account, form submission endpoint or AI-provider connection is needed for the landing page. Both destination paths are ordinary page links. The sample walkthrough stays in browser memory; contact choices update a mailto link without sending email.
+Preview labels/noindex are removed deliberately in this unmerged candidate, and titles/descriptions/canonicals/share tags and sitemap entries are supplied. Current source uses the existing vector symbol beside the founder and retains AI labels on generated scenes and the SEBANORI logo; see [ASSET_SOURCES.md](ASSET_SOURCES.md).
 
-The new page source contains no Google Analytics loader. Analytics/consent configuration is a launch prerequisite, not silently invented here. Existing legacy pages retain their previous scripts. Netlify may inject monitoring in production. Do not interpret a clean local network test as proof of production data practices or consent behavior. The proposed website notice states these limits; final settings and wording still require approval.
+Run the [repeatable local checks](tests/readiness/README.md) before a subsequent revision. They use simulated local HTML aliases and intercepted Analytics responses; they do not deploy or verify production account settings. No private project notes, internal decision log, workplace records or credentials were copied.
 
-Preview banners and noindex tags have been deliberately removed **inside this unmerged candidate**. Titles, descriptions, canonicals, Open Graph tags and sitemap entries are supplied. The website notice still identifies deployment details as awaiting approval. Removing preview labels does not make the notice final or authorize publication.
+Keep `[skip netlify]` in every draft commit and the PR title. [Netlify documents these skip markers](https://docs.netlify.com/deploy/manage-deploys/manage-deploys-overview/) for branch/production and preview deploys. The next unmarked commit can deploy skipped changes. No production setting was changed to achieve this.
 
-## Verification
-
-- Local browser checks cover five new routes at six widths, including forced loading of lazy images, console/page errors, failed/external requests, overflow, metadata and the existing Content Security Policy.
-- A filesystem link/fragment check compares the entire candidate with the baseline and distinguishes inherited broken links from introduced regressions.
-- The local test server simulates flat `.html` aliases for legacy URLs; this is not a Netlify deployment or a guarantee about future host settings.
-- Protected files and all other existing files except `index.html` and `sitemap.xml` are compared byte-for-byte with website baseline `83395acc3d89d68670f59fb539861922015c912b`.
-- Existing legacy pages are tested with outside requests blocked, so synthetic visits do not call production analytics or mailing-list services.
-- No physical phone, screen reader or live-host verification is claimed.
-
-Detailed local verification results accompany the PR description. No private project notes, audit records, internal decision log, workplace records or credentials were copied into this public repository.
-
-## Before merge
-
-Jo must approve the final design, brand/domain decision, remaining permissions and legal review, asset terms/provenance, actual analytics/consent and notice, and device/accessibility checks. Confirm both extension-store dashboards still reference working privacy URLs. Verify the final host serves `/foldspace`, the Business directory paths and both privacy forms with the intended headers.
-
-Keep `[skip netlify]` in this draft PR's title and commit message. Netlify documents that the title suppresses Deploy Previews and the commit message suppresses branch/production deploys: [Netlify manage-deploys documentation](https://docs.netlify.com/deploy/manage-deploys/manage-deploys-overview/). The next unmarked commit can deploy skipped changes; retain the markers until deployment is separately authorized. No site setting was changed to achieve this.
-
-Jo is the sole approver and merger. A technical review is not launch approval.
+Jo remains the sole approver and merger. The readiness report lists final account/host checks and manual-device/accessibility limits. This draft implementation is not independent certification or publication approval.
