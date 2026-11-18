@@ -1,0 +1,21 @@
+/* Audit 017: readable disclosures, visible focus and comfortable control sizes. */
+.light a:focus-visible,.light button:focus-visible,.light input:focus-visible{outline:3px solid #153e34;outline-offset:5px}
+.light .skip{background:#153e34;color:#fff}
+body .image-disclosure{font-size:12px;line-height:1.8;letter-spacing:0;opacity:1;margin-top:20px;margin-bottom:24px}
+.light .image-disclosure{color:#39564a}.hero-media .image-disclosure{color:#f7f5ed;margin-bottom:4px}
+.business-strip a,.founder a,.footer a:not(.footer-name){display:inline-flex;align-items:center;min-height:44px;min-width:44px;padding-block:8px}
+.systems-contact{margin-top:24px}
+.site-header nav a,.preview-note a,.visual-foot a,.email-link,footer a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;padding-block:8px}
+.site-header nav{align-items:center;flex-wrap:wrap;gap:10px 22px}
+button,.lab-icon-btn,.lab-reset{min-height:44px;min-width:44px}
+.hero-slide-dots button,.hero-slide-actions button{min-width:44px;min-height:44px}
+sup.tm{font-size:12px}
+.lab-label,.lab-description,.lab-guidance p,.lab-boundary,.lab-small,.lab-small-orb p,.lab-tree li small,.lab-documents small,.lab-provider small,.lab-badge,.lab-steps button,.lab-steps button span,.lab-footer p,.lab-footer .button,.hero-photo-note,.footer-last,.fine{font-size:12px}
+.hero-photo-controls{flex-wrap:wrap;gap:12px}.hero-photo-kicker,.hero-photo-note{opacity:1}
+@media(max-width:1200px){.nav{flex-wrap:wrap}.nav nav{order:3;flex-basis:100%;justify-content:space-between;border-top:1px solid var(--line);padding-top:7px}.nav-cta{margin-left:auto}}
+@media(max-width:760px){.brand small{display:none}.brand{letter-spacing:-1px}.site-header{flex-wrap:wrap;gap:16px}.site-header nav{margin-left:0;gap:8px 16px}.preview-note span{display:block;margin-left:0}.visual-foot{flex-wrap:wrap}.principle-strip .wrap{flex-wrap:wrap}.lab-footer-actions{flex-wrap:wrap}.lab-footer-actions .button{white-space:normal}.hero-photo-caption{padding:20px}.tiny-label{opacity:1}.visual-top{flex-wrap:wrap}}
+
+/* Audit 019 A019-01: six product-page text elements (five on the page, one in the demo preview after approval) were 4.36 to 4.49:1; these colours give 5.2:1 or better on their backgrounds. */
+.example-section .section-heading>p,.lab-guidance p,#contact>p:not(.eyebrow),.contact-small{color:#55655a}
+.lab-focus p{color:#4f5f55}
+.status-pill.boundary{color:#7c5230}
