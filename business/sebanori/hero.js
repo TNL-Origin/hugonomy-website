@@ -18,7 +18,7 @@
 
   const schedule = () => {
     clearTimeout(timer);
-    if (playing && !hovering && !document.hidden) timer = setTimeout(() => { show(index + 1); schedule(); }, 7000);
+    if (playing && !hovering && !document.hidden) timer = setTimeout(() => { show(index + 1); schedule(); }, 2500);
   };
   const playback = () => {
     toggle.textContent = playing ? 'Pause slideshow' : 'Play slideshow';
