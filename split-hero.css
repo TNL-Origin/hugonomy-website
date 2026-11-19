@@ -21,3 +21,7 @@
 .footer a[href="/business/"]:hover,.footer a[href="/business/"]:focus-visible{background:#f1dbad;color:#14372c}
 .button[href^="/business"],.light .button.green{border-color:#d0ad65;box-shadow:inset 0 -2px #c29e57}
 @media(max-width:760px){.nav nav a[href="/business/"]{justify-content:center;padding:8px}.business-path .path-action{padding:12px}.nav nav{row-gap:6px}}
+
+/* Descenders must clear the Business highlight when this heading wraps. */
+.path-copy h2{line-height:1.32;padding-bottom:.1em;overflow:visible}
+.business-path h2 em{display:inline-block;line-height:1.18;margin-top:.12em;padding:.03em .14em;vertical-align:baseline}
