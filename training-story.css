@@ -18,3 +18,6 @@
 .business-hero .hero-foot{line-height:1.6}
 @media(max-width:1000px){.training-workflow{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.training-pillars,.training-levels,.training-workflow{grid-template-columns:1fr}.training-section{padding-block:42px}.training-lead{font-size:18px}.training-levels{gap:16px}}
+
+/* Keep the benefit headline beside its readable qualification. */
+.business-hero .hero-goal{font-size:16px;line-height:1.65;color:#39564a;margin:20px 0;max-width:54ch}
