@@ -16,7 +16,9 @@ with sync_playwright() as p:
    outside=[]
    def intercept(route):
     url=route.request.url
-    if url.startswith(BASE+'/'):return route.continue_()
+    # WebKit's native video controls load same-origin blob icons. These are
+    # browser-local resources, not third-party requests or analytics traffic.
+    if url.startswith(BASE+'/') or url.startswith('blob:'+BASE+'/'):return route.continue_()
     outside.append(url)
     if url.startswith('https://www.googletagmanager.com/gtag/js?'):
      return route.fulfill(status=200,content_type='application/javascript',body='window.__tagStubLoaded=true;fetch("https://region1.google-analytics.com/g/collect",{method:"POST",body:"synthetic"}).catch(()=>{});')
