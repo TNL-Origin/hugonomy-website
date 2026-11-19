@@ -57,8 +57,9 @@
   dialog.className = 'analytics-dialog';
   dialog.setAttribute('aria-labelledby', 'analytics-dialog-title');
   function content(prefix) {
-    return '<h2 id="' + prefix + '-title">Optional analytics</h2>' +
-      '<p>May we use Google Analytics to understand visits to these shared Hugonomy pages? It is off until you accept.</p>' +
+    return '<h2 id="' + prefix + '-title">Your analytics choice</h2>' +
+      '<p>With your permission, we use Google Analytics cookies to understand visits to these Hugonomy pages and help improve the website. Google receives page-visit, browser/device and approximate location information. Optional Google Analytics stays off unless you accept.</p>' +
+      '<p>You can browse without accepting and change your choice anytime using Analytics choices in the footer.</p>' +
       '<p class="analytics-detail">This choice covers the landing, Systems introduction, Business, SEBANORI walkthrough and website-notices pages. Existing FoldSpace pages have separate analytics. Hosting request logs and Netlify performance monitoring are separate from this choice. <a href="/website-notices.html#website-analytics">Read the website notice</a>.</p>' +
       '<p class="analytics-message" role="status"></p>' +
       '<div class="analytics-actions"><button type="button" data-analytics-choice="rejected">Reject optional analytics</button>' +
