@@ -1,0 +1,5 @@
+# How to report a security problem with hugonomy.com (RFC 9116).
+Contact: mailto:joseph@hugonomy.com
+Expires: 2027-11-20T00:00:00Z
+Preferred-Languages: en
+Canonical: https://hugonomy.com/.well-known/security.txt
