@@ -25,8 +25,10 @@
 
   function resolvePageSrc() {
     var params = new URLSearchParams(window.location.search);
-    var fromUrl = params.get('src');
-    if (fromUrl) return fromUrl;
+    // Only a short, plain channel name is accepted (Audit 028, F028-13). Registered names are listed in
+    // content/canon.md; anything longer or with other characters is ignored and the page default is used.
+    var fromUrl = (params.get('src') || '').trim().toLowerCase();
+    if (/^[a-z0-9-]{1,40}$/.test(fromUrl)) return fromUrl;
     var body = document.body;
     return (body && body.getAttribute('data-src-default')) || 'homepage';
   }
