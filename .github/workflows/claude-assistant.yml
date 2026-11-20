@@ -8,6 +8,8 @@ on:
 
 jobs:
   claude:
+    # Pull requests are always checked. A comment starts a run only when it mentions @claude (Audit 028, F028-10).
+    if: github.event_name == 'pull_request' || contains(github.event.comment.body, '@claude')
     runs-on: ubuntu-latest
     permissions:
       contents: read
