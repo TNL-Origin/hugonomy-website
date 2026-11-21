@@ -15,3 +15,5 @@
 
 /* unregistered (common-law) trademark mark next to the product name; D-027 */
 .tm{font-size:.75em;font-weight:400;letter-spacing:0;margin-left:.1em;vertical-align:super;line-height:0}
+
+.home-return{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:12px;font-size:14px}.home-return a{display:inline-block;min-height:24px;text-underline-offset:3px}
