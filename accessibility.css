@@ -23,3 +23,5 @@ sup.tm{font-size:12px}
 .lab-steps button span{opacity:1}
 /* Keep photograph captions readable independently of the underlying pixels. */
 .photo-caption{background:#153e34;padding:16px;border-radius:6px}
+
+.current-section{display:inline-flex;flex-direction:column;justify-content:center;font-size:13px;line-height:1.35;font-weight:600;color:inherit;cursor:default}.current-section small{font-size:10px;font-weight:400;letter-spacing:.02em}

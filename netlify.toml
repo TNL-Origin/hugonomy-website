@@ -1,3 +1,7 @@
+[build]
+  command = "python3 tests/readiness/build_public.py"
+  publish = "public-site"
+
 [[redirects]]
   from = "/home"
   to = "/"
@@ -13,6 +17,74 @@
   to = "/about"
   status = 301
 
+# Repository working files are not part of the website (Audit 028, F028-09). They stay in the repository;
+# the live site answers "not found" for them. force = true is needed because the files exist in the publish folder.
+[[redirects]]
+  from = "/evidence/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/content/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/checks/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/tests/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/hooks/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/AI_AGENT_PROTOCOL.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/NEW_AI_START_HERE.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/DEPLOYMENT_READINESS.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/ASSET_SOURCES.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/BUSINESS_FILMS_REVIEW.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/LANDING_PAGE_REVIEW.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -21,4 +93,4 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://assets.mailerlite.com; style-src 'self' 'unsafe-inline' https://assets.mailerlite.com; img-src 'self' https: data:; font-src 'self' https://assets.mailerlite.com; frame-src 'self' https://www.googletagmanager.com https://www.youtube.com https://youtube.com; connect-src 'self' https://region1.google-analytics.com https://www.google.com https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://assets.mailerlite.com https://static.mailerlite.com https://ml-eu.mailerlite.com https://app.mailerlite.com https://ingesteer.services-prod.nsvcs.net; base-uri 'self'; form-action 'self' https://assets.mailerlite.com https://app.mailerlite.com"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://assets.mailerlite.com; style-src 'self' 'unsafe-inline' https://assets.mailerlite.com; img-src 'self' https: data:; font-src 'self' https://assets.mailerlite.com; frame-src 'self' https://www.googletagmanager.com https://www.youtube.com https://youtube.com; connect-src 'self' https://region1.google-analytics.com https://www.google.com https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://assets.mailerlite.com https://static.mailerlite.com https://ml-eu.mailerlite.com https://app.mailerlite.com https://ingesteer.services-prod.nsvcs.net; base-uri 'self'; frame-ancestors 'self'; form-action 'self' https://assets.mailerlite.com https://app.mailerlite.com"

@@ -1,3 +1,10 @@
+> Release candidate — November 20, 2026. Jo reviewed the hosted draft and authorized production release after the current-section navigation fix. Business and Systems homepages now show a non-clickable, accessible current-section label in header/footer navigation; other destinations and branch-logo links remain usable. The walkthrough retains links to all three destinations. Existing Systems content, extension privacy text and store links are preserved.
+>
+> Verified existing Netlify project/team and GitHub main connection. The hosted draft passed 53 regression scenarios, 36 navigation checks, 12 logo checks, file-boundary/header/privacy checks and same-origin embedding. The final navigation adjustment is covered by targeted release tests. Publish only the public-site build. Prior production rollback deploy: 6aff757ee5f87da24c3d96ec. Final release results are recorded in the governance repository at docs/audits/WEBSITE_RELEASE_REVIEW_2026-11-20.md.
+>
+> Remaining limits: existing public Git history is not made private by the website build; Analytics account settings, actual MailerLite delivery and manual assistive-technology testing are not certified. Jo accepted these documented limits for release. Existing FoldSpace text-fade animation can trigger transient automated contrast flags; reduced-motion checks pass. No private application or backend changes and no account-policy changes. No additional Claude review gate.
+
+## Historical review (superseded by release status above)
 # Website deployment readiness — November 17, 2026
 
 **Technical pre-deployment checks: PASS for the candidate described here. Not deployed; Jo's approval is still required.** This covers the shared landing page, Systems introduction, Business page, SEBANORI website walkthrough and website notice. It does not certify the private SEBANORI application or its use with workplace records.
