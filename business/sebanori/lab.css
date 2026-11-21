@@ -4,3 +4,56 @@
 @media(max-width:600px){.interactive-lab .demo-toolbar{align-items:center;gap:8px}.lab-reset{font-size:12px;padding:5px;white-space:nowrap}.lab-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:10px}.lab-steps button{font-size:12px;gap:5px;padding:8px 4px;min-height:44px}.lab-steps button:nth-child(4),.lab-steps button:nth-child(5){grid-column:auto}.lab-breadcrumb{padding:12px 16px;font-size:12px;gap:10px}.lab-screen{padding:22px 16px}.lab-screen h3{font-size:27px}.lab-description{font-size:12px}.lab-choices{gap:7px;margin-bottom:20px}.lab-choices button{padding:8px 16px;font-size:12px}.lab-label{font-size:12px}.lab-label span{display:block;margin:4px 0 0;font-size:12px}.lab-screen textarea,.lab-screen input:not([type=checkbox]){font-size:16px;padding:12px}.lab-screen textarea{min-height:190px}.lab-guidance{padding:14px;gap:10px}.lab-guidance strong{font-size:12px}.lab-guidance p{font-size:12px}.lab-footer{flex-direction:column;align-items:stretch;gap:14px;padding:16px}.lab-footer>p{max-width:none;font-size:12px}.lab-footer-actions{flex-wrap:wrap}.lab-footer-actions .button{flex:1;font-size:12px;min-width:0}.lab-boundary{padding:12px 16px;font-size:12px}.lab-tree li{padding:10px;gap:8px;flex-wrap:wrap}.lab-tree li>span:nth-child(2){font-size:12px;min-width:110px}.lab-icon-btn{width:34px}.lab-tree li small{font-size:12px}.lab-add>div{flex-direction:column;align-items:stretch}.lab-add .button{min-height:44px}.lab-adapt-grid,.lab-trainee-grid{grid-template-columns:1fr}.lab-request-list button{min-height:70px}.lab-request-list strong{font-size:12px}.lab-change-review{padding:15px}.lab-change-review p{font-size:12px}.lab-inline-actions .button{width:auto;flex:1;font-size:12px}.lab-provider{padding:13px;align-items:start;gap:8px}.lab-provider strong{font-size:12px}.lab-provider small{font-size:12px}.lab-drive{padding:15px}.lab-drive-heading{flex-wrap:wrap;gap:4px}.lab-documents label{padding:11px;gap:8px;flex-wrap:wrap}.lab-documents strong{font-size:12px}.lab-documents small{font-size:12px}.lab-documents .lab-badge{margin-left:26px}.lab-small-orb{margin-top:4px}.lab-small-orb .mini-orb{width:115px;height:115px}.lab-small-orb .button{min-height:44px}.lab-small-orb ul{font-size:12px}.lab-preview-head{font-size:12px}.lab-badge{font-size:12px}}
 
 .lab-product img {display:block;width:64px;height:64px;object-fit:contain;border-radius:8px;margin-bottom:12px;}
+
+.example-section {
+  background: var(--green);
+  border-block: 0;
+  padding-block: clamp(24px, 4vw, 60px);
+}
+
+.demo-intro {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  margin-bottom: clamp(16px, 2vw, 28px);
+  color: var(--paper);
+}
+
+.demo-intro h2 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 54px);
+}
+
+.demo-intro h2 em {
+  color: var(--lime);
+}
+
+.demo-intro p {
+  max-width: 36ch;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.example-section .interactive-lab {
+  border: 2px solid var(--lime);
+}
+
+.lab-choices button {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.lab-choices button[aria-pressed="true"] {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .lab-choices {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
