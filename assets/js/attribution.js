@@ -23,12 +23,15 @@
 (function () {
   'use strict';
 
+  const CHANNELS = ['rpark0715','tiktok','faculty','nelson','mobile-bridge','homepage','reddit'];
   function resolvePageSrc() {
     var params = new URLSearchParams(window.location.search);
-    var fromUrl = params.get('src');
-    if (fromUrl) return fromUrl;
+    // Accept only the registered channels in content/canon.md.
+    var fromUrl = (params.get('src') || '').trim().toLowerCase();
+    if (CHANNELS.includes(fromUrl)) return fromUrl;
     var body = document.body;
-    return (body && body.getAttribute('data-src-default')) || 'homepage';
+    var fallback = body && body.getAttribute('data-src-default');
+    return CHANNELS.includes(fallback) ? fallback : 'homepage';
   }
 
   var PAGE_SRC = resolvePageSrc();
@@ -48,7 +51,8 @@
 
     // Per-form override wins over the URL/page-level default — a specific
     // widget (e.g. the mobile bridge) always knows its own channel best.
-    var src = wrapper.getAttribute('data-src-override') || PAGE_SRC;
+    var override = wrapper.getAttribute('data-src-override');
+    var src = CHANNELS.includes(override) ? override : PAGE_SRC;
 
     var formData = new FormData(form);
     formData.append('fields[src]', src);

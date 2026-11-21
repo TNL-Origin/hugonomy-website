@@ -4,14 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hugonomy Systems | VibeAI FoldSpace - Don't Outsource Your Mind</title>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVT4SCXJSF"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-ZVT4SCXJSF');
-  </script>
+  <link rel="stylesheet" href="/website-analytics.css">
+  <script src="/website-analytics.js" defer></script>
   <!-- MailerLite Universal (account 2471308) — required for the mobile-bridge form
        in the hero (REDESIGN SPEC v1.0 §3). Was previously only loaded on shape.html;
        the mobile-bridge widget rendered as an empty gap without this. -->
@@ -84,12 +78,14 @@
 <!-- ── Nav ─────────────────────────────────────────────────────────── -->
 <nav aria-label="Site navigation">
   <div class="nav-inner">
-    <a class='nav-logo' href='/'>
+    <a class='nav-logo' href='/foldspace' aria-label='Hugonomy Systems homepage'>
       <img src="assets/icons/icon128.png" alt="VibeAI FoldSpace icon">
       <span class="nav-logo-text">Hugonomy Systems</span>
     </a>
     <div class="nav-links" id="navLinks">
-      <a class='nav-active' href='/'>Home</a>
+      <a href='/'>Home</a>
+      <span class="current-section" aria-current="page">Systems<small>Current section</small></span>
+      <a href='/business/'>Business</a>
       <a href='/vision'>Vision</a>
       <a href='/about'>About</a>
       <a href='/news'>News &amp; Media</a>
@@ -741,7 +737,7 @@
     </div>
 
     <!-- Peek tabs — folder-stack preview. Click jumps into the grid and highlights that card. -->
-    <div class="research-peek" id="researchPeek" aria-hidden="true">
+    <div class="research-peek" id="researchPeek">
       <button type="button" class="research-peek-tab" data-jump="research-card-qazi">Qazi, 2026 (RCT) &#x25BE;</button>
       <button type="button" class="research-peek-tab" data-jump="research-card-kabashkin">Kabashkin, 2025 &#x25BE;</button>
       <button type="button" class="research-peek-tab" data-jump="research-card-stanford">Stanford / <em>Science</em>, 2026 &#x25BE;</button>
@@ -751,7 +747,7 @@
       See more studies &#x25BE;
     </button>
 
-    <div class="research-grid" id="research-grid" role="region" aria-label="Research studies">
+    <div class="research-grid" id="research-grid" inert role="region" aria-label="Research studies">
       <div class="ref-stack-item" id="research-card-gerlich">
         <button type="button" class="ref-stack-tab" aria-expanded="false">
           <span class="ref-stack-tab-title">Gerlich, 2025 — Societies (MDPI)</span>
@@ -992,6 +988,7 @@ function syncResearchHeight() {
 function toggleResearch(btn) {
   var grid = document.getElementById('research-grid');
   var open = grid.classList.toggle('open');
+  grid.inert = !open;
   btn.setAttribute('aria-expanded', open);
   btn.textContent = open ? 'Hide the studies \u25B4' : 'Show the studies \u25BE';
   syncResearchHeight();
@@ -1141,7 +1138,7 @@ window.addEventListener('resize', syncResearchHeight);
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <a class='nav-logo footer-logo' href='/'>
+      <a class='nav-logo footer-logo' href='/foldspace' aria-label='Hugonomy Systems homepage'>
         <img src="assets/icons/icon128.png" alt="Hugonomy Systems" class="footer-logo-img">
         <span class="footer-logo-text">Hugonomy Systems&#x2122;</span>
       </a>
@@ -1153,6 +1150,8 @@ window.addEventListener('resize', syncResearchHeight);
     <nav aria-label="Footer navigation">
       <div class="footer-links">
         <a href='/'>Home</a>
+        <span class="current-section" aria-current="page">Systems<small>Current section</small></span>
+        <a href='/business/'>Business</a>
         <a href='/vision'>Vision</a>
         <a href='/about'>About</a>
         <a href='/news'>News &amp; Media</a>
@@ -1171,6 +1170,7 @@ window.addEventListener('resize', syncResearchHeight);
       <a href="https://www.reddit.com/r/AICognitiveWatch/" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-link--last">Reddit</a>
     </p>
   </div>
+<p class="legacy-analytics"><button type="button" class="analytics-settings" data-analytics-settings hidden>Analytics choices</button> · <a href="/website-notices.html#website-analytics">Website privacy notice</a></p>
 </footer>
 
 <script>

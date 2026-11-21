@@ -5,6 +5,7 @@ from urllib.parse import urlsplit, unquote
 import tomllib,sys
 ROOT=Path(__file__).resolve().parents[2]
 config=tomllib.loads((ROOT/'netlify.toml').read_text())
+ROOT=ROOT/'public-site' if '--public' in sys.argv else ROOT
 headers=config['headers'][0]['values']
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self,*args,**kwargs):super().__init__(*args,directory=str(ROOT),**kwargs)
